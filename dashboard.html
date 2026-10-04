@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -21,13 +21,173 @@ body {
     background: #07111f;
     color: #f5c84c;
     font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+/* =====================================================
+   APP LAYOUT
+   ===================================================== */
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* =====================================================
+   LEFT SIDEBAR
+   ===================================================== */
+
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+
+    background: #0b1728;
+    border-right: 1px solid #c9a227;
+
+    padding: 22px 16px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-logo {
+    color: #f5c84c;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.sidebar-subtitle {
+    color: #64748b;
+    font-size: 10px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+/* MEMBERSHIP */
+
+.membership-box {
+    margin-top: 25px;
+
+    background: #07111f;
+    border: 1px solid #27384e;
+
+    padding: 15px;
+}
+
+.membership-label {
+    color: #64748b;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.membership-value {
+    color: #53d769;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+/* MENU */
+
+.sidebar-menu {
+    margin-top: 25px;
+}
+
+.sidebar-item {
+    color: #9ba9bb;
+
+    padding: 12px 10px;
+    margin-bottom: 4px;
+
+    font-size: 13px;
+
+    border-left: 2px solid transparent;
+
+    cursor: pointer;
+}
+
+.sidebar-item:hover {
+    color: #f5c84c;
+    background: #07111f;
+    border-left: 2px solid #c9a227;
+}
+
+.sidebar-item.active {
+    color: #f5c84c;
+    background: #07111f;
+    border-left: 2px solid #c9a227;
+}
+
+/* ACCOUNT */
+
+.sidebar-spacer {
+    flex: 1;
+}
+
+.sidebar-account {
+    border-top: 1px solid #27384e;
+
+    padding-top: 15px;
+    margin-top: 20px;
+}
+
+.sidebar-account-label {
+    color: #64748b;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+}
+
+.sidebar-email {
+    color: #9ba9bb;
+    font-size: 11px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* LOGOUT */
+
+.sidebar-logout {
+    width: 100%;
+
+    margin-top: 12px;
+
+    background: transparent;
+    color: #f5c84c;
+
+    border: 1px solid #c9a227;
+
+    padding: 9px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.sidebar-logout:hover {
+    background: #c9a227;
+    color: #07111f;
+}
+
+/* =====================================================
+   MAIN CONTENT
+   ===================================================== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
 }
 
 /* HEADER */
 
 .header {
     background: #0b1728;
-    border-bottom: 1px solid #c9a227;
+    border-bottom: 1px solid #27384e;
+
     padding: 18px 25px;
 
     display: flex;
@@ -60,23 +220,7 @@ body {
     font-weight: bold;
 }
 
-.logout-btn {
-    background: transparent;
-    color: #f5c84c;
-    border: 1px solid #c9a227;
-    padding: 8px 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.logout-btn:hover {
-    background: #c9a227;
-    color: #07111f;
-}
-
-/* MAIN */
+/* MAIN CONTAINER */
 
 .container {
     padding: 25px;
@@ -87,7 +231,9 @@ body {
 .welcome {
     background: #0b1728;
     border: 1px solid #27384e;
+
     padding: 25px;
+
     margin-bottom: 20px;
 }
 
@@ -102,7 +248,9 @@ body {
     font-size: 13px;
 }
 
-/* CARDS */
+/* =====================================================
+   DASHBOARD CARDS
+   ===================================================== */
 
 .dashboard-grid {
     display: grid;
@@ -115,32 +263,43 @@ body {
 
 .card {
     background: #0b1728;
+
     border: 1px solid #27384e;
+
     padding: 22px;
+
     min-height: 140px;
 }
 
 .card-title {
     color: #9ba9bb;
+
     font-size: 12px;
     font-weight: bold;
+
     letter-spacing: 1px;
+
     margin-bottom: 15px;
 }
 
 .card-value {
     color: #f5c84c;
+
     font-size: 22px;
     font-weight: bold;
 }
 
 .card-description {
     color: #64748b;
+
     font-size: 11px;
+
     margin-top: 10px;
 }
 
-/* ACCOUNT */
+/* =====================================================
+   ACCOUNT INFORMATION
+   ===================================================== */
 
 .account-box {
     margin-top: 20px;
@@ -154,13 +313,16 @@ body {
 
 .account-title {
     color: #f5c84c;
+
     font-size: 16px;
     font-weight: bold;
+
     margin-bottom: 15px;
 }
 
 .account-row {
     display: flex;
+
     justify-content: space-between;
 
     border-bottom: 1px solid #17283d;
@@ -178,7 +340,9 @@ body {
     color: white;
 }
 
-/* FOOTER */
+/* =====================================================
+   FOOTER
+   ===================================================== */
 
 .footer {
     text-align: center;
@@ -190,20 +354,18 @@ body {
     padding: 25px;
 }
 
-/* MOBILE */
+/* =====================================================
+   MOBILE
+   ===================================================== */
 
 @media (max-width: 768px) {
 
-    .header {
-        padding: 15px;
+    .sidebar {
+        width: 190px;
     }
 
-    .logo {
-        font-size: 20px;
-    }
-
-    .online {
-        display: none;
+    .sidebar-logo {
+        font-size: 18px;
     }
 
     .dashboard-grid {
@@ -214,41 +376,106 @@ body {
         padding: 15px;
     }
 
+    .header {
+        padding: 15px;
+    }
+
+    .online {
+        display: none;
+    }
+
 }
 
 </style>
 
 </head>
 
-
 <body>
 
+<div class="app-layout">
 
-<!-- HEADER -->
+<!-- =====================================================
+     LEFT PANEL
+     ===================================================== -->
 
-<div class="header">
+<aside class="sidebar">
 
     <div>
 
-        <div class="logo">
+        <div class="sidebar-logo">
             AGUILACORE
         </div>
 
-        <div class="subtitle">
-            TRADING PLATFORM • DASHBOARD
+        <div class="sidebar-subtitle">
+            TRADING PLATFORM
         </div>
 
     </div>
 
 
-    <div class="user-area">
+    <!-- MEMBERSHIP -->
 
-        <div class="online">
-            ● ONLINE
+    <div class="membership-box">
+
+        <div class="membership-label">
+            MEMBERSHIP
+        </div>
+
+        <div
+            class="membership-value"
+            id="sidebarMembership">
+
+            FREE
+
+        </div>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <div class="sidebar-menu">
+
+        <div class="sidebar-item active">
+            ▣ &nbsp; Dashboard
+        </div>
+
+        <div class="sidebar-item">
+            ◉ &nbsp; Markets
+        </div>
+
+        <div class="sidebar-item">
+            ◇ &nbsp; Signals
+        </div>
+
+        <div class="sidebar-item">
+            ◎ &nbsp; Gold / XAUUSD
+        </div>
+
+    </div>
+
+
+    <div class="sidebar-spacer"></div>
+
+
+    <!-- ACCOUNT -->
+
+    <div class="sidebar-account">
+
+        <div class="sidebar-account-label">
+            ACCOUNT
+        </div>
+
+        <div
+            class="sidebar-email"
+            id="sidebarEmail">
+
+            Loading...
+
         </div>
 
         <button
-            class="logout-btn"
+            class="sidebar-logout"
             onclick="logoutUser()">
 
             LOGOUT
@@ -257,84 +484,180 @@ body {
 
     </div>
 
-</div>
+</aside>
 
 
-<!-- MAIN -->
+<!-- =====================================================
+     MAIN CONTENT
+     ===================================================== -->
 
-<div class="container">
+<div class="main-content">
 
 
-    <!-- WELCOME -->
+    <!-- HEADER -->
 
-    <div class="welcome">
+    <div class="header">
 
-        <div class="welcome-title">
-            Welcome to AGUILACORE
+        <div>
+
+            <div class="logo">
+                AGUILACORE
+            </div>
+
+            <div class="subtitle">
+                TRADING PLATFORM • DASHBOARD
+            </div>
+
         </div>
 
-        <div class="welcome-text">
-            Your trading terminal is ready.
+
+        <div class="user-area">
+
+            <div class="online">
+                ● ONLINE
+            </div>
+
         </div>
 
     </div>
 
 
-    <!-- DASHBOARD CARDS -->
+    <!-- MAIN -->
 
-    <div class="dashboard-grid">
+    <div class="container">
 
 
-        <div class="card">
+        <!-- WELCOME -->
 
-            <div class="card-title">
-                ACCOUNT
+        <div class="welcome">
+
+            <div class="welcome-title">
+                Welcome to AGUILACORE
             </div>
 
-            <div
-                class="card-value"
-                id="userStatus">
-
-                FREE
-
-            </div>
-
-            <div class="card-description">
-                Current account status
+            <div class="welcome-text">
+                Your trading terminal is ready.
             </div>
 
         </div>
 
 
-        <div class="card">
+        <!-- DASHBOARD CARDS -->
 
-            <div class="card-title">
-                MARKETS
+        <div class="dashboard-grid">
+
+
+            <div class="card">
+
+                <div class="card-title">
+                    ACCOUNT
+                </div>
+
+                <div
+                    class="card-value"
+                    id="userStatus">
+
+                    FREE
+
+                </div>
+
+                <div class="card-description">
+                    Current account status
+                </div>
+
             </div>
 
-            <div class="card-value">
-                13
+
+            <div class="card">
+
+                <div class="card-title">
+                    MARKETS
+                </div>
+
+                <div class="card-value">
+                    13
+                </div>
+
+                <div class="card-description">
+                    Supported trading markets
+                </div>
+
             </div>
 
-            <div class="card-description">
-                Supported trading markets
+
+            <div class="card">
+
+                <div class="card-title">
+                    SIGNALS
+                </div>
+
+                <div class="card-value">
+                    COMING SOON
+                </div>
+
+                <div class="card-description">
+                    AGUILACORE trading signals
+                </div>
+
             </div>
+
 
         </div>
 
 
-        <div class="card">
+        <!-- ACCOUNT INFORMATION -->
 
-            <div class="card-title">
-                SIGNALS
+        <div class="account-box">
+
+            <div class="account-title">
+                ACCOUNT INFORMATION
             </div>
 
-            <div class="card-value">
-                COMING SOON
+
+            <div class="account-row">
+
+                <span class="account-label">
+                    Email
+                </span>
+
+                <span
+                    class="account-value"
+                    id="userEmail">
+
+                    Loading...
+
+                </span>
+
             </div>
 
-            <div class="card-description">
-                AGUILACORE trading signals
+
+            <div class="account-row">
+
+                <span class="account-label">
+                    Membership
+                </span>
+
+                <span
+                    class="account-value"
+                    id="accountMembership">
+
+                    FREE
+
+                </span>
+
+            </div>
+
+
+            <div class="account-row">
+
+                <span class="account-label">
+                    Trading Signals
+                </span>
+
+                <span class="account-value">
+                    Not available yet
+                </span>
+
             </div>
 
         </div>
@@ -343,76 +666,26 @@ body {
     </div>
 
 
-    <!-- ACCOUNT INFORMATION -->
+    <!-- FOOTER -->
 
-    <div class="account-box">
+    <div class="footer">
 
-        <div class="account-title">
-            ACCOUNT INFORMATION
-        </div>
-
-
-        <div class="account-row">
-
-            <span class="account-label">
-                Email
-            </span>
-
-            <span
-                class="account-value"
-                id="userEmail">
-
-                Loading...
-
-            </span>
-
-        </div>
-
-
-        <div class="account-row">
-
-            <span class="account-label">
-                Membership
-            </span>
-
-            <span class="account-value">
-                FREE
-            </span>
-
-        </div>
-
-
-        <div class="account-row">
-
-            <span class="account-label">
-                Trading Signals
-            </span>
-
-            <span class="account-value">
-                Not available yet
-            </span>
-
-        </div>
+        AGUILACORE Trading Platform © 2026
 
     </div>
 
 </div>
 
-
-<!-- FOOTER -->
-
-<div class="footer">
-
-    AGUILACORE Trading Platform © 2026
-
 </div>
 
+
+<!-- =====================================================
+     SUPABASE
+     ===================================================== -->
 
 <script>
 
-/* =====================================================
-   SUPABASE
-   ===================================================== */
+/* SUPABASE */
 
 const SUPABASE_URL =
     "https://xgthdbuybfynumprkqgm.supabase.co";
@@ -451,10 +724,38 @@ async function checkUser() {
     }
 
 
+    /* EMAIL */
+
     document.getElementById(
         "userEmail"
     ).textContent =
         data.user.email;
+
+
+    document.getElementById(
+        "sidebarEmail"
+    ).textContent =
+        data.user.email;
+
+
+    /* MEMBERSHIP */
+
+    document.getElementById(
+        "sidebarMembership"
+    ).textContent =
+        "FREE";
+
+
+    document.getElementById(
+        "accountMembership"
+    ).textContent =
+        "FREE";
+
+
+    document.getElementById(
+        "userStatus"
+    ).textContent =
+        "FREE";
 
 }
 
@@ -477,6 +778,6 @@ async function logoutUser() {
 
 </script>
 
-
 </body>
+
 </html>
