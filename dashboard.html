@@ -58,7 +58,7 @@ body {
 }
 
 /* =====================================================
-   MEMBERSHIP BOX
+   MEMBERSHIP
    ===================================================== */
 
 .membership-box {
@@ -188,7 +188,7 @@ body {
 }
 
 /* =====================================================
-   MAIN CONTENT
+   MAIN
    ===================================================== */
 
 .main-content {
@@ -306,7 +306,7 @@ body {
 }
 
 /* =====================================================
-   ACCOUNT INFORMATION
+   ACCOUNT
    ===================================================== */
 
 .account-box {
@@ -560,6 +560,79 @@ body {
 }
 
 /* =====================================================
+   ECONOMIC NEWS
+   ===================================================== */
+
+.news-header {
+    background: #0b1728;
+    border: 1px solid #c9a227;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.news-title {
+    color: #f5c84c;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.news-subtitle {
+    color: #9ba9bb;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.news-card {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 20px;
+    min-height: 150px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.news-card:hover {
+    border-color: #c9a227;
+}
+
+.news-category {
+    color: #53d769;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.news-card-title {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+.news-date {
+    color: #64748b;
+    font-size: 10px;
+    margin-top: 12px;
+}
+
+.news-impact {
+    display: inline-block;
+    margin-top: 12px;
+    color: #f5c84c;
+    border: 1px solid #c9a227;
+    padding: 4px 7px;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+/* =====================================================
    ACCESS DENIED
    ===================================================== */
 
@@ -628,7 +701,8 @@ body {
     .dashboard-grid,
     .market-grid,
     .premium-grid,
-    .plan-grid {
+    .plan-grid,
+    .news-grid {
         grid-template-columns: 1fr;
     }
 
@@ -654,9 +728,8 @@ body {
 
 <div class="app-layout">
 
-
 <!-- =====================================================
-     LEFT SIDEBAR
+     LEFT PANEL
      ===================================================== -->
 
 <aside class="sidebar">
@@ -704,8 +777,6 @@ body {
     <div class="sidebar-menu">
 
 
-        <!-- DASHBOARD -->
-
         <div
             class="sidebar-item active"
             id="dashboardMenu"
@@ -716,8 +787,6 @@ body {
         </div>
 
 
-        <!-- MARKETS -->
-
         <div
             class="sidebar-item"
             id="marketsMenu"
@@ -727,8 +796,6 @@ body {
 
         </div>
 
-
-        <!-- SIGNALS -->
 
         <div
             class="sidebar-item paid-menu"
@@ -744,8 +811,6 @@ body {
         </div>
 
 
-        <!-- GOLD -->
-
         <div
             class="sidebar-item paid-menu"
             id="goldMenu"
@@ -756,6 +821,18 @@ body {
             <span class="paid-badge">
                 PAID
             </span>
+
+        </div>
+
+
+        <!-- ECONOMIC NEWS -->
+
+        <div
+            class="sidebar-item"
+            id="economicNewsMenu"
+            onclick="showPage('economicNewsPage')">
+
+            ◈ &nbsp; Economic News
 
         </div>
 
@@ -844,7 +921,6 @@ body {
             id="dashboardPage"
             class="page active">
 
-
             <div class="welcome">
 
                 <div class="welcome-title">
@@ -915,7 +991,6 @@ body {
 
                 </div>
 
-
             </div>
 
 
@@ -974,7 +1049,6 @@ body {
 
             </div>
 
-
         </div>
 
 
@@ -985,7 +1059,6 @@ body {
         <div
             id="marketsPage"
             class="page">
-
 
             <div class="welcome">
 
@@ -1107,18 +1180,16 @@ body {
 
             </div>
 
-
         </div>
 
 
         <!-- =================================================
-             MEMBERSHIP PLANS
+             MEMBERSHIP
              ================================================= -->
 
         <div
             id="membershipPage"
             class="page">
-
 
             <div class="membership-header">
 
@@ -1135,8 +1206,6 @@ body {
 
             <div class="plan-grid">
 
-
-                <!-- 1 MONTH -->
 
                 <div class="plan-card">
 
@@ -1158,7 +1227,7 @@ body {
 
                     <button
                         class="plan-button"
-                        onclick="selectPlan('1 Month', 150)">
+                        onclick="selectPlan('1 Month',150)">
 
                         SELECT PLAN
 
@@ -1166,8 +1235,6 @@ body {
 
                 </div>
 
-
-                <!-- 6 MONTHS -->
 
                 <div class="plan-card">
 
@@ -1189,7 +1256,7 @@ body {
 
                     <button
                         class="plan-button"
-                        onclick="selectPlan('6 Months', 350)">
+                        onclick="selectPlan('6 Months',350)">
 
                         SELECT PLAN
 
@@ -1197,8 +1264,6 @@ body {
 
                 </div>
 
-
-                <!-- 1 YEAR -->
 
                 <div class="plan-card plan-featured">
 
@@ -1224,7 +1289,7 @@ body {
 
                     <button
                         class="plan-button"
-                        onclick="selectPlan('1 Year', 500)">
+                        onclick="selectPlan('1 Year',500)">
 
                         SELECT PLAN
 
@@ -1232,8 +1297,6 @@ body {
 
                 </div>
 
-
-                <!-- LIFETIME -->
 
                 <div class="plan-card">
 
@@ -1255,7 +1318,7 @@ body {
 
                     <button
                         class="plan-button"
-                        onclick="selectPlan('Lifetime', 1500)">
+                        onclick="selectPlan('Lifetime',1500)">
 
                         SELECT PLAN
 
@@ -1265,7 +1328,6 @@ body {
 
 
             </div>
-
 
         </div>
 
@@ -1277,7 +1339,6 @@ body {
         <div
             id="signalsPage"
             class="page">
-
 
             <div class="signal-header">
 
@@ -1293,7 +1354,6 @@ body {
 
 
             <div class="premium-grid">
-
 
                 <div class="premium-card">
 
@@ -1345,9 +1405,7 @@ body {
 
                 </div>
 
-
             </div>
-
 
         </div>
 
@@ -1359,7 +1417,6 @@ body {
         <div
             id="goldPage"
             class="page">
-
 
             <div class="gold-box">
 
@@ -1373,6 +1430,118 @@ body {
 
             </div>
 
+        </div>
+
+
+        <!-- =================================================
+             ECONOMIC NEWS
+             ================================================= -->
+
+        <div
+            id="economicNewsPage"
+            class="page">
+
+            <div class="news-header">
+
+                <div class="news-title">
+                    ECONOMIC NEWS
+                </div>
+
+                <div class="news-subtitle">
+                    Global economic events and market-moving news.
+                </div>
+
+            </div>
+
+
+            <div class="news-grid">
+
+
+                <div class="news-card">
+
+                    <div class="news-category">
+                        CENTRAL BANK
+                    </div>
+
+                    <div class="news-card-title">
+                        Federal Reserve Interest Rate Decision
+                    </div>
+
+                    <div class="news-date">
+                        Economic Calendar
+                    </div>
+
+                    <div class="news-impact">
+                        HIGH IMPACT
+                    </div>
+
+                </div>
+
+
+                <div class="news-card">
+
+                    <div class="news-category">
+                        INFLATION
+                    </div>
+
+                    <div class="news-card-title">
+                        US Consumer Price Index
+                    </div>
+
+                    <div class="news-date">
+                        Economic Calendar
+                    </div>
+
+                    <div class="news-impact">
+                        HIGH IMPACT
+                    </div>
+
+                </div>
+
+
+                <div class="news-card">
+
+                    <div class="news-category">
+                        EMPLOYMENT
+                    </div>
+
+                    <div class="news-card-title">
+                        US Non-Farm Payrolls
+                    </div>
+
+                    <div class="news-date">
+                        Economic Calendar
+                    </div>
+
+                    <div class="news-impact">
+                        HIGH IMPACT
+                    </div>
+
+                </div>
+
+
+                <div class="news-card">
+
+                    <div class="news-category">
+                        GDP
+                    </div>
+
+                    <div class="news-card-title">
+                        US Gross Domestic Product
+                    </div>
+
+                    <div class="news-date">
+                        Economic Calendar
+                    </div>
+
+                    <div class="news-impact">
+                        HIGH IMPACT
+                    </div>
+
+                </div>
+
+
+            </div>
 
         </div>
 
@@ -1384,7 +1553,6 @@ body {
         <div
             id="accessDeniedPage"
             class="page">
-
 
             <div class="access-denied">
 
@@ -1406,21 +1574,15 @@ body {
 
             </div>
 
-
         </div>
 
 
     </div>
 
 
-    <!-- FOOTER -->
-
     <div class="footer">
-
         AGUILACORE Trading Platform © 2026
-
     </div>
-
 
 </div>
 
@@ -1452,7 +1614,7 @@ const supabaseClient =
 
 
 /* =====================================================
-   CURRENT MEMBERSHIP
+   MEMBERSHIP
    ===================================================== */
 
 let currentMembership = "FREE";
@@ -1467,7 +1629,6 @@ function showPage(pageId) {
     const pages =
         document.querySelectorAll(".page");
 
-
     pages.forEach(function(page) {
 
         page.classList.remove("active");
@@ -1477,7 +1638,6 @@ function showPage(pageId) {
 
     const selectedPage =
         document.getElementById(pageId);
-
 
     if (selectedPage) {
 
@@ -1503,7 +1663,6 @@ function showPage(pageId) {
 
     }
 
-
     if (pageId === "marketsPage") {
 
         document
@@ -1511,7 +1670,6 @@ function showPage(pageId) {
             .classList.add("active");
 
     }
-
 
     if (pageId === "signalsPage") {
 
@@ -1521,11 +1679,18 @@ function showPage(pageId) {
 
     }
 
-
     if (pageId === "goldPage") {
 
         document
             .getElementById("goldMenu")
+            .classList.add("active");
+
+    }
+
+    if (pageId === "economicNewsPage") {
+
+        document
+            .getElementById("economicNewsMenu")
             .classList.add("active");
 
     }
@@ -1547,7 +1712,6 @@ function openPaidPage(pageId) {
 
     }
 
-
     showPage(pageId);
 
 }
@@ -1566,7 +1730,7 @@ function selectPlan(planName, price) {
         "$" +
         price +
         "\n\n" +
-        Payment setup will be added next.
+        "Payment setup will be added next."
     );
 
 }
@@ -1595,8 +1759,6 @@ async function checkUser() {
     }
 
 
-    /* EMAIL */
-
     document.getElementById(
         "userEmail"
     ).textContent =
@@ -1608,8 +1770,6 @@ async function checkUser() {
     ).textContent =
         data.user.email;
 
-
-    /* MEMBERSHIP */
 
     currentMembership = "FREE";
 
