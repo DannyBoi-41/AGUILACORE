@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AGUILACORE Dashboard</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #07111f;
+    color: #f5c84c;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HEADER */
+
+.header {
+    background: #0b1728;
+    border-bottom: 1px solid #c9a227;
+    padding: 18px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: #9ba9bb;
+    font-size: 12px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.online {
+    color: #53d769;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.logout-btn {
+    background: transparent;
+    color: #f5c84c;
+    border: 1px solid #c9a227;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background: #c9a227;
+    color: #07111f;
+}
+
+/* MAIN */
+
+.container {
+    padding: 25px;
+}
+
+/* WELCOME */
+
+.welcome {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.welcome-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.welcome-text {
+    color: #9ba9bb;
+    font-size: 13px;
+}
+
+/* CARDS */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.card {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 22px;
+    min-height: 140px;
+}
+
+.card-title {
+    color: #9ba9bb;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.card-value {
+    color: #f5c84c;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.card-description {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 10px;
+}
+
+/* ACCOUNT */
+
+.account-box {
+    margin-top: 20px;
+
+    background: #0b1728;
+
+    border: 1px solid #27384e;
+
+    padding: 22px;
+}
+
+.account-title {
+    color: #f5c84c;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.account-row {
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #17283d;
+
+    padding: 10px 0;
+
+    font-size: 13px;
+}
+
+.account-label {
+    color: #9ba9bb;
+}
+
+.account-value {
+    color: white;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    padding: 25px;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .header {
+        padding: 15px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .online {
+        display: none;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div>
+
+        <div class="logo">
+            AGUILACORE
+        </div>
+
+        <div class="subtitle">
+            TRADING PLATFORM • DASHBOARD
+        </div>
+
+    </div>
+
+
+    <div class="user-area">
+
+        <div class="online">
+            ● ONLINE
+        </div>
+
+        <button
+            class="logout-btn"
+            onclick="logoutUser()">
+
+            LOGOUT
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+
+    <!-- WELCOME -->
+
+    <div class="welcome">
+
+        <div class="welcome-title">
+            Welcome to AGUILACORE
+        </div>
+
+        <div class="welcome-text">
+            Your trading terminal is ready.
+        </div>
+
+    </div>
+
+
+    <!-- DASHBOARD CARDS -->
+
+    <div class="dashboard-grid">
+
+
+        <div class="card">
+
+            <div class="card-title">
+                ACCOUNT
+            </div>
+
+            <div
+                class="card-value"
+                id="userStatus">
+
+                FREE
+
+            </div>
+
+            <div class="card-description">
+                Current account status
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+                MARKETS
+            </div>
+
+            <div class="card-value">
+                13
+            </div>
+
+            <div class="card-description">
+                Supported trading markets
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+                SIGNALS
+            </div>
+
+            <div class="card-value">
+                COMING SOON
+            </div>
+
+            <div class="card-description">
+                AGUILACORE trading signals
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ACCOUNT INFORMATION -->
+
+    <div class="account-box">
+
+        <div class="account-title">
+            ACCOUNT INFORMATION
+        </div>
+
+
+        <div class="account-row">
+
+            <span class="account-label">
+                Email
+            </span>
+
+            <span
+                class="account-value"
+                id="userEmail">
+
+                Loading...
+
+            </span>
+
+        </div>
+
+
+        <div class="account-row">
+
+            <span class="account-label">
+                Membership
+            </span>
+
+            <span class="account-value">
+                FREE
+            </span>
+
+        </div>
+
+
+        <div class="account-row">
+
+            <span class="account-label">
+                Trading Signals
+            </span>
+
+            <span class="account-value">
+                Not available yet
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    AGUILACORE Trading Platform © 2026
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE
+   ===================================================== */
+
+const SUPABASE_URL =
+    https://xgthdbuybfynumprkqgm.supabase.co/rest/v1/;
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+    sb_publishable_6ooR6Iv8NSAbEsgIFjruZg_RVIgvo9v;
+
+
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* =====================================================
+   CHECK LOGIN
+   ===================================================== */
+
+async function checkUser() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.getUser();
+
+
+    if (error || !data.user) {
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "userEmail"
+    ).textContent =
+        data.user.email;
+
+}
+
+
+checkUser();
+
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+async function logoutUser() {
+
+    await supabaseClient.auth.signOut();
+
+    window.location.href =
+        "index.html";
+
+}
+
+</script>
+
+
+</body>
+</html>
