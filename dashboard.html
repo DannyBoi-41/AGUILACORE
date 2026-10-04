@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +9,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AGUILA Dashboard</title>
+<title>AGUILACORE Dashboard</title>
 
 <style>
+
+/* =====================================================
+   GLOBAL
+   ===================================================== */
 
 * {
     box-sizing: border-box;
@@ -22,6 +27,12 @@ body {
     color: #f5c84c;
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
+}
+
+button,
+input,
+select {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* =====================================================
@@ -42,6 +53,7 @@ body {
     min-height: 100vh;
 
     background: #0b1728;
+
     border-right: 1px solid #c9a227;
 
     padding: 22px 16px;
@@ -52,15 +64,20 @@ body {
 
 .sidebar-logo {
     color: #f5c84c;
+
     font-size: 22px;
     font-weight: bold;
+
     letter-spacing: 2px;
 }
 
 .sidebar-subtitle {
     color: #64748b;
+
     font-size: 10px;
+
     margin-top: 5px;
+
     letter-spacing: 1px;
 }
 
@@ -72,6 +89,7 @@ body {
     margin-top: 25px;
 
     background: #07111f;
+
     border: 1px solid #27384e;
 
     padding: 15px;
@@ -83,25 +101,33 @@ body {
 
 .membership-box:hover {
     border-color: #c9a227;
+
     background: #0d1b2e;
 }
 
 .membership-label {
     color: #64748b;
+
     font-size: 10px;
+
     letter-spacing: 1px;
 }
 
 .membership-value {
     color: #53d769;
+
     font-size: 18px;
+
     font-weight: bold;
+
     margin-top: 6px;
 }
 
 .membership-action {
     color: #64748b;
+
     font-size: 9px;
+
     margin-top: 8px;
 }
 
@@ -131,18 +157,22 @@ body {
 
 .sidebar-item:hover {
     color: #f5c84c;
+
     background: #07111f;
+
     border-left: 2px solid #c9a227;
 }
 
 .sidebar-item.active {
     color: #f5c84c;
+
     background: #07111f;
+
     border-left: 2px solid #c9a227;
 }
 
 /* =====================================================
-   ACCOUNT
+   SIDEBAR ACCOUNT
    ===================================================== */
 
 .sidebar-spacer {
@@ -215,6 +245,7 @@ body {
 
 .main-content {
     flex: 1;
+
     min-width: 0;
 }
 
@@ -651,8 +682,6 @@ body {
 
     min-width: 170px;
 
-    font-family: Arial, Helvetica, sans-serif;
-
     font-size: 12px;
 
     outline: none;
@@ -813,7 +842,7 @@ body {
 }
 
 /* =====================================================
-   NO RESULTS
+   NEWS EMPTY
    ===================================================== */
 
 .no-news {
@@ -824,6 +853,30 @@ body {
     color: #64748b;
 
     font-size: 13px;
+}
+
+/* =====================================================
+   NEWS SOURCE STATUS
+   ===================================================== */
+
+.news-source-box {
+    margin-bottom: 15px;
+
+    background: #0b1728;
+
+    border: 1px solid #27384e;
+
+    padding: 12px 15px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+.news-source-status {
+    color: #53d769;
+
+    font-weight: bold;
 }
 
 /* =====================================================
@@ -841,7 +894,7 @@ body {
 }
 
 /* =====================================================
-   MOBILE
+   RESPONSIVE
    ===================================================== */
 
 @media (max-width: 1100px) {
@@ -944,7 +997,7 @@ body {
 <div class="app-layout">
 
 <!-- =====================================================
-     LEFT SIDEBAR
+     LEFT PANEL
      ===================================================== -->
 
 <aside class="sidebar">
@@ -1395,8 +1448,12 @@ body {
                         Full access for 1 month
                     </div>
 
-                    <button class="membership-button">
+                    <button
+                        class="membership-button"
+                        onclick="selectMembership('1 MONTH','$150')">
+
                         SELECT
+
                     </button>
 
                 </div>
@@ -1416,8 +1473,12 @@ body {
                         Full access for 6 months
                     </div>
 
-                    <button class="membership-button">
+                    <button
+                        class="membership-button"
+                        onclick="selectMembership('6 MONTHS','$350')">
+
                         SELECT
+
                     </button>
 
                 </div>
@@ -1437,8 +1498,12 @@ body {
                         Full access for 1 year
                     </div>
 
-                    <button class="membership-button">
+                    <button
+                        class="membership-button"
+                        onclick="selectMembership('1 YEAR','$500')">
+
                         SELECT
+
                     </button>
 
                 </div>
@@ -1458,8 +1523,12 @@ body {
                         Lifetime AGUILACORE access
                     </div>
 
-                    <button class="membership-button">
+                    <button
+                        class="membership-button"
+                        onclick="selectMembership('LIFETIME','$1500')">
+
                         SELECT
+
                     </button>
 
                 </div>
@@ -1499,14 +1568,27 @@ body {
             </div>
 
 
-            <!-- =================================================
-                 FILTERS
-                 ================================================= -->
+            <!-- SOURCE STATUS -->
+
+            <div class="news-source-box">
+
+                SOURCE STATUS:
+                <span class="news-source-status">
+                    AGUILACORE ECONOMIC CALENDAR
+                </span>
+
+                &nbsp; • &nbsp;
+
+                Live calendar integration will be connected
+                through the backend.
+
+            </div>
+
+
+            <!-- FILTERS -->
 
             <div class="news-filter-box">
 
-
-                <!-- DATE -->
 
                 <div class="filter-group">
 
@@ -1525,8 +1607,6 @@ body {
 
                 </div>
 
-
-                <!-- IMPACT -->
 
                 <div class="filter-group">
 
@@ -1592,45 +1672,30 @@ body {
             </div>
 
 
-            <!-- =================================================
-                 CALENDAR
-                 ================================================= -->
+            <!-- CALENDAR -->
 
             <div class="economic-calendar">
 
                 <div class="calendar-header">
 
-                    <div>
-                        DATE
-                    </div>
+                    <div>DATE</div>
 
-                    <div>
-                        EVENT
-                    </div>
+                    <div>EVENT</div>
 
-                    <div>
-                        CURRENCY
-                    </div>
+                    <div>CURRENCY</div>
 
-                    <div>
-                        IMPACT
-                    </div>
+                    <div>IMPACT</div>
 
-                    <div>
-                        TIME
-                    </div>
+                    <div>TIME</div>
 
-                    <div>
-                        ACTUAL
-                    </div>
+                    <div>ACTUAL</div>
 
                 </div>
 
 
                 <div id="economicNewsRows">
 
-
-                    <!-- HIGH -->
+                    <!-- SAMPLE DATA -->
 
                     <div
                         class="calendar-row news-row"
@@ -1664,8 +1729,6 @@ body {
                     </div>
 
 
-                    <!-- MEDIUM -->
-
                     <div
                         class="calendar-row news-row"
                         data-date="2026-10-04"
@@ -1697,8 +1760,6 @@ body {
 
                     </div>
 
-
-                    <!-- LOW -->
 
                     <div
                         class="calendar-row news-row"
@@ -1732,8 +1793,6 @@ body {
                     </div>
 
 
-                    <!-- HIGH -->
-
                     <div
                         class="calendar-row news-row"
                         data-date="2026-10-05"
@@ -1765,8 +1824,6 @@ body {
 
                     </div>
 
-
-                    <!-- MEDIUM -->
 
                     <div
                         class="calendar-row news-row"
@@ -1800,8 +1857,6 @@ body {
                     </div>
 
 
-                    <!-- LOW -->
-
                     <div
                         class="calendar-row news-row"
                         data-date="2026-10-06"
@@ -1834,8 +1889,6 @@ body {
                     </div>
 
 
-                    <!-- HIGH -->
-
                     <div
                         class="calendar-row news-row"
                         data-date="2026-10-07"
@@ -1867,11 +1920,8 @@ body {
 
                     </div>
 
-
                 </div>
 
-
-                <!-- NO RESULTS -->
 
                 <div
                     class="no-news"
@@ -1885,7 +1935,6 @@ body {
             </div>
 
         </div>
-
 
     </div>
 
@@ -1902,10 +1951,6 @@ body {
 
 </div>
 
-
-<!-- =====================================================
-     JAVASCRIPT
-     ===================================================== -->
 
 <script>
 
@@ -1950,38 +1995,51 @@ async function checkUser() {
     }
 
 
-    /* EMAIL */
+    const email =
+        data.user.email || "";
+
 
     document.getElementById(
         "userEmail"
     ).textContent =
-        data.user.email;
+        email;
 
 
     document.getElementById(
         "sidebarEmail"
     ).textContent =
-        data.user.email;
+        email;
 
 
-    /* MEMBERSHIP */
+    /*
+       CURRENT MEMBERSHIP
+
+       For now FREE.
+
+       Later this will come from
+       the Supabase membership table.
+    */
+
+    const membership =
+        "FREE";
+
 
     document.getElementById(
         "sidebarMembership"
     ).textContent =
-        "FREE";
+        membership;
 
 
     document.getElementById(
         "accountMembership"
     ).textContent =
-        "FREE";
+        membership;
 
 
     document.getElementById(
         "userStatus"
     ).textContent =
-        "FREE";
+        membership;
 
 }
 
@@ -1996,81 +2054,103 @@ checkUser();
 function showPage(pageId) {
 
     const pages =
-        document.querySelectorAll(".page");
+        document.querySelectorAll(
+            ".page"
+        );
 
 
     pages.forEach(function(page) {
 
-        page.classList.remove("active");
+        page.classList.remove(
+            "active"
+        );
 
     });
 
 
     const selectedPage =
-        document.getElementById(pageId);
+        document.getElementById(
+            pageId
+        );
 
 
     if (selectedPage) {
 
-        selectedPage.classList.add("active");
+        selectedPage.classList.add(
+            "active"
+        );
 
     }
 
 
     const menuItems =
-        document.querySelectorAll(".sidebar-item");
+        document.querySelectorAll(
+            ".sidebar-item"
+        );
 
 
     menuItems.forEach(function(item) {
 
-        item.classList.remove("active");
+        item.classList.remove(
+            "active"
+        );
 
     });
 
 
-    if (pageId === "dashboardPage") {
+    const menuMap = {
 
-        document.getElementById(
-            "dashboardMenu"
-        ).classList.add("active");
+        dashboardPage:
+            "dashboardMenu",
 
-    }
+        marketsPage:
+            "marketsMenu",
 
+        signalsPage:
+            "signalsMenu",
 
-    if (pageId === "marketsPage") {
+        goldPage:
+            "goldMenu",
 
-        document.getElementById(
-            "marketsMenu"
-        ).classList.add("active");
-
-    }
-
-
-    if (pageId === "signalsPage") {
-
-        document.getElementById(
-            "signalsMenu"
-        ).classList.add("active");
-
-    }
-
-
-    if (pageId === "goldPage") {
-
-        document.getElementById(
-            "goldMenu"
-        ).classList.add("active");
-
-    }
-
-
-    if (pageId === "economicNewsPage") {
-
-        document.getElementById(
+        economicNewsPage:
             "economicNewsMenu"
-        ).classList.add("active");
+
+    };
+
+
+    if (
+        menuMap[pageId]
+    ) {
+
+        document
+            .getElementById(
+                menuMap[pageId]
+            )
+            .classList.add(
+                "active"
+            );
 
     }
+
+}
+
+
+/* =====================================================
+   MEMBERSHIP
+   ===================================================== */
+
+function selectMembership(
+    plan,
+    price
+) {
+
+    alert(
+        "Selected AGUILACORE " +
+        plan +
+        " membership for " +
+        price +
+        ".\n\nPayment integration will be added next."
+    );
 
 }
 
@@ -2121,8 +2201,6 @@ function filterEconomicNews() {
         let impactMatch = true;
 
 
-        /* DATE FILTER */
-
         if (
             selectedDate &&
             rowDate !== selectedDate
@@ -2133,8 +2211,6 @@ function filterEconomicNews() {
         }
 
 
-        /* IMPACT FILTER */
-
         if (
             selectedImpact !== "ALL" &&
             rowImpact !== selectedImpact
@@ -2144,8 +2220,6 @@ function filterEconomicNews() {
 
         }
 
-
-        /* SHOW / HIDE */
 
         if (
             dateMatch &&
@@ -2186,15 +2260,15 @@ function filterEconomicNews() {
     }
 
 
-    /* STATUS */
-
     let statusText =
         "Showing " +
         visibleCount +
         " economic event";
 
 
-    if (visibleCount !== 1) {
+    if (
+        visibleCount !== 1
+    ) {
 
         statusText += "s";
 
@@ -2232,14 +2306,15 @@ function filterEconomicNews() {
 
 
 /* =====================================================
-   CLEAR NEWS FILTERS
+   CLEAR FILTERS
    ===================================================== */
 
 function clearNewsFilters() {
 
     document.getElementById(
         "newsDate"
-    ).value = "";
+    ).value =
+        "";
 
 
     document.getElementById(
@@ -2282,7 +2357,10 @@ function clearNewsFilters() {
 
 async function logoutUser() {
 
-    await supabaseClient.auth.signOut();
+    await supabaseClient
+        .auth
+        .signOut();
+
 
     window.location.href =
         "index.html";
@@ -2294,3 +2372,4 @@ async function logoutUser() {
 </body>
 
 </html>
+```
