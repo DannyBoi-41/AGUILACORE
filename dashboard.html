@@ -1691,7 +1691,7 @@ const supabaseClient =
 
 
 /* =====================================================
-   AGUILACORE ECONOMIC CALENDAR API
+   AGUILACORE ECONOMIC CALENDAR EDGE FUNCTION
    ===================================================== */
 
 const ECONOMIC_CALENDAR_API =
@@ -1708,54 +1708,71 @@ let economicNewsData = [];
 
 async function checkUser() {
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient.auth.getUser();
+    try {
 
-    if (error || !data.user) {
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.auth.getUser();
+
+        if (
+            error ||
+            !data ||
+            !data.user
+        ) {
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
+
+        const email =
+            data.user.email || "";
+
+        document.getElementById(
+            "userEmail"
+        ).textContent =
+            email;
+
+        document.getElementById(
+            "sidebarEmail"
+        ).textContent =
+            email;
+
+        const membership =
+            "FREE";
+
+        document.getElementById(
+            "sidebarMembership"
+        ).textContent =
+            membership;
+
+        document.getElementById(
+            "accountMembership"
+        ).textContent =
+            membership;
+
+        document.getElementById(
+            "userStatus"
+        ).textContent =
+            membership;
+
+    } catch (error) {
+
+        console.error(
+            "Authentication error:",
+            error
+        );
 
         window.location.href =
             "index.html";
 
-        return;
-
     }
 
-    const email =
-        data.user.email || "";
-
-    document.getElementById(
-        "userEmail"
-    ).textContent =
-        email;
-
-    document.getElementById(
-        "sidebarEmail"
-    ).textContent =
-        email;
-
-    const membership =
-        "FREE";
-
-    document.getElementById(
-        "sidebarMembership"
-    ).textContent =
-        membership;
-
-    document.getElementById(
-        "accountMembership"
-    ).textContent =
-        membership;
-
-    document.getElementById(
-        "userStatus"
-    ).textContent =
-        membership;
-
 }
-
 
 checkUser();
 
@@ -1828,20 +1845,20 @@ function showPage(pageId) {
         menuMap[pageId]
     ) {
 
-        document
-            .getElementById(
+        const menu =
+            document.getElementById(
                 menuMap[pageId]
-            )
-            .classList.add(
+            );
+
+        if (menu) {
+
+            menu.classList.add(
                 "active"
             );
 
-    }
+        }
 
-    /*
-       Load economic news only when
-       the Economic News page is opened.
-    */
+    }
 
     if (
         pageId ===
@@ -1882,6 +1899,44 @@ function selectMembership(
 
 
 /* =====================================================
+   GET AUTHENTICATED SESSION
+   ===================================================== */
+
+async function getAuthenticatedSession() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.getSession();
+
+    if (
+        error
+    ) {
+
+        throw new Error(
+            "Unable to read Supabase session."
+        );
+
+    }
+
+    if (
+        !data ||
+        !data.session
+    ) {
+
+        throw new Error(
+            "User session not found. Please login again."
+        );
+
+    }
+
+    return data.session;
+
+}
+
+
+/* =====================================================
    LOAD ECONOMIC NEWS
    ===================================================== */
 
@@ -1907,6 +1962,11 @@ async function loadEconomicNews() {
             "newsError"
         );
 
+    const updated =
+        document.getElementById(
+            "newsUpdated"
+        );
+
     loading.style.display =
         "block";
 
@@ -1919,65 +1979,182 @@ async function loadEconomicNews() {
     errorBox.style.display =
         "none";
 
-    document.getElementById(
-        "newsUpdated"
-    ).textContent =
+    updated.textContent =
         "Updating...";
 
 
     try {
+
+        /*
+         * Get the currently authenticated
+         * Supabase session.
+         */
+
+        const session =
+            await getAuthenticatedSession();
+
+
+        /*
+         * Send BOTH:
+         *
+         * Authorization: Bearer ACCESS_TOKEN
+         *
+         * apikey: PUBLISHABLE_KEY
+         *
+         * This fixes the previous:
+         *
+         * UNAUTHORIZED_NO_AUTH_HEADER
+         */
 
         const response =
             await fetch(
                 ECONOMIC_CALENDAR_API,
                 {
                     method: "GET",
+
                     headers: {
+
                         "Content-Type":
-                            "application/json"
+                            "application/json",
+
+                        "Authorization":
+                            "Bearer " +
+                            session.access_token,
+
+                        "apikey":
+                            SUPABASE_PUBLISHABLE_KEY
+
                     }
                 }
             );
 
 
-        if (!response.ok) {
+        /*
+         * Read response body safely.
+         */
+
+        const responseText =
+            await response.text();
+
+
+        let result = null;
+
+
+        try {
+
+            result =
+                responseText
+                    ? JSON.parse(
+                        responseText
+                    )
+                    : null;
+
+        } catch (
+            jsonError
+        ) {
+
+            result = null;
+
+        }
+
+
+        /*
+         * HTTP ERROR
+         */
+
+        if (
+            !response.ok
+        ) {
+
+            let serverMessage =
+                "";
+
+
+            if (
+                result &&
+                result.message
+            ) {
+
+                serverMessage =
+                    result.message;
+
+            } else if (
+                result &&
+                result.error
+            ) {
+
+                serverMessage =
+                    result.error;
+
+            } else if (
+                responseText
+            ) {
+
+                serverMessage =
+                    responseText;
+
+            }
+
 
             throw new Error(
                 "Economic calendar API returned HTTP " +
-                response.status
+                response.status +
+                (
+                    serverMessage
+                        ? " — " +
+                          serverMessage
+                        : ""
+                )
             );
 
         }
 
 
-        const result =
-            await response.json();
+        /*
+         * If function returned no JSON.
+         */
+
+        if (
+            result === null
+        ) {
+
+            throw new Error(
+                "Economic calendar returned an empty response."
+            );
+
+        }
 
 
         /*
-           Support several common
-           Edge Function response formats.
-        */
+         * Support several common
+         * Edge Function response formats.
+         */
 
         let events = [];
 
 
         if (
-            Array.isArray(result)
+            Array.isArray(
+                result
+            )
         ) {
 
             events =
                 result;
 
         } else if (
-            Array.isArray(result.events)
+            Array.isArray(
+                result.events
+            )
         ) {
 
             events =
                 result.events;
 
         } else if (
-            Array.isArray(result.data)
+            Array.isArray(
+                result.data
+            )
         ) {
 
             events =
@@ -1985,32 +2162,51 @@ async function loadEconomicNews() {
 
         } else if (
             result.data &&
-            Array.isArray(result.data.events)
+            Array.isArray(
+                result.data.events
+            )
         ) {
 
             events =
                 result.data.events;
 
+        } else if (
+            result.result &&
+            Array.isArray(
+                result.result.events
+            )
+        ) {
+
+            events =
+                result.result.events;
+
         }
 
 
-        economicNewsData =
-            events.map(
-                normalizeEconomicEvent
-            );
-
+        /*
+         * Normalize every event.
+         */
 
         economicNewsData =
-            economicNewsData
-                .filter(function(event) {
+            events
+                .map(
+                    normalizeEconomicEvent
+                )
+                .filter(
+                    function(event) {
 
-                    return (
-                        event.event ||
-                        event.title
-                    );
+                        return (
+                            event.event ||
+                            event.title
+                        );
 
-                });
+                    }
+                );
 
+
+        /*
+         * Sort chronologically.
+         */
 
         economicNewsData.sort(
             function(a, b) {
@@ -2028,9 +2224,7 @@ async function loadEconomicNews() {
             "none";
 
 
-        document.getElementById(
-            "newsUpdated"
-        ).textContent =
+        updated.textContent =
             "Updated " +
             new Date().toLocaleTimeString(
                 "en-PH",
@@ -2056,6 +2250,10 @@ async function loadEconomicNews() {
             "none";
 
 
+        table.style.display =
+            "none";
+
+
         errorBox.textContent =
             "Unable to load economic calendar data. " +
             error.message;
@@ -2065,9 +2263,7 @@ async function loadEconomicNews() {
             "block";
 
 
-        document.getElementById(
-            "newsUpdated"
-        ).textContent =
+        updated.textContent =
             "Data unavailable";
 
     }
@@ -2106,6 +2302,12 @@ function normalizeEconomicEvent(
             event.title ||
             event.name ||
             event.event_name ||
+            "",
+
+        title:
+            event.title ||
+            event.event ||
+            event.name ||
             "",
 
         currency:
@@ -2229,7 +2431,7 @@ function getEventTimestamp(
 ) {
 
     let value =
-        event.date;
+        event.date || "";
 
 
     if (
@@ -2250,7 +2452,9 @@ function getEventTimestamp(
 
 
     if (
-        isNaN(timestamp)
+        isNaN(
+            timestamp
+        )
     ) {
 
         return 0;
@@ -2271,7 +2475,9 @@ function formatEventDate(
     dateValue
 ) {
 
-    if (!dateValue) {
+    if (
+        !dateValue
+    ) {
 
         return "—";
 
@@ -2290,11 +2496,6 @@ function formatEventDate(
         )
     ) {
 
-        /*
-           If backend already sends
-           YYYY-MM-DD, use it.
-        */
-
         const match =
             String(
                 dateValue
@@ -2303,7 +2504,9 @@ function formatEventDate(
             );
 
 
-        if (match) {
+        if (
+            match
+        ) {
 
             return (
                 match[2] +
@@ -2340,7 +2543,9 @@ function getDateKey(
     dateValue
 ) {
 
-    if (!dateValue) {
+    if (
+        !dateValue
+    ) {
 
         return "";
 
@@ -2355,7 +2560,9 @@ function getDateKey(
         );
 
 
-    if (match) {
+    if (
+        match
+    ) {
 
         return (
             match[1] +
@@ -2435,7 +2642,7 @@ function impactHTML(
     return `
         <span class="impact-badge impact-${className}">
             <span class="impact-dot"></span>
-            ${safeImpact}
+            ${escapeHTML(safeImpact)}
         </span>
     `;
 
@@ -2639,7 +2846,8 @@ function renderEconomicNews() {
                 <td>
                     <div class="event-name">
                         ${escapeHTML(
-                            event.event
+                            event.event ||
+                            event.title
                         )}
                     </div>
                 </td>
