@@ -1,0 +1,1694 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AGUILACORE Dashboard</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #07111f;
+    color: #f5c84c;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+button,
+input,
+select {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background: #0b1728;
+    border-right: 1px solid #c9a227;
+    padding: 22px 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-logo {
+    color: #f5c84c;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.sidebar-subtitle {
+    color: #64748b;
+    font-size: 10px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+.membership-box {
+    margin-top: 25px;
+    background: #07111f;
+    border: 1px solid #27384e;
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.membership-box:hover {
+    border-color: #c9a227;
+    background: #0d1b2e;
+}
+
+.membership-label {
+    color: #64748b;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.membership-value {
+    color: #53d769;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+.membership-action {
+    color: #64748b;
+    font-size: 9px;
+    margin-top: 8px;
+}
+
+.sidebar-menu {
+    margin-top: 25px;
+}
+
+.sidebar-item {
+    color: #9ba9bb;
+    padding: 12px 10px;
+    margin-bottom: 4px;
+    font-size: 13px;
+    border-left: 2px solid transparent;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+    color: #f5c84c;
+    background: #07111f;
+    border-left: 2px solid #c9a227;
+}
+
+.sidebar-spacer {
+    flex: 1;
+}
+
+.sidebar-account {
+    border-top: 1px solid #27384e;
+    padding-top: 15px;
+    margin-top: 20px;
+}
+
+.sidebar-account-label {
+    color: #64748b;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+}
+
+.sidebar-email {
+    color: #9ba9bb;
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidebar-logout {
+    width: 100%;
+    margin-top: 12px;
+    background: transparent;
+    color: #f5c84c;
+    border: 1px solid #c9a227;
+    padding: 9px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.sidebar-logout:hover {
+    background: #c9a227;
+    color: #07111f;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.header {
+    background: #0b1728;
+    border-bottom: 1px solid #27384e;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: #9ba9bb;
+    font-size: 12px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+.online {
+    color: #53d769;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.container {
+    padding: 25px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.welcome {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.welcome-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.welcome-text {
+    color: #9ba9bb;
+    font-size: 13px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.card {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 22px;
+    min-height: 140px;
+}
+
+.card-title {
+    color: #9ba9bb;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.card-value {
+    color: #f5c84c;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.card-description {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 10px;
+}
+
+.account-box,
+.markets-box,
+.content-box {
+    margin-top: 20px;
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 22px;
+}
+
+.account-title,
+.content-title {
+    color: #f5c84c;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.account-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #17283d;
+    padding: 10px 0;
+    font-size: 13px;
+}
+
+.account-label {
+    color: #9ba9bb;
+}
+
+.account-value {
+    color: white;
+}
+
+.page-title {
+    color: #f5c84c;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.page-description {
+    color: #9ba9bb;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.market-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.market-item {
+    background: #07111f;
+    border: 1px solid #27384e;
+    padding: 16px;
+    color: #f5c84c;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.membership-page-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.membership-card {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 22px;
+    text-align: center;
+}
+
+.membership-card-title {
+    color: #9ba9bb;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.membership-price {
+    color: #f5c84c;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.membership-card-description {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 10px;
+}
+
+.membership-button {
+    margin-top: 18px;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #f5c84c;
+    border: 1px solid #c9a227;
+    cursor: pointer;
+}
+
+.content-text {
+    color: #9ba9bb;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* =====================================================
+   AGUILACORE ECONOMIC NEWS
+   ===================================================== */
+
+.economic-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.economic-status {
+    color: #53d769;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.news-source-box {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+.news-source-status {
+    color: #f5c84c;
+    font-weight: bold;
+}
+
+.news-filter-box {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.filter-label {
+    color: #9ba9bb;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.filter-control {
+    background: #07111f;
+    color: white;
+    border: 1px solid #27384e;
+    padding: 10px 12px;
+    min-width: 170px;
+    font-size: 12px;
+    outline: none;
+}
+
+.filter-control:focus {
+    border-color: #c9a227;
+}
+
+.filter-button {
+    background: transparent;
+    color: #f5c84c;
+    border: 1px solid #c9a227;
+    padding: 10px 18px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    height: 36px;
+}
+
+.filter-button:hover {
+    background: #c9a227;
+    color: #07111f;
+}
+
+.news-table-box {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    overflow-x: auto;
+}
+
+.news-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 850px;
+}
+
+.news-table thead {
+    background: #101e31;
+}
+
+.news-table th {
+    color: #9ba9bb;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-align: left;
+    padding: 13px 12px;
+    border-bottom: 1px solid #27384e;
+}
+
+.news-table td {
+    padding: 13px 12px;
+    border-bottom: 1px solid #17283d;
+    color: #9ba9bb;
+    font-size: 12px;
+}
+
+.news-table tr:hover {
+    background: #0d1b2e;
+}
+
+.news-event {
+    color: white !important;
+    font-weight: bold;
+}
+
+.news-currency {
+    color: #f5c84c !important;
+    font-weight: bold;
+}
+
+.impact-high {
+    color: #ff5555 !important;
+    font-weight: bold;
+}
+
+.impact-medium {
+    color: #f5c84c !important;
+    font-weight: bold;
+}
+
+.impact-low {
+    color: #53d769 !important;
+    font-weight: bold;
+}
+
+.news-actual {
+    color: white !important;
+    font-weight: bold;
+}
+
+.news-empty {
+    padding: 40px;
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.news-loading {
+    padding: 40px;
+    text-align: center;
+    color: #f5c84c;
+    font-size: 13px;
+}
+
+.news-error {
+    padding: 30px;
+    text-align: center;
+    color: #ff5555;
+    font-size: 13px;
+}
+
+.footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 11px;
+    padding: 25px;
+}
+
+@media (max-width: 1100px) {
+
+    .membership-page-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .market-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .app-layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid #c9a227;
+    }
+
+    .sidebar-spacer {
+        display: none;
+    }
+
+    .membership-page-grid,
+    .market-list {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+<aside class="sidebar">
+
+    <div>
+
+        <div class="sidebar-logo">
+            AGUILACORE
+        </div>
+
+        <div class="sidebar-subtitle">
+            TRADING PLATFORM
+        </div>
+
+    </div>
+
+    <div
+        class="membership-box"
+        onclick="showPage('membershipPage')">
+
+        <div class="membership-label">
+            MEMBERSHIP
+        </div>
+
+        <div
+            class="membership-value"
+            id="sidebarMembership">
+            FREE
+        </div>
+
+        <div class="membership-action">
+            VIEW MEMBERSHIP PLANS →
+        </div>
+
+    </div>
+
+    <div class="sidebar-menu">
+
+        <div
+            class="sidebar-item active"
+            id="dashboardMenu"
+            onclick="showPage('dashboardPage')">
+
+            ▣ &nbsp; Dashboard
+
+        </div>
+
+        <div
+            class="sidebar-item"
+            id="marketsMenu"
+            onclick="showPage('marketsPage')">
+
+            ◉ &nbsp; Markets
+
+        </div>
+
+        <div
+            class="sidebar-item"
+            id="signalsMenu"
+            onclick="showPage('signalsPage')">
+
+            ◇ &nbsp; Signals
+
+        </div>
+
+        <div
+            class="sidebar-item"
+            id="goldMenu"
+            onclick="showPage('goldPage')">
+
+            ◎ &nbsp; Gold / XAUUSD
+
+        </div>
+
+        <div
+            class="sidebar-item"
+            id="economicNewsMenu"
+            onclick="showPage('economicNewsPage')">
+
+            ◉ &nbsp; Economic News
+
+        </div>
+
+    </div>
+
+    <div class="sidebar-spacer"></div>
+
+    <div class="sidebar-account">
+
+        <div class="sidebar-account-label">
+            ACCOUNT
+        </div>
+
+        <div
+            class="sidebar-email"
+            id="sidebarEmail">
+            Loading...
+        </div>
+
+        <button
+            class="sidebar-logout"
+            onclick="logoutUser()">
+            LOGOUT
+        </button>
+
+    </div>
+
+</aside>
+
+<div class="main-content">
+
+    <div class="header">
+
+        <div>
+
+            <div class="logo">
+                AGUILACORE
+            </div>
+
+            <div class="subtitle">
+                TRADING PLATFORM • DASHBOARD
+            </div>
+
+        </div>
+
+        <div class="online">
+            ● ONLINE
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <!-- DASHBOARD -->
+
+        <div
+            class="page active"
+            id="dashboardPage">
+
+            <div class="welcome">
+
+                <div class="welcome-title">
+                    Welcome to AGUILACORE
+                </div>
+
+                <div class="welcome-text">
+                    Your trading terminal is ready.
+                </div>
+
+            </div>
+
+            <div class="dashboard-grid">
+
+                <div class="card">
+
+                    <div class="card-title">
+                        ACCOUNT
+                    </div>
+
+                    <div
+                        class="card-value"
+                        id="userStatus">
+                        FREE
+                    </div>
+
+                    <div class="card-description">
+                        Current account status
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-title">
+                        MARKETS
+                    </div>
+
+                    <div class="card-value">
+                        13
+                    </div>
+
+                    <div class="card-description">
+                        Supported trading markets
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="card-title">
+                        SIGNALS
+                    </div>
+
+                    <div class="card-value">
+                        COMING SOON
+                    </div>
+
+                    <div class="card-description">
+                        AGUILACORE trading signals
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="account-box">
+
+                <div class="account-title">
+                    ACCOUNT INFORMATION
+                </div>
+
+                <div class="account-row">
+
+                    <span class="account-label">
+                        Email
+                    </span>
+
+                    <span
+                        class="account-value"
+                        id="userEmail">
+                        Loading...
+                    </span>
+
+                </div>
+
+                <div class="account-row">
+
+                    <span class="account-label">
+                        Membership
+                    </span>
+
+                    <span
+                        class="account-value"
+                        id="accountMembership">
+                        FREE
+                    </span>
+
+                </div>
+
+                <div class="account-row">
+
+                    <span class="account-label">
+                        Trading Signals
+                    </span>
+
+                    <span class="account-value">
+                        Not available yet
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MARKETS -->
+
+        <div
+            class="page"
+            id="marketsPage">
+
+            <div class="page-title">
+                MARKETS
+            </div>
+
+            <div class="page-description">
+                AGUILACORE supported trading markets.
+            </div>
+
+            <div class="markets-box">
+
+                <div class="market-list">
+
+                    <div class="market-item">XAUUSD</div>
+                    <div class="market-item">EURUSD</div>
+                    <div class="market-item">GBPUSD</div>
+                    <div class="market-item">USDJPY</div>
+                    <div class="market-item">USDCHF</div>
+                    <div class="market-item">USDCAD</div>
+                    <div class="market-item">AUDUSD</div>
+                    <div class="market-item">NZDUSD</div>
+                    <div class="market-item">EURJPY</div>
+                    <div class="market-item">GBPJPY</div>
+                    <div class="market-item">EURGBP</div>
+                    <div class="market-item">BTCUSD</div>
+                    <div class="market-item">US30</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SIGNALS -->
+
+        <div
+            class="page"
+            id="signalsPage">
+
+            <div class="page-title">
+                TRADING SIGNALS
+            </div>
+
+            <div class="page-description">
+                AGUILACORE premium trading signals.
+            </div>
+
+            <div class="content-box">
+
+                <div class="content-title">
+                    PREMIUM SIGNALS
+                </div>
+
+                <div class="content-text">
+                    Trading signals will be available to
+                    AGUILACORE paid members.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- GOLD -->
+
+        <div
+            class="page"
+            id="goldPage">
+
+            <div class="page-title">
+                GOLD / XAUUSD
+            </div>
+
+            <div class="page-description">
+                AGUILACORE Gold trading terminal.
+            </div>
+
+            <div class="content-box">
+
+                <div class="content-title">
+                    XAUUSD
+                </div>
+
+                <div class="content-text">
+                    Gold analysis, market bias and signals
+                    will be available here.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MEMBERSHIP -->
+
+        <div
+            class="page"
+            id="membershipPage">
+
+            <div class="page-title">
+                MEMBERSHIP
+            </div>
+
+            <div class="page-description">
+                Choose your AGUILACORE membership plan.
+            </div>
+
+            <div class="membership-page-grid">
+
+                <div class="membership-card">
+
+                    <div class="membership-card-title">
+                        1 MONTH
+                    </div>
+
+                    <div class="membership-price">
+                        $150
+                    </div>
+
+                    <div class="membership-card-description">
+                        Full access for 1 month
+                    </div>
+
+                    <button
+                        class="membership-button"
+                        onclick="selectMembership('1 MONTH','$150')">
+                        SELECT
+                    </button>
+
+                </div>
+
+                <div class="membership-card">
+
+                    <div class="membership-card-title">
+                        6 MONTHS
+                    </div>
+
+                    <div class="membership-price">
+                        $350
+                    </div>
+
+                    <div class="membership-card-description">
+                        Full access for 6 months
+                    </div>
+
+                    <button
+                        class="membership-button"
+                        onclick="selectMembership('6 MONTHS','$350')">
+                        SELECT
+                    </button>
+
+                </div>
+
+                <div class="membership-card">
+
+                    <div class="membership-card-title">
+                        1 YEAR
+                    </div>
+
+                    <div class="membership-price">
+                        $500
+                    </div>
+
+                    <div class="membership-card-description">
+                        Full access for 1 year
+                    </div>
+
+                    <button
+                        class="membership-button"
+                        onclick="selectMembership('1 YEAR','$500')">
+                        SELECT
+                    </button>
+
+                </div>
+
+                <div class="membership-card">
+
+                    <div class="membership-card-title">
+                        LIFETIME
+                    </div>
+
+                    <div class="membership-price">
+                        $1,500
+                    </div>
+
+                    <div class="membership-card-description">
+                        Lifetime AGUILACORE access
+                    </div>
+
+                    <button
+                        class="membership-button"
+                        onclick="selectMembership('LIFETIME','$1500')">
+                        SELECT
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ECONOMIC NEWS -->
+
+        <div
+            class="page"
+            id="economicNewsPage">
+
+            <div class="economic-header">
+
+                <div>
+
+                    <div class="page-title">
+                        ECONOMIC NEWS
+                    </div>
+
+                    <div class="page-description">
+                        AGUILACORE Economic Calendar
+                    </div>
+
+                </div>
+
+                <div class="economic-status">
+                    ● AGUILACORE CALENDAR
+                </div>
+
+            </div>
+
+            <div class="news-source-box">
+
+                SOURCE:
+                <span class="news-source-status">
+                    LIVE ECONOMIC DATA FEED
+                </span>
+
+                &nbsp; • &nbsp;
+
+                Data will be loaded through the AGUILACORE
+                backend.
+
+            </div>
+
+            <div class="news-filter-box">
+
+                <div class="filter-group">
+
+                    <label
+                        class="filter-label"
+                        for="newsDate">
+                        DATE
+                    </label>
+
+                    <input
+                        type="date"
+                        id="newsDate"
+                        class="filter-control">
+
+                </div>
+
+                <div class="filter-group">
+
+                    <label
+                        class="filter-label"
+                        for="impactFilter">
+                        IMPACT
+                    </label>
+
+                    <select
+                        id="impactFilter"
+                        class="filter-control">
+
+                        <option value="ALL">
+                            ALL IMPACT
+                        </option>
+
+                        <option value="HIGH">
+                            HIGH IMPACT
+                        </option>
+
+                        <option value="MEDIUM">
+                            MEDIUM IMPACT
+                        </option>
+
+                        <option value="LOW">
+                            LOW IMPACT
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button
+                    class="filter-button"
+                    onclick="loadEconomicNews()">
+                    APPLY FILTER
+                </button>
+
+                <button
+                    class="filter-button"
+                    onclick="clearNewsFilters()">
+                    CLEAR
+                </button>
+
+            </div>
+
+            <div class="news-table-box">
+
+                <table class="news-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>DATE</th>
+                            <th>TIME</th>
+                            <th>CURRENCY</th>
+                            <th>EVENT</th>
+                            <th>IMPACT</th>
+                            <th>ACTUAL</th>
+                            <th>FORECAST</th>
+                            <th>PREVIOUS</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="economicNewsRows">
+
+                    </tbody>
+
+                </table>
+
+                <div
+                    class="news-loading"
+                    id="newsLoading">
+
+                    Loading economic calendar...
+
+                </div>
+
+                <div
+                    class="news-empty"
+                    id="newsEmpty"
+                    style="display:none;">
+
+                    No economic events found.
+
+                </div>
+
+                <div
+                    class="news-error"
+                    id="newsError"
+                    style="display:none;">
+
+                    Economic calendar data is currently unavailable.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        AGUILACORE Trading Platform © 2026
+    </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE
+   ===================================================== */
+
+const SUPABASE_URL =
+    "https://xgthdbuybfynumprkqgm.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_6ooR6Iv8NSAbEsgIFjruZg_RVIgvo9v";
+
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* =====================================================
+   ECONOMIC CALENDAR ENDPOINT
+   ===================================================== */
+
+/*
+   IMPORTANT:
+
+   This endpoint must point to your deployed
+   Supabase Edge Function.
+
+   Function name:
+       economic-calendar
+
+   Example:
+       https://YOUR-PROJECT.supabase.co/functions/v1/economic-calendar
+*/
+
+const ECONOMIC_CALENDAR_ENDPOINT =
+    SUPABASE_URL +
+    "/functions/v1/economic-calendar";
+
+
+/* =====================================================
+   CHECK LOGIN
+   ===================================================== */
+
+async function checkUser() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.getUser();
+
+    if (error || !data.user) {
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+    const email =
+        data.user.email || "";
+
+    document.getElementById(
+        "userEmail"
+    ).textContent =
+        email;
+
+    document.getElementById(
+        "sidebarEmail"
+    ).textContent =
+        email;
+
+    const membership =
+        "FREE";
+
+    document.getElementById(
+        "sidebarMembership"
+    ).textContent =
+        membership;
+
+    document.getElementById(
+        "accountMembership"
+    ).textContent =
+        membership;
+
+    document.getElementById(
+        "userStatus"
+    ).textContent =
+        membership;
+
+}
+
+checkUser();
+
+
+/* =====================================================
+   PAGE NAVIGATION
+   ===================================================== */
+
+function showPage(pageId) {
+
+    const pages =
+        document.querySelectorAll(".page");
+
+    pages.forEach(function(page) {
+
+        page.classList.remove("active");
+
+    });
+
+    const selectedPage =
+        document.getElementById(pageId);
+
+    if (selectedPage) {
+
+        selectedPage.classList.add("active");
+
+    }
+
+    const menuItems =
+        document.querySelectorAll(".sidebar-item");
+
+    menuItems.forEach(function(item) {
+
+        item.classList.remove("active");
+
+    });
+
+    const menuMap = {
+
+        dashboardPage: "dashboardMenu",
+        marketsPage: "marketsMenu",
+        signalsPage: "signalsMenu",
+        goldPage: "goldMenu",
+        economicNewsPage: "economicNewsMenu"
+
+    };
+
+    if (menuMap[pageId]) {
+
+        document
+            .getElementById(menuMap[pageId])
+            .classList.add("active");
+
+    }
+
+    if (pageId === "economicNewsPage") {
+
+        loadEconomicNews();
+
+    }
+
+}
+
+
+/* =====================================================
+   MEMBERSHIP
+   ===================================================== */
+
+function selectMembership(
+    plan,
+    price
+) {
+
+    alert(
+        "Selected AGUILACORE " +
+        plan +
+        " membership for " +
+        price +
+        ".\n\nPayment integration will be added next."
+    );
+
+}
+
+
+/* =====================================================
+   ECONOMIC NEWS
+   ===================================================== */
+
+async function loadEconomicNews() {
+
+    const rows =
+        document.getElementById(
+            "economicNewsRows"
+        );
+
+    const loading =
+        document.getElementById(
+            "newsLoading"
+        );
+
+    const empty =
+        document.getElementById(
+            "newsEmpty"
+        );
+
+    const errorBox =
+        document.getElementById(
+            "newsError"
+        );
+
+    rows.innerHTML = "";
+
+    loading.style.display = "block";
+    empty.style.display = "none";
+    errorBox.style.display = "none";
+
+    const selectedDate =
+        document.getElementById(
+            "newsDate"
+        ).value;
+
+    const selectedImpact =
+        document.getElementById(
+            "impactFilter"
+        ).value;
+
+    try {
+
+        const params =
+            new URLSearchParams();
+
+        if (selectedDate) {
+
+            params.set(
+                "date",
+                selectedDate
+            );
+
+        }
+
+        if (
+            selectedImpact &&
+            selectedImpact !== "ALL"
+        ) {
+
+            params.set(
+                "impact",
+                selectedImpact
+            );
+
+        }
+
+        const url =
+            ECONOMIC_CALENDAR_ENDPOINT +
+            "?" +
+            params.toString();
+
+        const response =
+            await fetch(url, {
+
+                method: "GET",
+
+                headers: {
+
+                    "Accept":
+                        "application/json"
+
+                }
+
+            });
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Calendar API returned HTTP " +
+                response.status
+            );
+
+        }
+
+        const result =
+            await response.json();
+
+        const events =
+            Array.isArray(result)
+                ? result
+                : result.events;
+
+        if (
+            !Array.isArray(events) ||
+            events.length === 0
+        ) {
+
+            loading.style.display = "none";
+            empty.style.display = "block";
+
+            return;
+
+        }
+
+        events.forEach(function(event) {
+
+            const tr =
+                document.createElement("tr");
+
+            const impact =
+                String(
+                    event.impact ||
+                    event.importance ||
+                    ""
+                ).toUpperCase();
+
+            let impactClass =
+                "";
+
+            if (impact === "HIGH") {
+
+                impactClass =
+                    "impact-high";
+
+            } else if (
+                impact === "MEDIUM"
+            ) {
+
+                impactClass =
+                    "impact-medium";
+
+            } else if (
+                impact === "LOW"
+            ) {
+
+                impactClass =
+                    "impact-low";
+
+            }
+
+            tr.innerHTML = `
+
+                <td>
+                    ${escapeHTML(
+                        event.date || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        event.time || ""
+                    )}
+                </td>
+
+                <td class="news-currency">
+                    ${escapeHTML(
+                        event.currency || ""
+                    )}
+                </td>
+
+                <td class="news-event">
+                    ${escapeHTML(
+                        event.event || ""
+                    )}
+                </td>
+
+                <td class="${impactClass}">
+                    ${escapeHTML(
+                        impact
+                    )}
+                </td>
+
+                <td class="news-actual">
+                    ${escapeHTML(
+                        event.actual ?? "—"
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        event.forecast ?? "—"
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        event.previous ?? "—"
+                    )}
+                </td>
+
+            `;
+
+            rows.appendChild(tr);
+
+        });
+
+        loading.style.display = "none";
+
+    } catch (err) {
+
+        console.error(
+            "Economic Calendar Error:",
+            err
+        );
+
+        loading.style.display = "none";
+        errorBox.style.display = "block";
+
+    }
+
+}
+
+
+/* =====================================================
+   HTML SECURITY
+   ===================================================== */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =====================================================
+   CLEAR FILTERS
+   ===================================================== */
+
+function clearNewsFilters() {
+
+    document.getElementById(
+        "newsDate"
+    ).value = "";
+
+    document.getElementById(
+        "impactFilter"
+    ).value = "ALL";
+
+    loadEconomicNews();
+
+}
+
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+async function logoutUser() {
+
+    await supabaseClient
+        .auth
+        .signOut();
+
+    window.location.href =
+        "index.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
+```
