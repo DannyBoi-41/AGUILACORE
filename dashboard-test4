@@ -1,0 +1,3865 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AGUILACORE Trading Platform</title>
+
+<style>
+
+/* =====================================================
+   GLOBAL
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #07111f;
+    color: #f5c84c;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+button,
+input,
+select {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    outline: none;
+}
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* =====================================================
+   SIDEBAR
+   ===================================================== */
+
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background: #0b1728;
+    border-right: 1px solid #c9a227;
+    padding: 22px 16px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.sidebar-logo {
+    color: #f5c84c;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.sidebar-subtitle {
+    color: #64748b;
+    font-size: 10px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+.membership-box {
+    margin-top: 25px;
+    background: #07111f;
+    border: 1px solid #27384e;
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.membership-box:hover {
+    border-color: #c9a227;
+    background: #0d1b2e;
+}
+
+.membership-label {
+    color: #64748b;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.membership-value {
+    color: #53d769;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+.membership-action {
+    color: #64748b;
+    font-size: 9px;
+    margin-top: 8px;
+}
+
+.sidebar-menu {
+    margin-top: 25px;
+}
+
+.sidebar-item {
+    color: #9ba9bb;
+    padding: 12px 10px;
+    margin-bottom: 4px;
+    font-size: 13px;
+    border-left: 2px solid transparent;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+    color: #f5c84c;
+    background: #07111f;
+    border-left: 2px solid #c9a227;
+}
+
+.sidebar-spacer {
+    flex: 1;
+}
+
+.sidebar-account {
+    border-top: 1px solid #27384e;
+    padding-top: 15px;
+    margin-top: 20px;
+}
+
+.sidebar-account-label {
+    color: #64748b;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+}
+
+.sidebar-email {
+    color: #9ba9bb;
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidebar-logout {
+    width: 100%;
+    margin-top: 12px;
+    background: transparent;
+    color: #f5c84c;
+    border: 1px solid #c9a227;
+    padding: 9px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.sidebar-logout:hover {
+    background: #c9a227;
+    color: #07111f;
+}
+
+/* =====================================================
+   MAIN
+   ===================================================== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.header {
+    background: #0b1728;
+    border-bottom: 1px solid #27384e;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: #9ba9bb;
+    font-size: 12px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.online {
+    color: #53d769;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.container {
+    padding: 25px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* =====================================================
+   COMMON
+   ===================================================== */
+
+.page-title {
+    color: #f5c84c;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.page-description {
+    color: #9ba9bb;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.content-box,
+.card,
+.account-box,
+.markets-box,
+.membership-card,
+.news-control-panel,
+.aguilacore-calendar,
+.signal-panel,
+.gold-panel,
+.cot-panel {
+    background: #0b1728;
+    border: 1px solid #27384e;
+}
+
+.welcome {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.welcome-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.welcome-text {
+    color: #9ba9bb;
+    font-size: 13px;
+}
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.card {
+    padding: 22px;
+    min-height: 140px;
+}
+
+.card-title {
+    color: #9ba9bb;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.card-value {
+    color: #f5c84c;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.card-description {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 10px;
+}
+
+.account-box {
+    margin-top: 20px;
+    padding: 22px;
+}
+
+.account-title {
+    color: #f5c84c;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.account-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #17283d;
+    padding: 10px 0;
+    font-size: 13px;
+}
+
+.account-label {
+    color: #9ba9bb;
+}
+
+.account-value {
+    color: white;
+}
+
+/* =====================================================
+   MARKETS
+   ===================================================== */
+
+.markets-box {
+    padding: 22px;
+}
+
+.market-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.market-item {
+    background: #07111f;
+    border: 1px solid #27384e;
+    padding: 16px;
+    color: #f5c84c;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.market-item:hover {
+    border-color: #c9a227;
+    background: #0d1b2e;
+}
+
+.market-price {
+    display: block;
+    color: #64748b;
+    font-size: 10px;
+    margin-top: 6px;
+}
+
+/* =====================================================
+   GENERIC
+   ===================================================== */
+
+.content-box {
+    padding: 25px;
+}
+
+.content-title {
+    color: #f5c84c;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.content-text {
+    color: #9ba9bb;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* =====================================================
+   SIGNALS
+   ===================================================== */
+
+.signal-overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.signal-card {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 20px;
+}
+
+.signal-label {
+    color: #64748b;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.signal-value {
+    margin-top: 9px;
+    color: #f5c84c;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.signal-value.buy {
+    color: #53d769;
+}
+
+.signal-value.sell {
+    color: #ff6262;
+}
+
+.signal-value.wait {
+    color: #f5c84c;
+}
+
+.signal-panel {
+    padding: 20px;
+}
+
+.signal-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.signal-table th {
+    color: #64748b;
+    font-size: 9px;
+    text-align: left;
+    letter-spacing: 1px;
+    padding: 12px;
+    border-bottom: 1px solid #27384e;
+}
+
+.signal-table td {
+    color: #d7dee8;
+    font-size: 12px;
+    padding: 13px 12px;
+    border-bottom: 1px solid #17283d;
+}
+
+.signal-status {
+    font-weight: bold;
+}
+
+.signal-status.buy {
+    color: #53d769;
+}
+
+.signal-status.sell {
+    color: #ff6262;
+}
+
+.signal-status.wait {
+    color: #f5c84c;
+}
+
+/* =====================================================
+   GOLD
+   ===================================================== */
+
+.gold-overview {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.gold-price-card,
+.gold-stat-card {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 22px;
+}
+
+.gold-symbol {
+    color: #64748b;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.gold-price {
+    color: #f5c84c;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.gold-stat-label {
+    color: #64748b;
+    font-size: 10px;
+}
+
+.gold-stat-value {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.gold-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.gold-panel {
+    padding: 22px;
+}
+
+.panel-title {
+    color: #f5c84c;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.bias-box {
+    border: 1px solid #27384e;
+    background: #07111f;
+    padding: 20px;
+    text-align: center;
+}
+
+.bias-value {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.bias-value.buy {
+    color: #53d769;
+}
+
+.bias-value.sell {
+    color: #ff6262;
+}
+
+.bias-value.wait {
+    color: #f5c84c;
+}
+
+.analysis-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.analysis-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 11px 0;
+    border-bottom: 1px solid #17283d;
+    font-size: 12px;
+}
+
+.analysis-label {
+    color: #64748b;
+}
+
+.analysis-value {
+    color: white;
+    font-weight: bold;
+}
+
+/* =====================================================
+   COT
+   ===================================================== */
+
+.cot-overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.cot-stat {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 20px;
+}
+
+.cot-stat-label {
+    color: #64748b;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.cot-stat-value {
+    color: #f5c84c;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.cot-panel {
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.cot-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cot-table th {
+    color: #64748b;
+    text-align: left;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 12px;
+    border-bottom: 1px solid #27384e;
+}
+
+.cot-table td {
+    color: #d7dee8;
+    font-size: 12px;
+    padding: 12px;
+    border-bottom: 1px solid #17283d;
+}
+
+.cot-positive {
+    color: #53d769 !important;
+    font-weight: bold;
+}
+
+.cot-negative {
+    color: #ff6262 !important;
+    font-weight: bold;
+}
+
+.cot-neutral {
+    color: #f5c84c !important;
+    font-weight: bold;
+}
+
+.cot-note {
+    margin-top: 15px;
+    color: #64748b;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+/* =====================================================
+   MEMBERSHIP
+   ===================================================== */
+
+.membership-page-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.membership-card {
+    padding: 22px;
+    text-align: center;
+}
+
+.membership-card:hover {
+    border-color: #c9a227;
+}
+
+.membership-card-title {
+    color: #9ba9bb;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.membership-price {
+    color: #f5c84c;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.membership-card-description {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 10px;
+}
+
+.membership-button {
+    margin-top: 18px;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #f5c84c;
+    border: 1px solid #c9a227;
+    cursor: pointer;
+}
+
+.membership-button:hover {
+    background: #c9a227;
+    color: #07111f;
+}
+
+/* =====================================================
+   ECONOMIC NEWS
+   ===================================================== */
+
+.economic-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.economic-status {
+    color: #53d769;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.news-control-panel {
+    padding: 18px;
+    margin-bottom: 18px;
+}
+
+.news-controls {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.news-control {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.news-control label {
+    color: #64748b;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.news-control input,
+.news-control select {
+    background: #07111f;
+    color: white;
+    border: 1px solid #27384e;
+    height: 38px;
+    padding: 0 11px;
+    min-width: 155px;
+    outline: none;
+}
+
+.news-control input:focus,
+.news-control select:focus {
+    border-color: #c9a227;
+}
+
+.news-button {
+    height: 38px;
+    padding: 0 18px;
+    border: 1px solid #c9a227;
+    background: transparent;
+    color: #f5c84c;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.news-button:hover {
+    background: #c9a227;
+    color: #07111f;
+}
+
+.news-button.secondary {
+    border-color: #27384e;
+    color: #9ba9bb;
+}
+
+.news-button.secondary:hover {
+    background: #27384e;
+    color: white;
+}
+
+.news-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+.news-count {
+    color: #f5c84c;
+    font-weight: bold;
+}
+
+.news-updated {
+    color: #64748b;
+}
+
+.aguilacore-calendar {
+    overflow: hidden;
+}
+
+.calendar-titlebar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    background: #0d1b2e;
+    border-bottom: 1px solid #27384e;
+}
+
+.calendar-title {
+    color: #f5c84c;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.calendar-timezone {
+    color: #64748b;
+    font-size: 10px;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.calendar-table thead {
+    background: #101e31;
+}
+
+.calendar-table th {
+    text-align: left;
+    color: #64748b;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 13px 12px;
+    border-bottom: 1px solid #27384e;
+}
+
+.calendar-table td {
+    padding: 13px 12px;
+    border-bottom: 1px solid #17283d;
+    color: #d7dee8;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.calendar-table tbody tr:hover {
+    background: #0d1b2e;
+}
+
+.calendar-table th:nth-child(1),
+.calendar-table td:nth-child(1) {
+    width: 90px;
+}
+
+.calendar-table th:nth-child(2),
+.calendar-table td:nth-child(2) {
+    width: 85px;
+}
+
+.calendar-table th:nth-child(3),
+.calendar-table td:nth-child(3) {
+    width: auto;
+}
+
+.calendar-table th:nth-child(4),
+.calendar-table td:nth-child(4) {
+    width: 85px;
+}
+
+.calendar-table th:nth-child(5),
+.calendar-table td:nth-child(5) {
+    width: 100px;
+}
+
+.calendar-table th:nth-child(6),
+.calendar-table td:nth-child(6) {
+    width: 100px;
+}
+
+.calendar-table th:nth-child(7),
+.calendar-table td:nth-child(7) {
+    width: 100px;
+}
+
+.calendar-table th:nth-child(8),
+.calendar-table td:nth-child(8) {
+    width: 100px;
+}
+
+.event-name {
+    color: white;
+    font-weight: bold;
+}
+
+.currency-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    padding: 5px 7px;
+    background: #07111f;
+    border: 1px solid #27384e;
+    color: #f5c84c;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.impact-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.impact-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.impact-high {
+    color: #ff6262;
+}
+
+.impact-high .impact-dot {
+    background: #ff5555;
+}
+
+.impact-medium {
+    color: #f5c84c;
+}
+
+.impact-medium .impact-dot {
+    background: #f5c84c;
+}
+
+.impact-low {
+    color: #53d769;
+}
+
+.impact-low .impact-dot {
+    background: #53d769;
+}
+
+.actual-value {
+    color: #53d769;
+    font-weight: bold;
+}
+
+.forecast-value {
+    color: #9ba9bb;
+}
+
+.previous-value {
+    color: #64748b;
+}
+
+.past-event {
+    opacity: 0.72;
+}
+
+.news-loading {
+    padding: 45px 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.news-loading strong {
+    display: block;
+    color: #f5c84c;
+    margin-bottom: 7px;
+    font-size: 13px;
+}
+
+.news-empty {
+    display: none;
+    padding: 45px 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.news-empty strong {
+    display: block;
+    color: #f5c84c;
+    margin-bottom: 7px;
+}
+
+.news-error {
+    display: none;
+    padding: 18px;
+    margin-bottom: 15px;
+    background: #21131a;
+    border: 1px solid #5c2733;
+    color: #ff8b8b;
+    font-size: 11px;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 11px;
+    padding: 25px;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 1200px) {
+
+    .market-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .membership-page-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gold-overview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .signal-overview,
+    .cot-overview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .calendar-table {
+        min-width: 800px;
+    }
+
+    .aguilacore-calendar {
+        overflow-x: auto;
+    }
+
+    .gold-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .market-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .header {
+        padding: 15px;
+    }
+
+    .online {
+        display: none;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .app-layout {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #c9a227;
+    }
+
+    .sidebar-spacer {
+        display: none;
+    }
+
+    .membership-page-grid,
+    .signal-overview,
+    .cot-overview,
+    .gold-overview,
+    .market-list {
+        grid-template-columns: 1fr;
+    }
+
+    .economic-header {
+        display: block;
+    }
+
+    .economic-status {
+        margin-top: 10px;
+    }
+
+    .news-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .news-control input,
+    .news-control select,
+    .news-button {
+        width: 100%;
+    }
+
+    .account-row {
+        gap: 15px;
+        flex-direction: column;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+<!-- =====================================================
+     SIDEBAR
+     ===================================================== -->
+
+<aside class="sidebar">
+
+    <div>
+
+        <div class="sidebar-logo">
+            AGUILACORE
+        </div>
+
+        <div class="sidebar-subtitle">
+            TRADING PLATFORM
+        </div>
+
+    </div>
+
+
+    <div
+        class="membership-box"
+        onclick="showPage('membershipPage')">
+
+        <div class="membership-label">
+            MEMBERSHIP
+        </div>
+
+        <div
+            class="membership-value"
+            id="sidebarMembership">
+            FREE
+        </div>
+
+        <div class="membership-action">
+            VIEW MEMBERSHIP PLANS →
+        </div>
+
+    </div>
+
+
+    <div class="sidebar-menu">
+
+        <div
+            class="sidebar-item active"
+            id="dashboardMenu"
+            onclick="showPage('dashboardPage')">
+
+            ▣ &nbsp; Dashboard
+
+        </div>
+
+        <div
+            class="sidebar-item"
+            id="marketsMenu"
+            onclick="showPage('marketsPage')">
+
+            ◉ &nbsp; Markets
+
+        </div>
+
+        <div
+            class="sidebar-item"
+            id="signalsMenu"
+            onclick="showPage('signalsPage')">
+
+            ◇ &nbsp; Signals
+
+        </div>
+
+        <div
+            class="sidebar-item"
+            id="goldMenu"
+            onclick="showPage('goldPage')">
+
+            ◎ &nbsp; Gold / XAUUSD
+
+        </div>
+
+        <div
+            class="sidebar-item"
+            id="economicNewsMenu"
+            onclick="showPage('economicNewsPage')">
+
+            ◉ &nbsp; Economic News
+
+        </div>
+
+        <div
+            class="sidebar-item"
+            id="cotMenu"
+            onclick="showPage('cotPage')">
+
+            ◈ &nbsp; Gold COT
+
+        </div>
+
+    </div>
+
+
+    <div class="sidebar-spacer"></div>
+
+
+    <div class="sidebar-account">
+
+        <div class="sidebar-account-label">
+            ACCOUNT
+        </div>
+
+        <div
+            class="sidebar-email"
+            id="sidebarEmail">
+            Loading...
+        </div>
+
+        <button
+            class="sidebar-logout"
+            onclick="logoutUser()">
+
+            LOGOUT
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<div class="main-content">
+
+    <div class="header">
+
+        <div>
+
+            <div class="logo">
+                AGUILACORE
+            </div>
+
+            <div class="subtitle">
+                TRADING PLATFORM • DASHBOARD
+            </div>
+
+        </div>
+
+        <div class="user-area">
+
+            <div class="online">
+                ● ONLINE
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+
+<!-- =====================================================
+     DASHBOARD
+     ===================================================== -->
+
+<div
+    class="page active"
+    id="dashboardPage">
+
+    <div class="welcome">
+
+        <div class="welcome-title">
+            Welcome to AGUILACORE
+        </div>
+
+        <div class="welcome-text">
+            Your trading terminal is ready.
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+        <div class="card">
+
+            <div class="card-title">
+                ACCOUNT
+            </div>
+
+            <div
+                class="card-value"
+                id="userStatus">
+                FREE
+            </div>
+
+            <div class="card-description">
+                Current account status
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+                MARKETS
+            </div>
+
+            <div class="card-value">
+                13
+            </div>
+
+            <div class="card-description">
+                Supported trading markets
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+                SIGNALS
+            </div>
+
+            <div class="card-value">
+                READY
+            </div>
+
+            <div class="card-description">
+                AGUILACORE signal terminal
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="account-box">
+
+        <div class="account-title">
+            ACCOUNT INFORMATION
+        </div>
+
+        <div class="account-row">
+
+            <span class="account-label">
+                Email
+            </span>
+
+            <span
+                class="account-value"
+                id="userEmail">
+                Loading...
+            </span>
+
+        </div>
+
+        <div class="account-row">
+
+            <span class="account-label">
+                Membership
+            </span>
+
+            <span
+                class="account-value"
+                id="accountMembership">
+                FREE
+            </span>
+
+        </div>
+
+        <div class="account-row">
+
+            <span class="account-label">
+                Gold Terminal
+            </span>
+
+            <span class="account-value">
+                XAUUSD
+            </span>
+
+        </div>
+
+        <div class="account-row">
+
+            <span class="account-label">
+                Economic Calendar
+            </span>
+
+            <span class="account-value">
+                LIVE
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MARKETS
+     ===================================================== -->
+
+<div
+    class="page"
+    id="marketsPage">
+
+    <div class="page-title">
+        MARKETS
+    </div>
+
+    <div class="page-description">
+        AGUILACORE supported trading markets.
+    </div>
+
+
+    <div class="markets-box">
+
+        <div class="market-list">
+
+            <div class="market-item">
+                XAUUSD
+                <span class="market-price">
+                    GOLD
+                </span>
+            </div>
+
+            <div class="market-item">
+                EURUSD
+                <span class="market-price">
+                    EUR / USD
+                </span>
+            </div>
+
+            <div class="market-item">
+                GBPUSD
+                <span class="market-price">
+                    GBP / USD
+                </span>
+            </div>
+
+            <div class="market-item">
+                USDJPY
+                <span class="market-price">
+                    USD / JPY
+                </span>
+            </div>
+
+            <div class="market-item">
+                USDCHF
+                <span class="market-price">
+                    USD / CHF
+                </span>
+            </div>
+
+            <div class="market-item">
+                USDCAD
+                <span class="market-price">
+                    USD / CAD
+                </span>
+            </div>
+
+            <div class="market-item">
+                AUDUSD
+                <span class="market-price">
+                    AUD / USD
+                </span>
+            </div>
+
+            <div class="market-item">
+                NZDUSD
+                <span class="market-price">
+                    NZD / USD
+                </span>
+            </div>
+
+            <div class="market-item">
+                EURJPY
+                <span class="market-price">
+                    EUR / JPY
+                </span>
+            </div>
+
+            <div class="market-item">
+                GBPJPY
+                <span class="market-price">
+                    GBP / JPY
+                </span>
+            </div>
+
+            <div class="market-item">
+                EURGBP
+                <span class="market-price">
+                    EUR / GBP
+                </span>
+            </div>
+
+            <div class="market-item">
+                BTCUSD
+                <span class="market-price">
+                    BITCOIN
+                </span>
+            </div>
+
+            <div class="market-item">
+                US30
+                <span class="market-price">
+                    DOW JONES
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SIGNALS
+     ===================================================== -->
+
+<div
+    class="page"
+    id="signalsPage">
+
+    <div class="page-title">
+        TRADING SIGNALS
+    </div>
+
+    <div class="page-description">
+        AGUILACORE multi-timeframe signal terminal.
+    </div>
+
+
+    <div class="signal-overview">
+
+        <div class="signal-card">
+
+            <div class="signal-label">
+                XAUUSD
+            </div>
+
+            <div
+                class="signal-value wait"
+                id="goldSignal">
+                WAIT
+            </div>
+
+        </div>
+
+
+        <div class="signal-card">
+
+            <div class="signal-label">
+                DAILY BIAS
+            </div>
+
+            <div
+                class="signal-value wait"
+                id="dailyBias">
+                WAIT
+            </div>
+
+        </div>
+
+
+        <div class="signal-card">
+
+            <div class="signal-label">
+                MARKET MODE
+            </div>
+
+            <div
+                class="signal-value"
+                id="marketMode">
+                MONITOR
+            </div>
+
+        </div>
+
+
+        <div class="signal-card">
+
+            <div class="signal-label">
+                SIGNAL STATUS
+            </div>
+
+            <div
+                class="signal-value"
+                id="signalStatus">
+                WAITING
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="signal-panel">
+
+        <div class="panel-title">
+            MULTI-TIMEFRAME MONITOR
+        </div>
+
+
+        <table class="signal-table">
+
+            <thead>
+
+                <tr>
+                    <th>TIMEFRAME</th>
+                    <th>BIAS</th>
+                    <th>SIGNAL</th>
+                    <th>STATUS</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="signalRows">
+
+                <tr>
+                    <td>M5</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="signal-status wait">
+                        WAIT
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>M15</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="signal-status wait">
+                        WAIT
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>M30</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="signal-status wait">
+                        WAIT
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>H1</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="signal-status wait">
+                        WAIT
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>H4</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="signal-status wait">
+                        WAIT
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>D1</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="signal-status wait">
+                        WAIT
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     GOLD
+     ===================================================== -->
+
+<div
+    class="page"
+    id="goldPage">
+
+    <div class="page-title">
+        GOLD / XAUUSD
+    </div>
+
+    <div class="page-description">
+        AGUILACORE Gold trading terminal.
+    </div>
+
+
+    <div class="gold-overview">
+
+        <div class="gold-price-card">
+
+            <div class="gold-symbol">
+                XAUUSD • GOLD
+            </div>
+
+            <div
+                class="gold-price"
+                id="goldPrice">
+                —
+            </div>
+
+        </div>
+
+
+        <div class="gold-stat-card">
+
+            <div class="gold-stat-label">
+                DAILY BIAS
+            </div>
+
+            <div
+                class="gold-stat-value"
+                id="goldDailyBias">
+                WAIT
+            </div>
+
+        </div>
+
+
+        <div class="gold-stat-card">
+
+            <div class="gold-stat-label">
+                SIGNAL
+            </div>
+
+            <div
+                class="gold-stat-value"
+                id="goldTerminalSignal">
+                WAIT
+            </div>
+
+        </div>
+
+
+        <div class="gold-stat-card">
+
+            <div class="gold-stat-label">
+                STATUS
+            </div>
+
+            <div
+                class="gold-stat-value"
+                id="goldTerminalStatus">
+                MONITOR
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="gold-grid">
+
+        <div class="gold-panel">
+
+            <div class="panel-title">
+                XAUUSD MARKET BIAS
+            </div>
+
+            <div class="bias-box">
+
+                <div
+                    class="bias-value wait"
+                    id="xauBias">
+                    WAIT
+                </div>
+
+                <div
+                    class="content-text"
+                    style="margin-top:10px;">
+                    Live signal integration pending.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="gold-panel">
+
+            <div class="panel-title">
+                GOLD MARKET FACTORS
+            </div>
+
+            <ul class="analysis-list">
+
+                <li>
+                    <span class="analysis-label">
+                        DXY
+                    </span>
+
+                    <span
+                        class="analysis-value"
+                        id="dxyStatus">
+                        MONITOR
+                    </span>
+                </li>
+
+                <li>
+                    <span class="analysis-label">
+                        COT
+                    </span>
+
+                    <span
+                        class="analysis-value"
+                        id="cotStatus">
+                        DATA PENDING
+                    </span>
+                </li>
+
+                <li>
+                    <span class="analysis-label">
+                        ECONOMIC NEWS
+                    </span>
+
+                    <span
+                        class="analysis-value">
+                        LIVE
+                    </span>
+                </li>
+
+                <li>
+                    <span class="analysis-label">
+                        XAUUSD SIGNAL
+                    </span>
+
+                    <span
+                        class="analysis-value"
+                        id="goldSignalFactor">
+                        WAIT
+                    </span>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="gold-panel">
+
+            <div class="panel-title">
+                GOLD ANALYSIS
+            </div>
+
+            <div class="content-text">
+
+                AGUILACORE Gold analysis will combine
+                market structure, multi-timeframe bias,
+                economic catalysts and institutional
+                positioning.
+
+            </div>
+
+        </div>
+
+
+        <div class="gold-panel">
+
+            <div class="panel-title">
+                RISK STATUS
+            </div>
+
+            <div class="bias-box">
+
+                <div
+                    class="bias-value wait"
+                    id="goldRiskStatus">
+                    MONITOR
+                </div>
+
+                <div
+                    class="content-text"
+                    style="margin-top:10px;">
+
+                    No automated trade instruction is
+                    generated until a verified signal
+                    data source is connected.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ECONOMIC NEWS
+     ===================================================== -->
+
+<div
+    class="page"
+    id="economicNewsPage">
+
+    <div class="economic-header">
+
+        <div>
+
+            <div class="page-title">
+                ECONOMIC NEWS
+            </div>
+
+            <div class="page-description">
+                Market-moving economic events and catalysts.
+            </div>
+
+        </div>
+
+        <div class="economic-status">
+            ● LIVE DATA
+        </div>
+
+    </div>
+
+
+    <div class="news-control-panel">
+
+        <div class="news-controls">
+
+            <div class="news-control">
+
+                <label for="newsDate">
+                    DATE
+                </label>
+
+                <input
+                    type="date"
+                    id="newsDate">
+
+            </div>
+
+
+            <div class="news-control">
+
+                <label for="impactFilter">
+                    IMPACT
+                </label>
+
+                <select id="impactFilter">
+
+                    <option value="ALL">
+                        ALL IMPACT
+                    </option>
+
+                    <option value="HIGH">
+                        HIGH IMPACT
+                    </option>
+
+                    <option value="MEDIUM">
+                        MEDIUM IMPACT
+                    </option>
+
+                    <option value="LOW">
+                        LOW IMPACT
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                class="news-button"
+                onclick="applyNewsFilters()">
+                APPLY FILTER
+            </button>
+
+
+            <button
+                class="news-button secondary"
+                onclick="clearNewsFilters()">
+                CLEAR
+            </button>
+
+
+            <button
+                class="news-button secondary"
+                onclick="loadEconomicNews()">
+                ↻ REFRESH
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="news-error"
+        id="newsError">
+    </div>
+
+
+    <div class="news-status-bar">
+
+        <div>
+
+            Showing
+            <span
+                class="news-count"
+                id="newsCount">
+                0
+            </span>
+            economic events
+
+        </div>
+
+        <div
+            class="news-updated"
+            id="newsUpdated">
+            Waiting for data...
+        </div>
+
+    </div>
+
+
+    <div class="aguilacore-calendar">
+
+        <div class="calendar-titlebar">
+
+            <div class="calendar-title">
+                AGUILACORE ECONOMIC CALENDAR
+            </div>
+
+            <div class="calendar-timezone">
+                PHILIPPINE TIME • UTC+8
+            </div>
+
+        </div>
+
+
+        <div
+            class="news-loading"
+            id="newsLoading">
+
+            <strong>
+                LOADING ECONOMIC DATA
+            </strong>
+
+            Connecting to AGUILACORE market data...
+
+        </div>
+
+
+        <div
+            class="news-empty"
+            id="newsEmpty">
+
+            <strong>
+                NO ECONOMIC EVENTS
+            </strong>
+
+            No events match the selected filters.
+
+        </div>
+
+
+        <div
+            id="newsTableContainer"
+            style="display:none;">
+
+            <table class="calendar-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>DATE</th>
+                        <th>TIME</th>
+                        <th>EVENT</th>
+                        <th>CURRENCY</th>
+                        <th>IMPACT</th>
+                        <th>ACTUAL</th>
+                        <th>FORECAST</th>
+                        <th>PREVIOUS</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="economicNewsRows">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     COT
+     ===================================================== -->
+
+<div
+    class="page"
+    id="cotPage">
+
+    <div class="page-title">
+        GOLD COT
+    </div>
+
+    <div class="page-description">
+        Commitment of Traders positioning for Gold.
+    </div>
+
+
+    <div class="cot-overview">
+
+        <div class="cot-stat">
+
+            <div class="cot-stat-label">
+                REPORT DATE
+            </div>
+
+            <div
+                class="cot-stat-value"
+                id="cotReportDate">
+                —
+            </div>
+
+        </div>
+
+
+        <div class="cot-stat">
+
+            <div class="cot-stat-label">
+                COMMERCIAL NET
+            </div>
+
+            <div
+                class="cot-stat-value"
+                id="commercialNet">
+                —
+            </div>
+
+        </div>
+
+
+        <div class="cot-stat">
+
+            <div class="cot-stat-label">
+                NON-COMMERCIAL NET
+            </div>
+
+            <div
+                class="cot-stat-value"
+                id="nonCommercialNet">
+                —
+            </div>
+
+        </div>
+
+
+        <div class="cot-stat">
+
+            <div class="cot-stat-label">
+                MARKET BIAS
+            </div>
+
+            <div
+                class="cot-stat-value"
+                id="cotMarketBias">
+                WAIT
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="cot-panel">
+
+        <div class="panel-title">
+            GOLD COT POSITIONING
+        </div>
+
+
+        <table class="cot-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>GROUP</th>
+                    <th>LONG</th>
+                    <th>SHORT</th>
+                    <th>NET</th>
+                    <th>POSITION</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="cotRows">
+
+                <tr>
+
+                    <td>
+                        Commercial
+                    </td>
+
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+
+                    <td class="cot-neutral">
+                        PENDING
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Non-Commercial
+                    </td>
+
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+
+                    <td class="cot-neutral">
+                        PENDING
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Non-Reportable
+                    </td>
+
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+
+                    <td class="cot-neutral">
+                        PENDING
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+        <div class="cot-note">
+
+            COT data will be connected to the AGUILACORE
+            backend. The dashboard will not fabricate
+            institutional positioning numbers when the
+            source data is unavailable.
+
+        </div>
+
+    </div>
+
+
+    <div class="cot-panel">
+
+        <div class="panel-title">
+            AGUILACORE COT INTERPRETATION
+        </div>
+
+        <div
+            class="content-text"
+            id="cotInterpretation">
+
+            Waiting for verified Gold COT data.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MEMBERSHIP
+     ===================================================== -->
+
+<div
+    class="page"
+    id="membershipPage">
+
+    <div class="page-title">
+        MEMBERSHIP
+    </div>
+
+    <div class="page-description">
+        Choose your AGUILACORE membership plan.
+    </div>
+
+
+    <div class="membership-page-grid">
+
+        <div class="membership-card">
+
+            <div class="membership-card-title">
+                1 MONTH
+            </div>
+
+            <div class="membership-price">
+                $150
+            </div>
+
+            <div class="membership-card-description">
+                Full access for 1 month
+            </div>
+
+            <button
+                class="membership-button"
+                onclick="selectMembership('1 MONTH','$150')">
+                SELECT
+            </button>
+
+        </div>
+
+
+        <div class="membership-card">
+
+            <div class="membership-card-title">
+                6 MONTHS
+            </div>
+
+            <div class="membership-price">
+                $350
+            </div>
+
+            <div class="membership-card-description">
+                Full access for 6 months
+            </div>
+
+            <button
+                class="membership-button"
+                onclick="selectMembership('6 MONTHS','$350')">
+                SELECT
+            </button>
+
+        </div>
+
+
+        <div class="membership-card">
+
+            <div class="membership-card-title">
+                1 YEAR
+            </div>
+
+            <div class="membership-price">
+                $500
+            </div>
+
+            <div class="membership-card-description">
+                Full access for 1 year
+            </div>
+
+            <button
+                class="membership-button"
+                onclick="selectMembership('1 YEAR','$500')">
+                SELECT
+            </button>
+
+        </div>
+
+
+        <div class="membership-card">
+
+            <div class="membership-card-title">
+                LIFETIME
+            </div>
+
+            <div class="membership-price">
+                $1,500
+            </div>
+
+            <div class="membership-card-description">
+                Lifetime AGUILACORE access
+            </div>
+
+            <button
+                class="membership-button"
+                onclick="selectMembership('LIFETIME','$1500')">
+                SELECT
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    </div>
+
+
+    <div class="footer">
+        AGUILACORE Trading Platform © 2026
+    </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE
+   ===================================================== */
+
+const SUPABASE_URL =
+    "https://xgthdbuybfynumprkqgm.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_6ooR6Iv8NSAbEsgIFjruZg_RVIgvo9v";
+
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* =====================================================
+   ECONOMIC CALENDAR
+   ===================================================== */
+
+const ECONOMIC_CALENDAR_API =
+    SUPABASE_URL +
+    "/functions/v1/economic-calendar";
+
+let economicNewsData = [];
+
+
+/* =====================================================
+   CHECK LOGIN
+   ===================================================== */
+
+async function checkUser() {
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.auth.getUser();
+
+        if (
+            error ||
+            !data ||
+            !data.user
+        ) {
+
+            window.location.href =
+                "index.html";
+
+            return;
+
+        }
+
+        const email =
+            data.user.email || "";
+
+        document.getElementById(
+            "userEmail"
+        ).textContent = email;
+
+        document.getElementById(
+            "sidebarEmail"
+        ).textContent = email;
+
+
+        /*
+         * Membership will later be loaded
+         * from the user's membership table.
+         */
+
+        const membership = "FREE";
+
+        document.getElementById(
+            "sidebarMembership"
+        ).textContent =
+            membership;
+
+        document.getElementById(
+            "accountMembership"
+        ).textContent =
+            membership;
+
+        document.getElementById(
+            "userStatus"
+        ).textContent =
+            membership;
+
+    } catch (error) {
+
+        console.error(
+            "Authentication error:",
+            error
+        );
+
+        window.location.href =
+            "index.html";
+
+    }
+
+}
+
+checkUser();
+
+
+/* =====================================================
+   PAGE NAVIGATION
+   ===================================================== */
+
+function showPage(pageId) {
+
+    const pages =
+        document.querySelectorAll(
+            ".page"
+        );
+
+    pages.forEach(
+        function(page) {
+
+            page.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+    const selectedPage =
+        document.getElementById(
+            pageId
+        );
+
+
+    if (selectedPage) {
+
+        selectedPage.classList.add(
+            "active"
+        );
+
+    }
+
+
+    const menuItems =
+        document.querySelectorAll(
+            ".sidebar-item"
+        );
+
+
+    menuItems.forEach(
+        function(item) {
+
+            item.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+    const menuMap = {
+
+        dashboardPage:
+            "dashboardMenu",
+
+        marketsPage:
+            "marketsMenu",
+
+        signalsPage:
+            "signalsMenu",
+
+        goldPage:
+            "goldMenu",
+
+        economicNewsPage:
+            "economicNewsMenu",
+
+        cotPage:
+            "cotMenu"
+
+    };
+
+
+    if (
+        menuMap[pageId]
+    ) {
+
+        const menu =
+            document.getElementById(
+                menuMap[pageId]
+            );
+
+        if (menu) {
+
+            menu.classList.add(
+                "active"
+            );
+
+        }
+
+    }
+
+
+    if (
+        pageId ===
+        "economicNewsPage"
+    ) {
+
+        if (
+            economicNewsData.length === 0
+        ) {
+
+            loadEconomicNews();
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   MEMBERSHIP
+   ===================================================== */
+
+function selectMembership(
+    plan,
+    price
+) {
+
+    alert(
+        "Selected AGUILACORE " +
+        plan +
+        " membership for " +
+        price +
+        ".\n\nPayment integration will be added next."
+    );
+
+}
+
+
+/* =====================================================
+   AUTH SESSION
+   ===================================================== */
+
+async function getAuthenticatedSession() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.getSession();
+
+
+    if (error) {
+
+        throw new Error(
+            "Unable to read Supabase session."
+        );
+
+    }
+
+
+    if (
+        !data ||
+        !data.session
+    ) {
+
+        throw new Error(
+            "User session not found. Please login again."
+        );
+
+    }
+
+
+    return data.session;
+
+}
+
+
+/* =====================================================
+   LOAD ECONOMIC NEWS
+   ===================================================== */
+
+async function loadEconomicNews() {
+
+    const loading =
+        document.getElementById(
+            "newsLoading"
+        );
+
+    const table =
+        document.getElementById(
+            "newsTableContainer"
+        );
+
+    const empty =
+        document.getElementById(
+            "newsEmpty"
+        );
+
+    const errorBox =
+        document.getElementById(
+            "newsError"
+        );
+
+    const updated =
+        document.getElementById(
+            "newsUpdated"
+        );
+
+
+    loading.style.display =
+        "block";
+
+    table.style.display =
+        "none";
+
+    empty.style.display =
+        "none";
+
+    errorBox.style.display =
+        "none";
+
+    updated.textContent =
+        "Updating...";
+
+
+    try {
+
+        const session =
+            await getAuthenticatedSession();
+
+
+        const response =
+            await fetch(
+                ECONOMIC_CALENDAR_API,
+                {
+                    method: "GET",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Authorization":
+                            "Bearer " +
+                            session.access_token,
+
+                        "apikey":
+                            SUPABASE_PUBLISHABLE_KEY
+
+                    }
+                }
+            );
+
+
+        const responseText =
+            await response.text();
+
+
+        let result = null;
+
+
+        try {
+
+            result =
+                responseText
+                    ? JSON.parse(
+                        responseText
+                    )
+                    : null;
+
+        } catch (
+            jsonError
+        ) {
+
+            result = null;
+
+        }
+
+
+        if (
+            !response.ok
+        ) {
+
+            let serverMessage = "";
+
+
+            if (
+                result &&
+                result.message
+            ) {
+
+                serverMessage =
+                    result.message;
+
+            } else if (
+                result &&
+                result.error
+            ) {
+
+                serverMessage =
+                    result.error;
+
+            } else if (
+                responseText
+            ) {
+
+                serverMessage =
+                    responseText;
+
+            }
+
+
+            throw new Error(
+                "Economic calendar API returned HTTP " +
+                response.status +
+                (
+                    serverMessage
+                        ? " — " +
+                          serverMessage
+                        : ""
+                )
+            );
+
+        }
+
+
+        if (
+            result === null
+        ) {
+
+            throw new Error(
+                "Economic calendar returned an empty response."
+            );
+
+        }
+
+
+        let events = [];
+
+
+        if (
+            Array.isArray(result)
+        ) {
+
+            events = result;
+
+        } else if (
+            Array.isArray(result.events)
+        ) {
+
+            events = result.events;
+
+        } else if (
+            Array.isArray(result.data)
+        ) {
+
+            events = result.data;
+
+        } else if (
+            result.data &&
+            Array.isArray(result.data.events)
+        ) {
+
+            events =
+                result.data.events;
+
+        } else if (
+            result.result &&
+            Array.isArray(result.result.events)
+        ) {
+
+            events =
+                result.result.events;
+
+        }
+
+
+        economicNewsData =
+            events
+                .map(
+                    normalizeEconomicEvent
+                )
+                .filter(
+                    function(event) {
+
+                        return (
+                            event.event ||
+                            event.title
+                        );
+
+                    }
+                );
+
+
+        economicNewsData.sort(
+            function(a, b) {
+
+                return (
+                    getEventTimestamp(a) -
+                    getEventTimestamp(b)
+                );
+
+            }
+        );
+
+
+        loading.style.display =
+            "none";
+
+
+        updated.textContent =
+            "Updated " +
+            new Date().toLocaleTimeString(
+                "en-PH",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+
+
+        renderEconomicNews();
+
+
+    } catch (error) {
+
+        console.error(
+            "Economic Calendar Error:",
+            error
+        );
+
+
+        loading.style.display =
+            "none";
+
+        table.style.display =
+            "none";
+
+
+        errorBox.textContent =
+            "Unable to load economic calendar data. " +
+            error.message;
+
+
+        errorBox.style.display =
+            "block";
+
+
+        updated.textContent =
+            "Data unavailable";
+
+    }
+
+}
+
+
+/* =====================================================
+   NORMALIZE EVENT
+   ===================================================== */
+
+function normalizeEconomicEvent(item) {
+
+    const event =
+        item || {};
+
+
+    return {
+
+        date:
+            event.date ||
+            event.event_date ||
+            event.datetime ||
+            event.timestamp ||
+            "",
+
+        time:
+            event.time ||
+            event.event_time ||
+            "",
+
+        event:
+            event.event ||
+            event.title ||
+            event.name ||
+            event.event_name ||
+            "",
+
+        title:
+            event.title ||
+            event.event ||
+            event.name ||
+            "",
+
+        currency:
+            event.currency ||
+            event.country ||
+            event.currency_code ||
+            "",
+
+        impact:
+            normalizeImpact(
+                event.impact ||
+                event.importance ||
+                event.volatility ||
+                ""
+            ),
+
+        actual:
+            valueOrDash(
+                event.actual
+            ),
+
+        forecast:
+            valueOrDash(
+                event.forecast
+            ),
+
+        previous:
+            valueOrDash(
+                event.previous
+            )
+
+    };
+
+}
+
+
+/* =====================================================
+   IMPACT
+   ===================================================== */
+
+function normalizeImpact(impact) {
+
+    const value =
+        String(
+            impact || ""
+        ).toUpperCase();
+
+
+    if (
+        value.includes("HIGH") ||
+        value === "3" ||
+        value === "RED"
+    ) {
+
+        return "HIGH";
+
+    }
+
+
+    if (
+        value.includes("MEDIUM") ||
+        value.includes("MODERATE") ||
+        value === "2" ||
+        value === "ORANGE"
+    ) {
+
+        return "MEDIUM";
+
+    }
+
+
+    if (
+        value.includes("LOW") ||
+        value === "1" ||
+        value === "YELLOW"
+    ) {
+
+        return "LOW";
+
+    }
+
+
+    return "LOW";
+
+}
+
+
+/* =====================================================
+   VALUE
+   ===================================================== */
+
+function valueOrDash(value) {
+
+    if (
+        value === null ||
+        value === undefined ||
+        value === ""
+    ) {
+
+        return "—";
+
+    }
+
+    return String(value);
+
+}
+
+
+/* =====================================================
+   EVENT TIMESTAMP
+   ===================================================== */
+
+function getEventTimestamp(event) {
+
+    let value =
+        event.date || "";
+
+
+    if (event.time) {
+
+        value +=
+            " " +
+            event.time;
+
+    }
+
+
+    const timestamp =
+        new Date(
+            value
+        ).getTime();
+
+
+    if (
+        isNaN(timestamp)
+    ) {
+
+        return 0;
+
+    }
+
+
+    return timestamp;
+
+}
+
+
+/* =====================================================
+   DATE FORMAT
+   ===================================================== */
+
+function formatEventDate(dateValue) {
+
+    if (!dateValue) {
+
+        return "—";
+
+    }
+
+
+    const date =
+        new Date(
+            dateValue
+        );
+
+
+    if (
+        isNaN(
+            date.getTime()
+        )
+    ) {
+
+        const match =
+            String(
+                dateValue
+            ).match(
+                /^(\d{4})-(\d{2})-(\d{2})/
+            );
+
+
+        if (match) {
+
+            return (
+                match[2] +
+                "/" +
+                match[3]
+            );
+
+        }
+
+
+        return String(
+            dateValue
+        );
+
+    }
+
+
+    return date.toLocaleDateString(
+        "en-PH",
+        {
+            month: "short",
+            day: "2-digit"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   DATE KEY
+   ===================================================== */
+
+function getDateKey(dateValue) {
+
+    if (!dateValue) {
+
+        return "";
+
+    }
+
+
+    const match =
+        String(
+            dateValue
+        ).match(
+            /^(\d{4})-(\d{2})-(\d{2})/
+        );
+
+
+    if (match) {
+
+        return (
+            match[1] +
+            "-" +
+            match[2] +
+            "-" +
+            match[3]
+        );
+
+    }
+
+
+    const date =
+        new Date(
+            dateValue
+        );
+
+
+    if (
+        isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return "";
+
+    }
+
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day
+    );
+
+}
+
+
+/* =====================================================
+   IMPACT HTML
+   ===================================================== */
+
+function impactHTML(impact) {
+
+    const safeImpact =
+        impact || "LOW";
+
+
+    const className =
+        safeImpact.toLowerCase();
+
+
+    return `
+        <span class="impact-badge impact-${className}">
+            <span class="impact-dot"></span>
+            ${escapeHTML(safeImpact)}
+        </span>
+    `;
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+   ===================================================== */
+
+function escapeHTML(value) {
+
+    return String(
+        value || ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   RENDER NEWS
+   ===================================================== */
+
+function renderEconomicNews() {
+
+    const rows =
+        document.getElementById(
+            "economicNewsRows"
+        );
+
+    const table =
+        document.getElementById(
+            "newsTableContainer"
+        );
+
+    const empty =
+        document.getElementById(
+            "newsEmpty"
+        );
+
+
+    const selectedDate =
+        document.getElementById(
+            "newsDate"
+        ).value;
+
+
+    const selectedImpact =
+        document.getElementById(
+            "impactFilter"
+        ).value;
+
+
+    const filtered =
+        economicNewsData.filter(
+            function(event) {
+
+                let dateMatch = true;
+                let impactMatch = true;
+
+
+                if (
+                    selectedDate
+                ) {
+
+                    dateMatch =
+                        getDateKey(
+                            event.date
+                        ) ===
+                        selectedDate;
+
+                }
+
+
+                if (
+                    selectedImpact !==
+                    "ALL"
+                ) {
+
+                    impactMatch =
+                        event.impact ===
+                        selectedImpact;
+
+                }
+
+
+                return (
+                    dateMatch &&
+                    impactMatch
+                );
+
+            }
+        );
+
+
+    rows.innerHTML = "";
+
+
+    document.getElementById(
+        "newsCount"
+    ).textContent =
+        filtered.length;
+
+
+    if (
+        filtered.length === 0
+    ) {
+
+        table.style.display =
+            "none";
+
+        empty.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    empty.style.display =
+        "none";
+
+    table.style.display =
+        "block";
+
+
+    filtered.forEach(
+        function(event) {
+
+            const tr =
+                document.createElement(
+                    "tr"
+                );
+
+
+            const eventDate =
+                getEventTimestamp(
+                    event
+                );
+
+
+            const isPast =
+                eventDate > 0 &&
+                eventDate < Date.now();
+
+
+            if (isPast) {
+
+                tr.classList.add(
+                    "past-event"
+                );
+
+            }
+
+
+            tr.innerHTML = `
+
+                <td>
+                    ${escapeHTML(
+                        formatEventDate(
+                            event.date
+                        )
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        event.time || "—"
+                    )}
+                </td>
+
+                <td>
+                    <div class="event-name">
+                        ${escapeHTML(
+                            event.event ||
+                            event.title
+                        )}
+                    </div>
+                </td>
+
+                <td>
+                    <span class="currency-badge">
+                        ${escapeHTML(
+                            event.currency || "—"
+                        )}
+                    </span>
+                </td>
+
+                <td>
+                    ${impactHTML(
+                        event.impact
+                    )}
+                </td>
+
+                <td>
+                    <span class="actual-value">
+                        ${escapeHTML(
+                            event.actual
+                        )}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="forecast-value">
+                        ${escapeHTML(
+                            event.forecast
+                        )}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="previous-value">
+                        ${escapeHTML(
+                            event.previous
+                        )}
+                    </span>
+                </td>
+
+            `;
+
+
+            rows.appendChild(
+                tr
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   NEWS FILTERS
+   ===================================================== */
+
+function applyNewsFilters() {
+
+    renderEconomicNews();
+
+}
+
+
+function clearNewsFilters() {
+
+    document.getElementById(
+        "newsDate"
+    ).value = "";
+
+
+    document.getElementById(
+        "impactFilter"
+    ).value =
+        "ALL";
+
+
+    renderEconomicNews();
+
+}
+
+
+/* =====================================================
+   COT PLACEHOLDER
+   ===================================================== */
+
+/*
+ * IMPORTANT:
+ *
+ * No COT numbers are invented here.
+ *
+ * Once the AGUILACORE COT backend is connected,
+ * populate the fields through this function.
+ */
+
+function initializeCOT() {
+
+    document.getElementById(
+        "cotReportDate"
+    ).textContent =
+        "DATA PENDING";
+
+    document.getElementById(
+        "commercialNet"
+    ).textContent =
+        "—";
+
+    document.getElementById(
+        "nonCommercialNet"
+    ).textContent =
+        "—";
+
+    document.getElementById(
+        "cotMarketBias"
+    ).textContent =
+        "WAIT";
+
+}
+
+
+/* =====================================================
+   GOLD PLACEHOLDER
+   ===================================================== */
+
+/*
+ * Live XAUUSD price/signal data will be connected
+ * through the AGUILACORE market-data backend.
+ */
+
+function initializeGoldTerminal() {
+
+    document.getElementById(
+        "goldPrice"
+    ).textContent =
+        "DATA PENDING";
+
+    document.getElementById(
+        "goldDailyBias"
+    ).textContent =
+        "WAIT";
+
+    document.getElementById(
+        "goldTerminalSignal"
+    ).textContent =
+        "WAIT";
+
+    document.getElementById(
+        "goldTerminalStatus"
+    ).textContent =
+        "MONITOR";
+
+    document.getElementById(
+        "xauBias"
+    ).textContent =
+        "WAIT";
+
+}
+
+
+/* =====================================================
+   SIGNAL PLACEHOLDER
+   ===================================================== */
+
+function initializeSignals() {
+
+    document.getElementById(
+        "goldSignal"
+    ).textContent =
+        "WAIT";
+
+    document.getElementById(
+        "dailyBias"
+    ).textContent =
+        "WAIT";
+
+    document.getElementById(
+        "marketMode"
+    ).textContent =
+        "MONITOR";
+
+    document.getElementById(
+        "signalStatus"
+    ).textContent =
+        "WAITING";
+
+}
+
+
+/* =====================================================
+   AUTO REFRESH ECONOMIC NEWS
+   ===================================================== */
+
+setInterval(
+    function() {
+
+        const economicPage =
+            document.getElementById(
+                "economicNewsPage"
+            );
+
+
+        if (
+            economicPage &&
+            economicPage.classList.contains(
+                "active"
+            )
+        ) {
+
+            loadEconomicNews();
+
+        }
+
+    },
+    5 * 60 * 1000
+);
+
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+async function logoutUser() {
+
+    try {
+
+        await supabaseClient
+            .auth
+            .signOut();
+
+    } catch (error) {
+
+        console.error(
+            "Logout error:",
+            error
+        );
+
+    }
+
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* =====================================================
+   INITIALIZE
+   ===================================================== */
+
+initializeCOT();
+initializeGoldTerminal();
+initializeSignals();
+
+</script>
+
+</body>
+
+</html>
+```
