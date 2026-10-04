@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AGUILACORE Trading Platform</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -18,10 +20,16 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* HEADER */
+
 .header {
     background: #0b1728;
     border-bottom: 1px solid #c9a227;
-    padding: 20px 25px;
+    padding: 18px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
@@ -37,15 +45,28 @@ body {
     letter-spacing: 1px;
 }
 
+.status {
+    color: #53d769;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* MAIN */
+
 .container {
     padding: 20px;
 }
 
+
+/* MARKET BAR */
+
 .market-bar {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
 .market-label {
@@ -54,45 +75,116 @@ body {
     font-weight: bold;
 }
 
+select {
+    background: #101f33;
+    color: #f5c84c;
+
+    border: 1px solid #c9a227;
+    border-radius: 4px;
+
+    padding: 10px 14px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+    outline: none;
+}
+
+select:hover {
+    background: #162941;
+}
+
 .market-name {
-    color: #ffffff;
+    color: white;
     font-size: 18px;
     font-weight: bold;
 }
 
+
+/* CHART */
+
 .chart-box {
     width: 100%;
     height: 650px;
+
     background: #0b1728;
+
     border: 1px solid #27384e;
+
+    overflow: hidden;
 }
+
+
+/* FOOTER */
 
 .footer {
     text-align: center;
+
     color: #64748b;
+
     font-size: 11px;
+
     padding: 15px;
 }
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .header {
+        padding: 15px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .chart-box {
+        height: 500px;
+    }
+
+}
+
 </style>
 
 </head>
 
+
 <body>
+
+
+<!-- HEADER -->
 
 <div class="header">
 
-    <div class="logo">
-        AGUILACORE
+    <div>
+
+        <div class="logo">
+            AGUILACORE
+        </div>
+
+        <div class="subtitle">
+            TRADING PLATFORM
+        </div>
+
     </div>
 
-    <div class="subtitle">
-        TRADING PLATFORM
+    <div class="status">
+        ● MARKET LIVE
     </div>
 
 </div>
 
 
+
+<!-- MAIN -->
+
 <div class="container">
+
+
+    <!-- MARKET SELECTOR -->
 
     <div class="market-bar">
 
@@ -100,12 +192,92 @@ body {
             MARKET
         </span>
 
-        <span class="market-name">
+
+        <select id="marketSelect">
+
+
+            <!-- FOREX -->
+
+            <option value="FX:EURUSD">
+                EURUSD
+            </option>
+
+            <option value="FX:GBPUSD">
+                GBPUSD
+            </option>
+
+            <option value="FX:USDJPY">
+                USDJPY
+            </option>
+
+            <option value="FX:USDCHF">
+                USDCHF
+            </option>
+
+            <option value="FX:AUDUSD">
+                AUDUSD
+            </option>
+
+            <option value="FX:USDCAD">
+                USDCAD
+            </option>
+
+            <option value="FX:NZDUSD">
+                NZDUSD
+            </option>
+
+
+            <!-- CROSS PAIRS -->
+
+            <option value="FX:EURJPY">
+                EURJPY
+            </option>
+
+            <option value="FX:GBPJPY">
+                GBPJPY
+            </option>
+
+
+            <!-- GOLD -->
+
+            <option value="OANDA:XAUUSD">
+                XAUUSD
+            </option>
+
+
+            <!-- INDICES -->
+
+            <option value="FOREXCOM:DJI">
+                US30
+            </option>
+
+            <option value="NASDAQ:NDX">
+                NAS100
+            </option>
+
+
+            <!-- CRYPTO -->
+
+            <option value="COINBASE:BTCUSD">
+                BTCUSD
+            </option>
+
+        </select>
+
+
+        <span
+            class="market-name"
+            id="marketName">
+
             EURUSD
+
         </span>
 
     </div>
 
+
+
+    <!-- TRADINGVIEW -->
 
     <div class="chart-box">
 
@@ -115,49 +287,179 @@ body {
         >
 
             <div
-                class="tradingview-widget-container__widget"
+                id="tradingview_chart"
                 style="height:100%;width:100%"
-            ></div>
-
-            <div class="tradingview-widget-copyright">
-                <a
-                    href="https://www.tradingview.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    TradingView
-                </a>
-            </div>
-
-            <script
-                type="text/javascript"
-                src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
-                async
             >
-            {
-                "autosize": true,
-                "symbol": "FX:EURUSD",
-                "interval": "15",
-                "timezone": "Asia/Manila",
-                "theme": "dark",
-                "style": "1",
-                "locale": "en",
-                "allow_symbol_change": false,
-                "calendar": false,
-                "support_host": "https://www.tradingview.com"
-            }
-            </script>
+            </div>
 
         </div>
 
     </div>
 
+
 </div>
+
 
 
 <div class="footer">
+
     AGUILACORE Trading Platform © 2026
+
 </div>
+
+
+
+<script>
+
+
+// CURRENT MARKET
+
+let currentSymbol = "FX:EURUSD";
+
+
+// LOAD TRADINGVIEW
+
+function loadTradingView(symbol) {
+
+    const chart =
+        document.getElementById("tradingview_chart");
+
+
+    // CLEAR OLD CHART
+
+    chart.innerHTML = "";
+
+
+    // CREATE TRADINGVIEW CONTAINER
+
+    const widget =
+        document.createElement("div");
+
+    widget.className =
+        "tradingview-widget-container";
+
+    widget.style.height = "100%";
+
+    widget.style.width = "100%";
+
+
+    const widgetInner =
+        document.createElement("div");
+
+    widgetInner.className =
+        "tradingview-widget-container__widget";
+
+    widgetInner.style.height = "100%";
+
+    widgetInner.style.width = "100%";
+
+
+    widget.appendChild(widgetInner);
+
+    chart.appendChild(widget);
+
+
+    // LOAD SCRIPT
+
+    const script =
+        document.createElement("script");
+
+
+    script.type =
+        "text/javascript";
+
+    script.src =
+        "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+
+    script.async = true;
+
+
+    script.innerHTML = JSON.stringify({
+
+        autosize: true,
+
+        symbol: symbol,
+
+        interval: "15",
+
+        timezone: "Asia/Manila",
+
+        theme: "dark",
+
+        style: "1",
+
+        locale: "en",
+
+        allow_symbol_change: false,
+
+        calendar: false,
+
+        support_host:
+            "https://www.tradingview.com"
+
+    });
+
+
+    widget.appendChild(script);
+
+}
+
+
+
+// INITIAL CHART
+
+loadTradingView(currentSymbol);
+
+
+
+// MARKET SELECTOR
+
+const marketSelect =
+    document.getElementById(
+        "marketSelect"
+    );
+
+
+const marketName =
+    document.getElementById(
+        "marketName"
+    );
+
+
+
+marketSelect.addEventListener(
+    "change",
+    function() {
+
+
+        const symbol =
+            this.value;
+
+
+        const name =
+            this.options[
+                this.selectedIndex
+            ].text.trim();
+
+
+        currentSymbol =
+            symbol;
+
+
+        marketName.textContent =
+            name;
+
+
+        loadTradingView(
+            symbol
+        );
+
+
+    }
+);
+
+</script>
+
 
 </body>
 </html>
