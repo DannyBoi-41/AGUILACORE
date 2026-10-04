@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ROLAND AGUILACORE Dashboard</title>
+<title>ROLAND AGUILACORE Premium Dashboard</title>
 
 <style>
 
@@ -20,18 +20,12 @@
     box-sizing: border-box;
 }
 
-html,
 body {
     margin: 0;
-    padding: 0;
     background: #07111f;
     color: #f5c84c;
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
-}
-
-body {
-    overflow-x: hidden;
 }
 
 button,
@@ -39,7 +33,6 @@ input,
 select {
     font-family: Arial, Helvetica, sans-serif;
 }
-
 
 /* =====================================================
    APP LAYOUT
@@ -50,9 +43,8 @@ select {
     min-height: 100vh;
 }
 
-
 /* =====================================================
-   SIDEBAR
+   LEFT SIDEBAR
    ===================================================== */
 
 .sidebar {
@@ -63,11 +55,6 @@ select {
     padding: 22px 16px;
     display: flex;
     flex-direction: column;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 100;
 }
 
 .sidebar-logo {
@@ -83,11 +70,6 @@ select {
     margin-top: 5px;
     letter-spacing: 1px;
 }
-
-
-/* =====================================================
-   MEMBERSHIP BOX
-   ===================================================== */
 
 .membership-box {
     margin-top: 25px;
@@ -122,7 +104,6 @@ select {
     margin-top: 8px;
 }
 
-
 /* =====================================================
    SIDEBAR MENU
    ===================================================== */
@@ -153,7 +134,6 @@ select {
     border-left: 2px solid #c9a227;
 }
 
-
 /* =====================================================
    ACCOUNT
    ===================================================== */
@@ -183,7 +163,6 @@ select {
     white-space: nowrap;
 }
 
-
 /* =====================================================
    LOGOUT
    ===================================================== */
@@ -205,7 +184,6 @@ select {
     color: #07111f;
 }
 
-
 /* =====================================================
    MAIN
    ===================================================== */
@@ -213,7 +191,6 @@ select {
 .main-content {
     flex: 1;
     min-width: 0;
-    margin-left: 240px;
 }
 
 .header {
@@ -254,7 +231,6 @@ select {
     padding: 25px;
 }
 
-
 /* =====================================================
    PAGE
    ===================================================== */
@@ -266,7 +242,6 @@ select {
 .page.active {
     display: block;
 }
-
 
 /* =====================================================
    WELCOME
@@ -290,321 +265,86 @@ select {
     font-size: 13px;
 }
 
-
 /* =====================================================
-   PREMIUM HEADER
+   PREMIUM STATUS
    ===================================================== */
 
-.premium-header {
-    background:
-        linear-gradient(
-            135deg,
-            #0d1b2e,
-            #0b1728
-        );
-
+.premium-status {
+    background: #0b1728;
     border: 1px solid #c9a227;
+    padding: 20px;
+    margin-bottom: 20px;
+}
 
-    padding: 22px;
+.premium-status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
 
-    margin-bottom: 18px;
+.premium-status-title {
+    color: #f5c84c;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 
-    position: relative;
+.premium-status-badge {
+    color: #53d769;
+    font-size: 11px;
+    font-weight: bold;
+}
 
+.trial-days {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.trial-label {
+    color: #9ba9bb;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.trial-progress {
+    width: 100%;
+    height: 6px;
+    background: #17283d;
+    margin-top: 15px;
     overflow: hidden;
 }
 
-.premium-header::after {
-    content: "";
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    right: -70px;
-    top: -90px;
-    border: 1px solid rgba(245,200,76,0.25);
-    border-radius: 50%;
+.trial-progress-bar {
+    width: 100%;
+    height: 100%;
+    background: #53d769;
+    transition: width 0.3s;
 }
 
-.premium-label {
-    color: #c9a227;
-    font-size: 10px;
-    letter-spacing: 2px;
-    font-weight: bold;
-}
-
-.premium-title {
-    color: #f5c84c;
-    font-size: 26px;
-    font-weight: bold;
-    margin-top: 7px;
-}
-
-.premium-subtitle {
-    color: #9ba9bb;
-    font-size: 12px;
-    margin-top: 7px;
-}
-
-.premium-status {
-    display: inline-block;
-    margin-top: 14px;
-    padding: 6px 10px;
-    border: 1px solid #276b3b;
-    background: #0b2114;
-    color: #53d769;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-
-/* =====================================================
-   PREMIUM GRID
-   ===================================================== */
-
-.premium-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    gap: 12px;
-
-    margin-bottom: 18px;
-}
-
-.premium-card {
-    background: #0b1728;
-    border: 1px solid #27384e;
-    padding: 18px;
-    min-height: 120px;
-}
-
-.premium-card:hover {
-    border-color: #8f7720;
-}
-
-.premium-card-label {
+.trial-expiry {
     color: #64748b;
-    font-size: 9px;
-    letter-spacing: 1px;
-    font-weight: bold;
-}
-
-.premium-card-value {
-    color: #f5c84c;
-    font-size: 21px;
-    font-weight: bold;
-    margin-top: 12px;
-}
-
-.premium-card-small {
-    color: #9ba9bb;
     font-size: 10px;
-    margin-top: 7px;
+    margin-top: 9px;
 }
 
-
-/* =====================================================
-   PREMIUM SIGNAL
-   ===================================================== */
-
-.signal-terminal {
-    background: #0b1728;
-    border: 1px solid #27384e;
-    margin-bottom: 18px;
+.expired-status {
+    border-color: #8f3845;
 }
 
-.signal-terminal-header {
-    padding: 15px 18px;
-    background: #0d1b2e;
-    border-bottom: 1px solid #27384e;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.signal-terminal-title {
-    color: #f5c84c;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.signal-live {
-    color: #53d769;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-.signal-body {
-    padding: 20px;
-}
-
-.signal-main {
-    display: grid;
-    grid-template-columns:
-        1.3fr
-        1fr
-        1fr
-        1fr
-        1fr;
-
-    gap: 10px;
-}
-
-.signal-direction {
-    background: #07111f;
-    border: 1px solid #27384e;
-    padding: 18px;
-}
-
-.signal-direction-label {
-    color: #64748b;
-    font-size: 9px;
-    letter-spacing: 1px;
-}
-
-.signal-direction-value {
-    color: #53d769;
-    font-size: 25px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.signal-box {
-    background: #07111f;
-    border: 1px solid #27384e;
-    padding: 18px;
-}
-
-.signal-box-label {
-    color: #64748b;
-    font-size: 9px;
-    letter-spacing: 1px;
-}
-
-.signal-box-value {
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.signal-box-value.gold {
-    color: #f5c84c;
-}
-
-.signal-box-value.green {
-    color: #53d769;
-}
-
-.signal-box-value.red {
+.expired-status .premium-status-badge {
     color: #ff6262;
 }
 
+.expired-status .trial-progress-bar {
+    background: #ff5555;
+    width: 0%;
+}
 
 /* =====================================================
-   MARKET BIAS
-   ===================================================== */
-
-.bias-panel {
-    background: #0b1728;
-    border: 1px solid #27384e;
-    margin-bottom: 18px;
-}
-
-.bias-header {
-    padding: 15px 18px;
-    background: #0d1b2e;
-    border-bottom: 1px solid #27384e;
-    color: #f5c84c;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.bias-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(6, 1fr);
-}
-
-.bias-cell {
-    padding: 15px;
-    border-right: 1px solid #17283d;
-    text-align: center;
-}
-
-.bias-cell:last-child {
-    border-right: none;
-}
-
-.bias-tf {
-    color: #64748b;
-    font-size: 9px;
-    letter-spacing: 1px;
-}
-
-.bias-value {
-    margin-top: 8px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.bias-buy {
-    color: #53d769;
-}
-
-.bias-sell {
-    color: #ff6262;
-}
-
-.bias-neutral {
-    color: #9ba9bb;
-}
-
-
-/* =====================================================
-   PREMIUM FEATURES
-   ===================================================== */
-
-.premium-features {
-    display: grid;
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 15px;
-
-    margin-bottom: 18px;
-}
-
-.feature-card {
-    background: #0b1728;
-    border: 1px solid #27384e;
-    padding: 20px;
-}
-
-.feature-icon {
-    color: #f5c84c;
-    font-size: 20px;
-}
-
-.feature-title {
-    color: white;
-    font-size: 13px;
-    font-weight: bold;
-    margin-top: 12px;
-}
-
-.feature-text {
-    color: #64748b;
-    font-size: 11px;
-    line-height: 1.6;
-    margin-top: 8px;
-}
-
-
-/* =====================================================
-   DASHBOARD
+   DASHBOARD GRID
    ===================================================== */
 
 .dashboard-grid {
@@ -640,7 +380,6 @@ select {
     margin-top: 10px;
 }
 
-
 /* =====================================================
    ACCOUNT
    ===================================================== */
@@ -675,6 +414,84 @@ select {
     color: white;
 }
 
+/* =====================================================
+   PREMIUM FEATURES
+   ===================================================== */
+
+.premium-features {
+    margin-top: 20px;
+}
+
+.premium-features-title {
+    color: #f5c84c;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.premium-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.premium-feature {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 20px;
+}
+
+.premium-feature-title {
+    color: #f5c84c;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.premium-feature-text {
+    color: #64748b;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
+/* =====================================================
+   EXPIRED BOX
+   ===================================================== */
+
+.expired-box {
+    display: none;
+    background: #21131a;
+    border: 1px solid #8f3845;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.expired-box-title {
+    color: #ff6262;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.expired-box-text {
+    color: #c8a9ae;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.subscribe-button {
+    margin-top: 18px;
+    padding: 11px 20px;
+    background: transparent;
+    border: 1px solid #c9a227;
+    color: #f5c84c;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.subscribe-button:hover {
+    background: #c9a227;
+    color: #07111f;
+}
 
 /* =====================================================
    TITLES
@@ -692,7 +509,6 @@ select {
     font-size: 13px;
     margin-bottom: 20px;
 }
-
 
 /* =====================================================
    MARKETS
@@ -723,7 +539,6 @@ select {
 .market-item:hover {
     border-color: #c9a227;
 }
-
 
 /* =====================================================
    MEMBERSHIP
@@ -780,7 +595,6 @@ select {
     color: #07111f;
 }
 
-
 /* =====================================================
    GENERIC
    ===================================================== */
@@ -804,9 +618,8 @@ select {
     line-height: 1.6;
 }
 
-
 /* =====================================================
-   ECONOMIC NEWS
+   AGUILACORE ECONOMIC NEWS
    ===================================================== */
 
 .economic-header {
@@ -822,9 +635,8 @@ select {
     font-weight: bold;
 }
 
-
 /* =====================================================
-   NEWS CONTROL
+   NEWS CONTROL PANEL
    ===================================================== */
 
 .news-control-panel {
@@ -896,7 +708,6 @@ select {
     color: white;
 }
 
-
 /* =====================================================
    NEWS STATUS
    ===================================================== */
@@ -919,7 +730,6 @@ select {
 .news-updated {
     color: #64748b;
 }
-
 
 /* =====================================================
    NEWS TABLE
@@ -1023,7 +833,6 @@ select {
     width: 100px;
 }
 
-
 /* =====================================================
    EVENT
    ===================================================== */
@@ -1045,7 +854,6 @@ select {
     font-size: 10px;
     font-weight: bold;
 }
-
 
 /* =====================================================
    IMPACT
@@ -1090,7 +898,6 @@ select {
     background: #53d769;
 }
 
-
 /* =====================================================
    VALUES
    ===================================================== */
@@ -1108,10 +915,13 @@ select {
     color: #64748b;
 }
 
+/* =====================================================
+   PAST EVENTS
+   ===================================================== */
+
 .past-event {
     opacity: 0.72;
 }
-
 
 /* =====================================================
    LOADING
@@ -1130,7 +940,6 @@ select {
     margin-bottom: 7px;
     font-size: 13px;
 }
-
 
 /* =====================================================
    EMPTY / ERROR
@@ -1160,7 +969,6 @@ select {
     font-size: 11px;
 }
 
-
 /* =====================================================
    FOOTER
    ===================================================== */
@@ -1172,26 +980,9 @@ select {
     padding: 25px;
 }
 
-
 /* =====================================================
    RESPONSIVE
    ===================================================== */
-
-@media (max-width: 1200px) {
-
-    .premium-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .signal-main {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .bias-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-}
 
 @media (max-width: 1100px) {
 
@@ -1203,17 +994,13 @@ select {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .premium-feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
 }
 
 @media (max-width: 900px) {
-
-    .sidebar {
-        width: 210px;
-    }
-
-    .main-content {
-        margin-left: 210px;
-    }
 
     .calendar-table {
         min-width: 800px;
@@ -1223,23 +1010,19 @@ select {
         overflow-x: auto;
     }
 
-    .premium-features {
-        grid-template-columns: 1fr;
-    }
-
 }
 
 @media (max-width: 800px) {
 
     .sidebar {
-        width: 190px;
-    }
-
-    .main-content {
-        margin-left: 190px;
+        width: 200px;
     }
 
     .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .premium-feature-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1257,22 +1040,17 @@ select {
 
 }
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
 
     .app-layout {
         display: block;
     }
 
     .sidebar {
-        position: relative;
         width: 100%;
         min-height: auto;
         border-right: none;
         border-bottom: 1px solid #c9a227;
-    }
-
-    .main-content {
-        margin-left: 0;
     }
 
     .sidebar-spacer {
@@ -1285,18 +1063,6 @@ select {
 
     .market-list {
         grid-template-columns: 1fr;
-    }
-
-    .premium-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .signal-main {
-        grid-template-columns: 1fr;
-    }
-
-    .bias-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 
     .economic-header {
@@ -1318,17 +1084,19 @@ select {
         width: 100%;
     }
 
+    .premium-status-header {
+        display: block;
+    }
+
 }
 
 </style>
 
 </head>
 
-
 <body>
 
 <div class="app-layout">
-
 
 <!-- =====================================================
      SIDEBAR
@@ -1343,11 +1111,10 @@ select {
         </div>
 
         <div class="sidebar-subtitle">
-            TRADING PLATFORM
+            PREMIUM TRADING PLATFORM
         </div>
 
     </div>
-
 
     <div
         class="membership-box"
@@ -1361,7 +1128,7 @@ select {
             class="membership-value"
             id="sidebarMembership">
 
-            FREE
+            FREE TRIAL
 
         </div>
 
@@ -1371,9 +1138,7 @@ select {
 
     </div>
 
-
     <div class="sidebar-menu">
-
 
         <div
             class="sidebar-item active"
@@ -1384,7 +1149,6 @@ select {
 
         </div>
 
-
         <div
             class="sidebar-item"
             id="marketsMenu"
@@ -1393,7 +1157,6 @@ select {
             ◉ &nbsp; Markets
 
         </div>
-
 
         <div
             class="sidebar-item"
@@ -1404,7 +1167,6 @@ select {
 
         </div>
 
-
         <div
             class="sidebar-item"
             id="goldMenu"
@@ -1413,7 +1175,6 @@ select {
             ◎ &nbsp; Gold / XAUUSD
 
         </div>
-
 
         <div
             class="sidebar-item"
@@ -1424,12 +1185,9 @@ select {
 
         </div>
 
-
     </div>
 
-
     <div class="sidebar-spacer"></div>
-
 
     <div class="sidebar-account">
 
@@ -1458,13 +1216,11 @@ select {
 </aside>
 
 
-
 <!-- =====================================================
      MAIN CONTENT
      ===================================================== -->
 
 <div class="main-content">
-
 
     <div class="header">
 
@@ -1475,11 +1231,10 @@ select {
             </div>
 
             <div class="subtitle">
-                TRADING PLATFORM • PREMIUM TERMINAL
+                PREMIUM TRADING PLATFORM • DASHBOARD
             </div>
 
         </div>
-
 
         <div class="user-area">
 
@@ -1492,1049 +1247,740 @@ select {
     </div>
 
 
-
     <div class="container">
 
 
-<!-- =====================================================
-     PREMIUM DASHBOARD
-     ===================================================== -->
-
-<div
-    class="page active"
-    id="dashboardPage">
-
-
-    <div class="premium-header">
-
-        <div class="premium-label">
-            AGUILACORE PREMIUM
-        </div>
-
-        <div class="premium-title">
-            GOLD TRADING TERMINAL
-        </div>
-
-        <div class="premium-subtitle">
-            Professional market monitoring for AGUILACORE members.
-        </div>
+        <!-- =================================================
+             DASHBOARD
+             ================================================= -->
 
         <div
-            class="premium-status"
-            id="premiumStatus">
+            class="page active"
+            id="dashboardPage">
 
-            ● 1 MONTH PREMIUM ACTIVE
+            <div class="welcome">
 
-        </div>
+                <div class="welcome-title">
+                    Welcome to AGUILACORE
+                </div>
 
-    </div>
+                <div class="welcome-text">
+                    Your premium trading terminal is ready.
+                </div>
 
-
-
-    <!-- =================================================
-         MARKET SNAPSHOT
-         ================================================= -->
-
-    <div class="premium-grid">
-
-
-        <div class="premium-card">
-
-            <div class="premium-card-label">
-                GOLD / XAUUSD
             </div>
+
+
+            <!-- PREMIUM STATUS -->
 
             <div
-                class="premium-card-value"
-                id="goldPrice">
+                class="premium-status"
+                id="premiumStatusBox">
 
-                LIVE
+                <div class="premium-status-header">
+
+                    <div class="premium-status-title">
+                        AGUILACORE MEMBERSHIP
+                    </div>
+
+                    <div
+                        class="premium-status-badge"
+                        id="premiumStatusBadge">
+
+                        ● FREE TRIAL ACTIVE
+
+                    </div>
+
+                </div>
+
+                <div
+                    class="trial-days"
+                    id="trialDays">
+
+                    7 DAYS
+
+                </div>
+
+                <div class="trial-label">
+                    FREE TRIAL REMAINING
+                </div>
+
+                <div class="trial-progress">
+
+                    <div
+                        class="trial-progress-bar"
+                        id="trialProgressBar">
+                    </div>
+
+                </div>
+
+                <div
+                    class="trial-expiry"
+                    id="trialExpiry">
+
+                    Trial expiration: Loading...
+
+                </div>
 
             </div>
 
-            <div class="premium-card-small">
-                Market price
-            </div>
 
-        </div>
-
-
-        <div class="premium-card">
-
-            <div class="premium-card-label">
-                MARKET BIAS
-            </div>
+            <!-- EXPIRED -->
 
             <div
-                class="premium-card-value"
-                id="goldBias">
+                class="expired-box"
+                id="expiredBox">
 
-                WAIT
+                <div class="expired-box-title">
+                    YOUR FREE TRIAL HAS EXPIRED
+                </div>
 
-            </div>
+                <div class="expired-box-text">
+                    Your 7-day AGUILACORE Premium trial has ended.
+                    Subscribe to continue using premium features.
+                </div>
 
-            <div class="premium-card-small">
-                AGUILACORE bias
-            </div>
+                <button
+                    class="subscribe-button"
+                    onclick="showPage('membershipPage')">
 
-        </div>
+                    SUBSCRIBE — $150 / 1 MONTH
 
-
-        <div class="premium-card">
-
-            <div class="premium-card-label">
-                SIGNAL STATUS
-            </div>
-
-            <div
-                class="premium-card-value"
-                id="signalStatus">
-
-                WAIT
+                </button>
 
             </div>
 
-            <div class="premium-card-small">
-                Latest signal state
-            </div>
 
-        </div>
+            <div class="dashboard-grid">
 
+                <div class="card">
 
-        <div class="premium-card">
-
-            <div class="premium-card-label">
-                SESSION
-            </div>
-
-            <div
-                class="premium-card-value"
-                id="marketSession">
-
-                ACTIVE
-
-            </div>
-
-            <div class="premium-card-small">
-                Trading session
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- =================================================
-         PREMIUM SIGNAL TERMINAL
-         ================================================= -->
-
-    <div class="signal-terminal">
-
-
-        <div class="signal-terminal-header">
-
-            <div class="signal-terminal-title">
-                XAUUSD PREMIUM SIGNAL
-            </div>
-
-            <div class="signal-live">
-                ● MONITORING
-            </div>
-
-        </div>
-
-
-        <div class="signal-body">
-
-
-            <div class="signal-main">
-
-
-                <div class="signal-direction">
-
-                    <div class="signal-direction-label">
-                        CURRENT DIRECTION
+                    <div class="card-title">
+                        ACCOUNT
                     </div>
 
                     <div
-                        class="signal-direction-value"
-                        id="premiumDirection">
+                        class="card-value"
+                        id="userStatus">
 
-                        WAIT
+                        FREE TRIAL
 
+                    </div>
+
+                    <div class="card-description">
+                        Current account status
                     </div>
 
                 </div>
 
+                <div class="card">
 
-                <div class="signal-box">
-
-                    <div class="signal-box-label">
-                        ENTRY
+                    <div class="card-title">
+                        MARKETS
                     </div>
 
-                    <div
-                        class="signal-box-value gold"
-                        id="signalEntry">
-
-                        —
-
+                    <div class="card-value">
+                        13
                     </div>
 
-                </div>
-
-
-                <div class="signal-box">
-
-                    <div class="signal-box-label">
-                        STOP LOSS
-                    </div>
-
-                    <div
-                        class="signal-box-value red"
-                        id="signalSL">
-
-                        —
-
+                    <div class="card-description">
+                        Supported trading markets
                     </div>
 
                 </div>
 
+                <div class="card">
 
-                <div class="signal-box">
-
-                    <div class="signal-box-label">
-                        TAKE PROFIT
+                    <div class="card-title">
+                        SIGNALS
                     </div>
 
                     <div
-                        class="signal-box-value green"
-                        id="signalTP">
+                        class="card-value"
+                        id="signalStatus">
 
-                        —
+                        PREMIUM
+
+                    </div>
+
+                    <div class="card-description">
+                        AGUILACORE trading signals
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PREMIUM FEATURES -->
+
+            <div class="premium-features">
+
+                <div class="premium-features-title">
+                    PREMIUM FEATURES
+                </div>
+
+                <div class="premium-feature-grid">
+
+                    <div class="premium-feature">
+
+                        <div class="premium-feature-title">
+                            GOLD / XAUUSD
+                        </div>
+
+                        <div class="premium-feature-text">
+                            AGUILACORE Gold market analysis,
+                            bias and trading signals.
+                        </div>
+
+                    </div>
+
+                    <div class="premium-feature">
+
+                        <div class="premium-feature-title">
+                            ECONOMIC CALENDAR
+                        </div>
+
+                        <div class="premium-feature-text">
+                            Monitor important economic events
+                            and market-moving catalysts.
+                        </div>
+
+                    </div>
+
+                    <div class="premium-feature">
+
+                        <div class="premium-feature-title">
+                            PREMIUM SIGNALS
+                        </div>
+
+                        <div class="premium-feature-text">
+                            Premium trading signal area for
+                            AGUILACORE members.
+                        </div>
 
                     </div>
 
                 </div>
 
-
-                <div class="signal-box">
-
-                    <div class="signal-box-label">
-                        RISK
-                    </div>
-
-                    <div
-                        class="signal-box-value"
-                        id="signalRisk">
-
-                        —
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =================================================
-         MULTI TIMEFRAME BIAS
-         ================================================= -->
-
-    <div class="bias-panel">
-
-
-        <div class="bias-header">
-            AGUILACORE MULTI-TIMEFRAME BIAS
-        </div>
-
-
-        <div class="bias-grid">
-
-
-            <div class="bias-cell">
-
-                <div class="bias-tf">
-                    M5
-                </div>
-
-                <div
-                    class="bias-value bias-neutral"
-                    id="biasM5">
-
-                    WAIT
-
-                </div>
-
             </div>
 
 
-            <div class="bias-cell">
+            <!-- ACCOUNT INFORMATION -->
 
-                <div class="bias-tf">
-                    M15
+            <div class="account-box">
+
+                <div class="account-title">
+                    ACCOUNT INFORMATION
                 </div>
 
-                <div
-                    class="bias-value bias-neutral"
-                    id="biasM15">
+                <div class="account-row">
 
-                    WAIT
+                    <span class="account-label">
+                        Email
+                    </span>
+
+                    <span
+                        class="account-value"
+                        id="userEmail">
+
+                        Loading...
+
+                    </span>
 
                 </div>
 
-            </div>
+                <div class="account-row">
 
+                    <span class="account-label">
+                        Membership
+                    </span>
 
-            <div class="bias-cell">
+                    <span
+                        class="account-value"
+                        id="accountMembership">
 
-                <div class="bias-tf">
-                    M30
+                        FREE TRIAL
+
+                    </span>
+
                 </div>
 
-                <div
-                    class="bias-value bias-neutral"
-                    id="biasM30">
+                <div class="account-row">
 
-                    WAIT
+                    <span class="account-label">
+                        Status
+                    </span>
+
+                    <span
+                        class="account-value"
+                        id="accountStatus">
+
+                        ACTIVE
+
+                    </span>
+
+                </div>
+
+                <div class="account-row">
+
+                    <span class="account-label">
+                        Trial Expiry
+                    </span>
+
+                    <span
+                        class="account-value"
+                        id="accountTrialExpiry">
+
+                        Loading...
+
+                    </span>
 
                 </div>
 
             </div>
 
-
-            <div class="bias-cell">
-
-                <div class="bias-tf">
-                    H1
-                </div>
-
-                <div
-                    class="bias-value bias-neutral"
-                    id="biasH1">
-
-                    WAIT
-
-                </div>
-
-            </div>
-
-
-            <div class="bias-cell">
-
-                <div class="bias-tf">
-                    H4
-                </div>
-
-                <div
-                    class="bias-value bias-neutral"
-                    id="biasH4">
-
-                    WAIT
-
-                </div>
-
-            </div>
-
-
-            <div class="bias-cell">
-
-                <div class="bias-tf">
-                    D1
-                </div>
-
-                <div
-                    class="bias-value bias-neutral"
-                    id="biasD1">
-
-                    WAIT
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =================================================
-         PREMIUM FEATURES
-         ================================================= -->
-
-    <div class="premium-features">
-
-
-        <div class="feature-card">
-
-            <div class="feature-icon">
-                ◎
-            </div>
-
-            <div class="feature-title">
-                GOLD MARKET MONITOR
-            </div>
-
-            <div class="feature-text">
-                Dedicated XAUUSD monitoring with
-                market direction, signal status and
-                multi-timeframe confirmation.
-            </div>
-
         </div>
 
 
-        <div class="feature-card">
-
-            <div class="feature-icon">
-                ◇
-            </div>
-
-            <div class="feature-title">
-                PREMIUM SIGNALS
-            </div>
-
-            <div class="feature-text">
-                Premium members can monitor
-                AGUILACORE trading opportunities,
-                entry levels, stop loss and targets.
-            </div>
-
-        </div>
-
-
-        <div class="feature-card">
-
-            <div class="feature-icon">
-                ◉
-            </div>
-
-            <div class="feature-title">
-                ECONOMIC CATALYSTS
-            </div>
-
-            <div class="feature-text">
-                Monitor major economic events that
-                may influence gold and financial markets.
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- =================================================
-         ACCOUNT INFORMATION
-         ================================================= -->
-
-    <div class="account-box">
-
-        <div class="account-title">
-            PREMIUM ACCOUNT INFORMATION
-        </div>
-
-
-        <div class="account-row">
-
-            <span class="account-label">
-                Email
-            </span>
-
-            <span
-                class="account-value"
-                id="userEmail">
-
-                Loading...
-
-            </span>
-
-        </div>
-
-
-        <div class="account-row">
-
-            <span class="account-label">
-                Membership
-            </span>
-
-            <span
-                class="account-value"
-                id="accountMembership">
-
-                FREE
-
-            </span>
-
-        </div>
-
-
-        <div class="account-row">
-
-            <span class="account-label">
-                Plan
-            </span>
-
-            <span
-                class="account-value"
-                id="accountPlan">
-
-                1 MONTH
-
-            </span>
-
-        </div>
-
-
-        <div class="account-row">
-
-            <span class="account-label">
-                Terminal
-            </span>
-
-            <span class="account-value">
-                AGUILACORE PREMIUM
-            </span>
-
-        </div>
-
-
-        <div class="account-row">
-
-            <span class="account-label">
-                Trading Signals
-            </span>
-
-            <span
-                class="account-value"
-                id="accountSignalAccess">
-
-                PREMIUM ACCESS
-
-            </span>
-
-        </div>
-
-
-    </div>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     MARKETS
-     ===================================================== -->
-
-<div
-    class="page"
-    id="marketsPage">
-
-    <div class="page-title">
-        MARKETS
-    </div>
-
-    <div class="page-description">
-        AGUILACORE supported trading markets.
-    </div>
-
-
-    <div class="markets-box">
-
-        <div class="market-list">
-
-            <div class="market-item">XAUUSD</div>
-            <div class="market-item">EURUSD</div>
-            <div class="market-item">GBPUSD</div>
-            <div class="market-item">USDJPY</div>
-            <div class="market-item">USDCHF</div>
-            <div class="market-item">USDCAD</div>
-            <div class="market-item">AUDUSD</div>
-            <div class="market-item">NZDUSD</div>
-            <div class="market-item">EURJPY</div>
-            <div class="market-item">GBPJPY</div>
-            <div class="market-item">EURGBP</div>
-            <div class="market-item">BTCUSD</div>
-            <div class="market-item">US30</div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     SIGNALS
-     ===================================================== -->
-
-<div
-    class="page"
-    id="signalsPage">
-
-    <div class="page-title">
-        TRADING SIGNALS
-    </div>
-
-    <div class="page-description">
-        AGUILACORE premium trading signals.
-    </div>
-
-
-    <div class="content-box">
-
-        <div class="content-title">
-            PREMIUM SIGNALS
-        </div>
-
-        <div class="content-text">
-
-            Your premium account has access to the
-            AGUILACORE signal terminal.
-
-            <br><br>
-
-            XAUUSD signal monitoring, entry levels,
-            stop loss, take profit and market direction
-            will be displayed here.
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     GOLD
-     ===================================================== -->
-
-<div
-    class="page"
-    id="goldPage">
-
-    <div class="page-title">
-        GOLD / XAUUSD
-    </div>
-
-    <div class="page-description">
-        AGUILACORE Gold trading terminal.
-    </div>
-
-
-    <div class="content-box">
-
-        <div class="content-title">
-            XAUUSD PREMIUM
-        </div>
-
-        <div class="content-text">
-
-            Dedicated AGUILACORE Gold terminal.
-
-            <br><br>
-
-            Market Bias:
-            <strong
-                id="goldPageBias"
-                style="color:#f5c84c;">
-
-                WAIT
-
-            </strong>
-
-            <br><br>
-
-            Signal:
-            <strong
-                id="goldPageSignal"
-                style="color:#53d769;">
-
-                WAIT
-
-            </strong>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     MEMBERSHIP
-     ===================================================== -->
-
-<div
-    class="page"
-    id="membershipPage">
-
-    <div class="page-title">
-        MEMBERSHIP
-    </div>
-
-    <div class="page-description">
-        Choose your AGUILACORE membership plan.
-    </div>
-
-
-    <div class="membership-page-grid">
-
-
-        <div class="membership-card">
-
-            <div class="membership-card-title">
-                1 MONTH
-            </div>
-
-            <div class="membership-price">
-                $150
-            </div>
-
-            <div class="membership-card-description">
-                Full premium access for 1 month
-            </div>
-
-            <button
-                class="membership-button"
-                onclick="selectMembership('1 MONTH','$150')">
-
-                SELECT
-
-            </button>
-
-        </div>
-
-
-        <div class="membership-card">
-
-            <div class="membership-card-title">
-                6 MONTHS
-            </div>
-
-            <div class="membership-price">
-                $350
-            </div>
-
-            <div class="membership-card-description">
-                Full premium access for 6 months
-            </div>
-
-            <button
-                class="membership-button"
-                onclick="selectMembership('6 MONTHS','$350')">
-
-                SELECT
-
-            </button>
-
-        </div>
-
-
-        <div class="membership-card">
-
-            <div class="membership-card-title">
-                1 YEAR
-            </div>
-
-            <div class="membership-price">
-                $500
-            </div>
-
-            <div class="membership-card-description">
-                Full premium access for 1 year
-            </div>
-
-            <button
-                class="membership-button"
-                onclick="selectMembership('1 YEAR','$500')">
-
-                SELECT
-
-            </button>
-
-        </div>
-
-
-        <div class="membership-card">
-
-            <div class="membership-card-title">
-                LIFETIME
-            </div>
-
-            <div class="membership-price">
-                $1,500
-            </div>
-
-            <div class="membership-card-description">
-                Lifetime AGUILACORE access
-            </div>
-
-            <button
-                class="membership-button"
-                onclick="selectMembership('LIFETIME','$1500')">
-
-                SELECT
-
-            </button>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     ECONOMIC NEWS
-     ===================================================== -->
-
-<div
-    class="page"
-    id="economicNewsPage">
-
-
-    <div class="economic-header">
-
-        <div>
+        <!-- =================================================
+             MARKETS
+             ================================================= -->
+
+        <div
+            class="page"
+            id="marketsPage">
 
             <div class="page-title">
-                ECONOMIC NEWS
+                MARKETS
             </div>
 
             <div class="page-description">
-                Market-moving economic events and catalysts.
+                AGUILACORE supported trading markets.
+            </div>
+
+            <div class="markets-box">
+
+                <div class="market-list">
+
+                    <div class="market-item">XAUUSD</div>
+                    <div class="market-item">EURUSD</div>
+                    <div class="market-item">GBPUSD</div>
+                    <div class="market-item">USDJPY</div>
+                    <div class="market-item">USDCHF</div>
+                    <div class="market-item">USDCAD</div>
+                    <div class="market-item">AUDUSD</div>
+                    <div class="market-item">NZDUSD</div>
+                    <div class="market-item">EURJPY</div>
+                    <div class="market-item">GBPJPY</div>
+                    <div class="market-item">EURGBP</div>
+                    <div class="market-item">BTCUSD</div>
+                    <div class="market-item">US30</div>
+
+                </div>
+
             </div>
 
         </div>
 
 
-        <div class="economic-status">
-            ● LIVE DATA
-        </div>
-
-    </div>
-
-
-
-    <div class="news-control-panel">
-
-
-        <div class="news-controls">
-
-
-            <div class="news-control">
-
-                <label for="newsDate">
-                    DATE
-                </label>
-
-                <input
-                    type="date"
-                    id="newsDate">
-
-            </div>
-
-
-            <div class="news-control">
-
-                <label for="impactFilter">
-                    IMPACT
-                </label>
-
-                <select id="impactFilter">
-
-                    <option value="ALL">
-                        ALL IMPACT
-                    </option>
-
-                    <option value="HIGH">
-                        HIGH IMPACT
-                    </option>
-
-                    <option value="MEDIUM">
-                        MEDIUM IMPACT
-                    </option>
-
-                    <option value="LOW">
-                        LOW IMPACT
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <button
-                class="news-button"
-                onclick="applyNewsFilters()">
-
-                APPLY FILTER
-
-            </button>
-
-
-            <button
-                class="news-button secondary"
-                onclick="clearNewsFilters()">
-
-                CLEAR
-
-            </button>
-
-
-            <button
-                class="news-button secondary"
-                onclick="loadEconomicNews()">
-
-                ↻ REFRESH
-
-            </button>
-
-
-        </div>
-
-    </div>
-
-
-
-    <div
-        class="news-error"
-        id="newsError">
-    </div>
-
-
-
-    <div class="news-status-bar">
-
-        <div>
-
-            Showing
-
-            <span
-                class="news-count"
-                id="newsCount">
-
-                0
-
-            </span>
-
-            economic events
-
-        </div>
-
+        <!-- =================================================
+             SIGNALS
+             ================================================= -->
 
         <div
-            class="news-updated"
-            id="newsUpdated">
+            class="page"
+            id="signalsPage">
 
-            Waiting for data...
-
-        </div>
-
-    </div>
-
-
-
-    <div class="aguilacore-calendar">
-
-
-        <div class="calendar-titlebar">
-
-            <div class="calendar-title">
-                AGUILACORE ECONOMIC CALENDAR
+            <div class="page-title">
+                TRADING SIGNALS
             </div>
 
-            <div class="calendar-timezone">
-                PHILIPPINE TIME • UTC+8
+            <div class="page-description">
+                AGUILACORE premium trading signals.
+            </div>
+
+            <div class="content-box">
+
+                <div class="content-title">
+                    PREMIUM SIGNALS
+                </div>
+
+                <div class="content-text">
+                    Your AGUILACORE premium signal terminal.
+                    Signal delivery will be connected here next.
+                </div>
+
             </div>
 
         </div>
 
 
+        <!-- =================================================
+             GOLD
+             ================================================= -->
 
         <div
-            class="news-loading"
-            id="newsLoading">
+            class="page"
+            id="goldPage">
 
-            <strong>
-                LOADING ECONOMIC DATA
-            </strong>
+            <div class="page-title">
+                GOLD / XAUUSD
+            </div>
 
-            Connecting to AGUILACORE market data...
+            <div class="page-description">
+                AGUILACORE Gold trading terminal.
+            </div>
+
+            <div class="content-box">
+
+                <div class="content-title">
+                    XAUUSD
+                </div>
+
+                <div class="content-text">
+                    Gold analysis, market bias and signals
+                    will be available here.
+                </div>
+
+            </div>
 
         </div>
 
 
+        <!-- =================================================
+             MEMBERSHIP
+             ================================================= -->
 
         <div
-            class="news-empty"
-            id="newsEmpty">
+            class="page"
+            id="membershipPage">
 
-            <strong>
-                NO ECONOMIC EVENTS
-            </strong>
+            <div class="page-title">
+                MEMBERSHIP
+            </div>
 
-            No events match the selected filters.
+            <div class="page-description">
+                Choose your AGUILACORE membership plan.
+            </div>
+
+            <div class="membership-page-grid">
+
+                <div class="membership-card">
+
+                    <div class="membership-card-title">
+                        1 MONTH
+                    </div>
+
+                    <div class="membership-price">
+                        $150
+                    </div>
+
+                    <div class="membership-card-description">
+                        Full premium access for 1 month
+                    </div>
+
+                    <button
+                        class="membership-button"
+                        onclick="selectMembership('1 MONTH','$150')">
+
+                        SELECT
+
+                    </button>
+
+                </div>
+
+                <div class="membership-card">
+
+                    <div class="membership-card-title">
+                        6 MONTHS
+                    </div>
+
+                    <div class="membership-price">
+                        $350
+                    </div>
+
+                    <div class="membership-card-description">
+                        Full premium access for 6 months
+                    </div>
+
+                    <button
+                        class="membership-button"
+                        onclick="selectMembership('6 MONTHS','$350')">
+
+                        SELECT
+
+                    </button>
+
+                </div>
+
+                <div class="membership-card">
+
+                    <div class="membership-card-title">
+                        1 YEAR
+                    </div>
+
+                    <div class="membership-price">
+                        $500
+                    </div>
+
+                    <div class="membership-card-description">
+                        Full premium access for 1 year
+                    </div>
+
+                    <button
+                        class="membership-button"
+                        onclick="selectMembership('1 YEAR','$500')">
+
+                        SELECT
+
+                    </button>
+
+                </div>
+
+                <div class="membership-card">
+
+                    <div class="membership-card-title">
+                        LIFETIME
+                    </div>
+
+                    <div class="membership-price">
+                        $1,500
+                    </div>
+
+                    <div class="membership-card-description">
+                        Lifetime AGUILACORE access
+                    </div>
+
+                    <button
+                        class="membership-button"
+                        onclick="selectMembership('LIFETIME','$1500')">
+
+                        SELECT
+
+                    </button>
+
+                </div>
+
+            </div>
 
         </div>
 
 
+        <!-- =================================================
+             ECONOMIC NEWS
+             ================================================= -->
 
         <div
-            id="newsTableContainer"
-            style="display:none;">
+            class="page"
+            id="economicNewsPage">
 
-            <table class="calendar-table">
+            <div class="economic-header">
 
-                <thead>
+                <div>
 
-                    <tr>
+                    <div class="page-title">
+                        ECONOMIC NEWS
+                    </div>
 
-                        <th>DATE</th>
-                        <th>TIME</th>
-                        <th>EVENT</th>
-                        <th>CURRENCY</th>
-                        <th>IMPACT</th>
-                        <th>ACTUAL</th>
-                        <th>FORECAST</th>
-                        <th>PREVIOUS</th>
+                    <div class="page-description">
+                        Market-moving economic events and catalysts.
+                    </div>
 
-                    </tr>
+                </div>
 
-                </thead>
+                <div class="economic-status">
+                    ● LIVE DATA
+                </div>
+
+            </div>
 
 
-                <tbody id="economicNewsRows">
-                </tbody>
+            <div class="news-control-panel">
 
-            </table>
+                <div class="news-controls">
+
+                    <div class="news-control">
+
+                        <label for="newsDate">
+                            DATE
+                        </label>
+
+                        <input
+                            type="date"
+                            id="newsDate">
+
+                    </div>
+
+
+                    <div class="news-control">
+
+                        <label for="impactFilter">
+                            IMPACT
+                        </label>
+
+                        <select id="impactFilter">
+
+                            <option value="ALL">
+                                ALL IMPACT
+                            </option>
+
+                            <option value="HIGH">
+                                HIGH IMPACT
+                            </option>
+
+                            <option value="MEDIUM">
+                                MEDIUM IMPACT
+                            </option>
+
+                            <option value="LOW">
+                                LOW IMPACT
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="news-button"
+                        onclick="applyNewsFilters()">
+
+                        APPLY FILTER
+
+                    </button>
+
+
+                    <button
+                        class="news-button secondary"
+                        onclick="clearNewsFilters()">
+
+                        CLEAR
+
+                    </button>
+
+
+                    <button
+                        class="news-button secondary"
+                        onclick="loadEconomicNews()">
+
+                        ↻ REFRESH
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="news-error"
+                id="newsError">
+            </div>
+
+
+            <div class="news-status-bar">
+
+                <div>
+
+                    Showing
+                    <span
+                        class="news-count"
+                        id="newsCount">
+
+                        0
+
+                    </span>
+
+                    economic events
+
+                </div>
+
+                <div
+                    class="news-updated"
+                    id="newsUpdated">
+
+                    Waiting for data...
+
+                </div>
+
+            </div>
+
+
+            <div class="aguilacore-calendar">
+
+                <div class="calendar-titlebar">
+
+                    <div class="calendar-title">
+                        AGUILACORE ECONOMIC CALENDAR
+                    </div>
+
+                    <div class="calendar-timezone">
+                        PHILIPPINE TIME • UTC+8
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="news-loading"
+                    id="newsLoading">
+
+                    <strong>
+                        LOADING ECONOMIC DATA
+                    </strong>
+
+                    Connecting to AGUILACORE market data...
+
+                </div>
+
+
+                <div
+                    class="news-empty"
+                    id="newsEmpty">
+
+                    <strong>
+                        NO ECONOMIC EVENTS
+                    </strong>
+
+                    No events match the selected filters.
+
+                </div>
+
+
+                <div
+                    id="newsTableContainer"
+                    style="display:none;">
+
+                    <table class="calendar-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>DATE</th>
+                                <th>TIME</th>
+                                <th>EVENT</th>
+                                <th>CURRENCY</th>
+                                <th>IMPACT</th>
+                                <th>ACTUAL</th>
+                                <th>FORECAST</th>
+                                <th>PREVIOUS</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="economicNewsRows">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
 
         </div>
-
-
-    </div>
-
-</div>
-
-
 
     </div>
 
@@ -2543,11 +1989,9 @@ select {
         AGUILACORE Trading Platform © 2026
     </div>
 
-
 </div>
 
 </div>
-
 
 
 <script>
@@ -2562,7 +2006,6 @@ const SUPABASE_URL =
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_6ooR6Iv8NSAbEsgIFjruZg_RVIgvo9v";
 
-
 const supabaseClient =
     supabase.createClient(
         SUPABASE_URL,
@@ -2571,41 +2014,21 @@ const supabaseClient =
 
 
 /* =====================================================
-   ECONOMIC CALENDAR API
+   ECONOMIC CALENDAR
    ===================================================== */
 
 const ECONOMIC_CALENDAR_API =
     SUPABASE_URL +
     "/functions/v1/economic-calendar";
 
-
 let economicNewsData = [];
 
 
 /* =====================================================
-   MEMBERSHIP
+   MEMBERSHIP STATE
    ===================================================== */
 
-/*
-   TEMPORARY MEMBERSHIP SETTING
-
-   For testing the Premium Dashboard:
-
-   "1 MONTH"
-
-   Later we will replace this with the actual
-   Supabase membership record.
-
-   Possible values:
-
-   FREE
-   1 MONTH
-   6 MONTHS
-   1 YEAR
-   LIFETIME
-*/
-
-let currentMembership = "1 MONTH";
+let currentMembership = null;
 
 
 /* =====================================================
@@ -2622,7 +2045,6 @@ async function checkUser() {
         } =
             await supabaseClient.auth.getUser();
 
-
         if (
             error ||
             !data ||
@@ -2636,16 +2058,16 @@ async function checkUser() {
 
         }
 
+        const user =
+            data.user;
 
         const email =
-            data.user.email || "";
-
+            user.email || "";
 
         document.getElementById(
             "userEmail"
         ).textContent =
             email;
-
 
         document.getElementById(
             "sidebarEmail"
@@ -2654,42 +2076,12 @@ async function checkUser() {
 
 
         /*
-         * TEMPORARY:
-         * Use currentMembership.
+         * Load membership from Supabase.
          */
 
-        const membership =
-            currentMembership;
-
-
-        document.getElementById(
-            "sidebarMembership"
-        ).textContent =
-            membership;
-
-
-        document.getElementById(
-            "accountMembership"
-        ).textContent =
-            membership;
-
-
-        document.getElementById(
-            "accountPlan"
-        ).textContent =
-            membership;
-
-
-        document.getElementById(
-            "userStatus"
-        ).textContent =
-            membership;
-
-
-        updatePremiumDashboard(
-            membership
+        await loadMembership(
+            user.id
         );
-
 
     } catch (error) {
 
@@ -2697,7 +2089,6 @@ async function checkUser() {
             "Authentication error:",
             error
         );
-
 
         window.location.href =
             "index.html";
@@ -2707,77 +2098,766 @@ async function checkUser() {
 }
 
 
-checkUser();
-
-
-
 /* =====================================================
-   PREMIUM DASHBOARD
+   LOAD MEMBERSHIP
    ===================================================== */
 
-function updatePremiumDashboard(
-    membership
+async function loadMembership(
+    userId
 ) {
 
-    const premium =
-        membership !== "FREE";
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("memberships")
+                .select("*")
+                .eq(
+                    "user_id",
+                    userId
+                )
+                .maybeSingle();
 
 
-    const status =
-        document.getElementById(
-            "premiumStatus"
+        if (error) {
+
+            console.error(
+                "Membership error:",
+                error
+            );
+
+            setDefaultMembership();
+
+            return;
+
+        }
+
+
+        if (!data) {
+
+            console.warn(
+                "No membership record found."
+            );
+
+            setDefaultMembership();
+
+            return;
+
+        }
+
+
+        currentMembership =
+            data;
+
+
+        processMembership(
+            data
         );
 
 
-    if (
-        premium
-    ) {
+    } catch (error) {
 
-        status.textContent =
-            "● " +
-            membership +
-            " PREMIUM ACTIVE";
+        console.error(
+            "Membership loading error:",
+            error
+        );
 
-        status.style.color =
-            "#53d769";
-
-        status.style.borderColor =
-            "#276b3b";
-
-        status.style.background =
-            "#0b2114";
-
-
-        document.getElementById(
-            "accountSignalAccess"
-        ).textContent =
-            "PREMIUM ACCESS";
-
-
-    } else {
-
-        status.textContent =
-            "● FREE ACCOUNT";
-
-        status.style.color =
-            "#f5c84c";
-
-        status.style.borderColor =
-            "#8f7720";
-
-        status.style.background =
-            "#211d0d";
-
-
-        document.getElementById(
-            "accountSignalAccess"
-        ).textContent =
-            "UPGRADE REQUIRED";
+        setDefaultMembership();
 
     }
 
 }
 
+
+/* =====================================================
+   DEFAULT MEMBERSHIP
+   ===================================================== */
+
+function setDefaultMembership() {
+
+    currentMembership = {
+
+        plan:
+            "FREE",
+
+        status:
+            "ACTIVE",
+
+        trial_start:
+            null,
+
+        trial_expiry:
+            null,
+
+        membership_start:
+            null,
+
+        membership_expiry:
+            null
+
+    };
+
+
+    updateMembershipDisplay(
+        "FREE",
+        "ACTIVE"
+    );
+
+}
+
+
+/* =====================================================
+   PROCESS MEMBERSHIP
+   ===================================================== */
+
+function processMembership(
+    membership
+) {
+
+    const plan =
+        String(
+            membership.plan || "FREE"
+        ).toUpperCase();
+
+    const status =
+        String(
+            membership.status || "ACTIVE"
+        ).toUpperCase();
+
+
+    /*
+     * PAID MEMBERSHIP
+     */
+
+    if (
+        plan === "1_MONTH" ||
+        plan === "6_MONTHS" ||
+        plan === "1_YEAR" ||
+        plan === "LIFETIME"
+    ) {
+
+        processPaidMembership(
+            membership
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * FREE TRIAL
+     */
+
+    if (
+        plan === "FREE_TRIAL"
+    ) {
+
+        processFreeTrial(
+            membership
+        );
+
+        return;
+
+    }
+
+
+    updateMembershipDisplay(
+        "FREE",
+        status
+    );
+
+}
+
+
+/* =====================================================
+   FREE TRIAL
+   ===================================================== */
+
+function processFreeTrial(
+    membership
+) {
+
+    const expiry =
+        membership.trial_expiry
+            ? new Date(
+                membership.trial_expiry
+            )
+            : null;
+
+
+    if (
+        !expiry ||
+        isNaN(
+            expiry.getTime()
+        )
+    ) {
+
+        updateMembershipDisplay(
+            "FREE_TRIAL",
+            "ACTIVE"
+        );
+
+        return;
+
+    }
+
+
+    const now =
+        new Date();
+
+
+    const difference =
+        expiry.getTime() -
+        now.getTime();
+
+
+    /*
+     * TRIAL EXPIRED
+     */
+
+    if (
+        difference <= 0
+    ) {
+
+        updateTrialExpired(
+            expiry
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * TRIAL ACTIVE
+     */
+
+    const totalTrial =
+        7 * 24 * 60 * 60 * 1000;
+
+
+    let progress =
+        (
+            difference /
+            totalTrial
+        ) * 100;
+
+
+    progress =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                progress
+            )
+        );
+
+
+    const totalDays =
+        Math.ceil(
+            difference /
+            (
+                24 *
+                60 *
+                60 *
+                1000
+            )
+        );
+
+
+    document.getElementById(
+        "sidebarMembership"
+    ).textContent =
+        "FREE TRIAL";
+
+
+    document.getElementById(
+        "userStatus"
+    ).textContent =
+        "FREE TRIAL";
+
+
+    document.getElementById(
+        "accountMembership"
+    ).textContent =
+        "FREE TRIAL";
+
+
+    document.getElementById(
+        "accountStatus"
+    ).textContent =
+        "ACTIVE";
+
+
+    document.getElementById(
+        "premiumStatusBadge"
+    ).textContent =
+        "● FREE TRIAL ACTIVE";
+
+
+    document.getElementById(
+        "trialDays"
+    ).textContent =
+        totalDays +
+        (
+            totalDays === 1
+                ? " DAY"
+                : " DAYS"
+        );
+
+
+    document.getElementById(
+        "trialProgressBar"
+    ).style.width =
+        progress +
+        "%";
+
+
+    const formattedExpiry =
+        expiry.toLocaleString(
+            "en-PH",
+            {
+                dateStyle: "medium",
+                timeStyle: "short"
+            }
+        );
+
+
+    document.getElementById(
+        "trialExpiry"
+    ).textContent =
+        "Trial expiration: " +
+        formattedExpiry;
+
+
+    document.getElementById(
+        "accountTrialExpiry"
+    ).textContent =
+        formattedExpiry;
+
+
+    document.getElementById(
+        "expiredBox"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "premiumStatusBox"
+    ).classList.remove(
+        "expired-status"
+    );
+
+
+    document.getElementById(
+        "signalStatus"
+    ).textContent =
+        "PREMIUM";
+
+}
+
+
+/* =====================================================
+   TRIAL EXPIRED
+   ===================================================== */
+
+function updateTrialExpired(
+    expiry
+) {
+
+    document.getElementById(
+        "sidebarMembership"
+    ).textContent =
+        "EXPIRED";
+
+
+    document.getElementById(
+        "userStatus"
+    ).textContent =
+        "EXPIRED";
+
+
+    document.getElementById(
+        "accountMembership"
+    ).textContent =
+        "FREE TRIAL";
+
+
+    document.getElementById(
+        "accountStatus"
+    ).textContent =
+        "EXPIRED";
+
+
+    document.getElementById(
+        "premiumStatusBadge"
+    ).textContent =
+        "● TRIAL EXPIRED";
+
+
+    document.getElementById(
+        "trialDays"
+    ).textContent =
+        "0 DAYS";
+
+
+    document.getElementById(
+        "trialProgressBar"
+    ).style.width =
+        "0%";
+
+
+    const formattedExpiry =
+        expiry.toLocaleString(
+            "en-PH",
+            {
+                dateStyle: "medium",
+                timeStyle: "short"
+            }
+        );
+
+
+    document.getElementById(
+        "trialExpiry"
+    ).textContent =
+        "Trial expired: " +
+        formattedExpiry;
+
+
+    document.getElementById(
+        "accountTrialExpiry"
+    ).textContent =
+        formattedExpiry;
+
+
+    document.getElementById(
+        "premiumStatusBox"
+    ).classList.add(
+        "expired-status"
+    );
+
+
+    document.getElementById(
+        "expiredBox"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "signalStatus"
+    ).textContent =
+        "LOCKED";
+
+}
+
+
+/* =====================================================
+   PAID MEMBERSHIP
+   ===================================================== */
+
+function processPaidMembership(
+    membership
+) {
+
+    const plan =
+        String(
+            membership.plan
+        ).toUpperCase();
+
+
+    const status =
+        String(
+            membership.status || "ACTIVE"
+        ).toUpperCase();
+
+
+    let expiry = null;
+
+
+    if (
+        membership.membership_expiry
+    ) {
+
+        expiry =
+            new Date(
+                membership.membership_expiry
+            );
+
+    }
+
+
+    /*
+     * LIFETIME
+     */
+
+    if (
+        plan === "LIFETIME"
+    ) {
+
+        updatePaidMembershipDisplay(
+            plan,
+            "ACTIVE",
+            null
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * EXPIRED PAID MEMBERSHIP
+     */
+
+    if (
+        status !== "ACTIVE" ||
+        (
+            expiry &&
+            expiry.getTime() <=
+            Date.now()
+        )
+    ) {
+
+        updatePaidMembershipDisplay(
+            plan,
+            "EXPIRED",
+            expiry
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * ACTIVE PAID MEMBERSHIP
+     */
+
+    updatePaidMembershipDisplay(
+        plan,
+        "ACTIVE",
+        expiry
+    );
+
+}
+
+
+/* =====================================================
+   PAID MEMBERSHIP DISPLAY
+   ===================================================== */
+
+function updatePaidMembershipDisplay(
+    plan,
+    status,
+    expiry
+) {
+
+    if (
+        status === "EXPIRED"
+    ) {
+
+        document.getElementById(
+            "sidebarMembership"
+        ).textContent =
+            "EXPIRED";
+
+
+        document.getElementById(
+            "userStatus"
+        ).textContent =
+            "EXPIRED";
+
+
+        document.getElementById(
+            "accountMembership"
+        ).textContent =
+            plan;
+
+
+        document.getElementById(
+            "accountStatus"
+        ).textContent =
+            "EXPIRED";
+
+
+        document.getElementById(
+            "premiumStatusBadge"
+        ).textContent =
+            "● MEMBERSHIP EXPIRED";
+
+
+        document.getElementById(
+            "trialDays"
+        ).textContent =
+            "0 DAYS";
+
+
+        document.getElementById(
+            "trialProgressBar"
+        ).style.width =
+            "0%";
+
+
+        document.getElementById(
+            "expiredBox"
+        ).style.display =
+            "block";
+
+
+        document.getElementById(
+            "premiumStatusBox"
+        ).classList.add(
+            "expired-status"
+        );
+
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "sidebarMembership"
+    ).textContent =
+        plan;
+
+
+    document.getElementById(
+        "userStatus"
+    ).textContent =
+        plan;
+
+
+    document.getElementById(
+        "accountMembership"
+    ).textContent =
+        plan;
+
+
+    document.getElementById(
+        "accountStatus"
+    ).textContent =
+        "ACTIVE";
+
+
+    document.getElementById(
+        "premiumStatusBadge"
+    ).textContent =
+        "● PREMIUM ACTIVE";
+
+
+    document.getElementById(
+        "trialDays"
+    ).textContent =
+        "PREMIUM";
+
+
+    document.getElementById(
+        "trialProgressBar"
+    ).style.width =
+        "100%";
+
+
+    document.getElementById(
+        "premiumStatusBox"
+    ).classList.remove(
+        "expired-status"
+    );
+
+
+    document.getElementById(
+        "expiredBox"
+    ).style.display =
+        "none";
+
+
+    if (
+        expiry
+    ) {
+
+        const formattedExpiry =
+            expiry.toLocaleString(
+                "en-PH",
+                {
+                    dateStyle: "medium",
+                    timeStyle: "short"
+                }
+            );
+
+
+        document.getElementById(
+            "trialExpiry"
+        ).textContent =
+            "Membership expiration: " +
+            formattedExpiry;
+
+
+        document.getElementById(
+            "accountTrialExpiry"
+        ).textContent =
+            formattedExpiry;
+
+    } else {
+
+        document.getElementById(
+            "trialExpiry"
+        ).textContent =
+            "Lifetime membership";
+
+
+        document.getElementById(
+            "accountTrialExpiry"
+        ).textContent =
+            "Lifetime";
+
+    }
+
+
+    document.getElementById(
+        "signalStatus"
+    ).textContent =
+        "PREMIUM";
+
+}
+
+
+/* =====================================================
+   GENERIC MEMBERSHIP DISPLAY
+   ===================================================== */
+
+function updateMembershipDisplay(
+    plan,
+    status
+) {
+
+    document.getElementById(
+        "sidebarMembership"
+    ).textContent =
+        plan;
+
+
+    document.getElementById(
+        "userStatus"
+    ).textContent =
+        plan;
+
+
+    document.getElementById(
+        "accountMembership"
+    ).textContent =
+        plan;
+
+
+    document.getElementById(
+        "accountStatus"
+    ).textContent =
+        status;
+
+}
 
 
 /* =====================================================
@@ -2900,7 +2980,6 @@ function showPage(
 }
 
 
-
 /* =====================================================
    MEMBERSHIP
    ===================================================== */
@@ -2922,9 +3001,8 @@ function selectMembership(
 }
 
 
-
 /* =====================================================
-   AUTHENTICATED SESSION
+   GET AUTHENTICATED SESSION
    ===================================================== */
 
 async function getAuthenticatedSession() {
@@ -2962,7 +3040,6 @@ async function getAuthenticatedSession() {
     return data.session;
 
 }
-
 
 
 /* =====================================================
@@ -3046,6 +3123,7 @@ async function loadEconomicNews() {
                             SUPABASE_PUBLISHABLE_KEY
 
                     }
+
                 }
             );
 
@@ -3267,7 +3345,6 @@ async function loadEconomicNews() {
 }
 
 
-
 /* =====================================================
    NORMALIZE EVENT
    ===================================================== */
@@ -3341,7 +3418,6 @@ function normalizeEconomicEvent(
 }
 
 
-
 /* =====================================================
    NORMALIZE IMPACT
    ===================================================== */
@@ -3395,7 +3471,6 @@ function normalizeImpact(
 }
 
 
-
 /* =====================================================
    VALUE
    ===================================================== */
@@ -3420,7 +3495,6 @@ function valueOrDash(
     );
 
 }
-
 
 
 /* =====================================================
@@ -3466,7 +3540,6 @@ function getEventTimestamp(
     return timestamp;
 
 }
-
 
 
 /* =====================================================
@@ -3537,7 +3610,6 @@ function formatEventDate(
 }
 
 
-
 /* =====================================================
    DATE KEY
    ===================================================== */
@@ -3598,7 +3670,6 @@ function getDateKey(
     const year =
         date.getFullYear();
 
-
     const month =
         String(
             date.getMonth() + 1
@@ -3606,7 +3677,6 @@ function getDateKey(
             2,
             "0"
         );
-
 
     const day =
         String(
@@ -3626,7 +3696,6 @@ function getDateKey(
     );
 
 }
-
 
 
 /* =====================================================
@@ -3653,7 +3722,6 @@ function impactHTML(
     `;
 
 }
-
 
 
 /* =====================================================
@@ -3689,7 +3757,6 @@ function escapeHTML(
     );
 
 }
-
 
 
 /* =====================================================
@@ -3800,7 +3867,6 @@ function renderEconomicNews() {
 
     empty.style.display =
         "none";
-
 
     table.style.display =
         "block";
@@ -3914,9 +3980,8 @@ function renderEconomicNews() {
 }
 
 
-
 /* =====================================================
-   FILTERS
+   APPLY FILTERS
    ===================================================== */
 
 function applyNewsFilters() {
@@ -3926,6 +3991,9 @@ function applyNewsFilters() {
 }
 
 
+/* =====================================================
+   CLEAR FILTERS
+   ===================================================== */
 
 function clearNewsFilters() {
 
@@ -3944,147 +4012,6 @@ function clearNewsFilters() {
     renderEconomicNews();
 
 }
-
-
-
-/* =====================================================
-   PREMIUM DEMO DATA
-   ===================================================== */
-
-/*
-   IMPORTANT:
-
-   These are placeholder values only.
-
-   They are NOT live trading signals.
-
-   Next step is connecting these fields
-   to your actual AGUILACORE signal database/API.
-*/
-
-function updatePremiumDemo() {
-
-    /*
-     * Current XAUUSD display
-     */
-
-    document.getElementById(
-        "goldPrice"
-    ).textContent =
-        "XAUUSD";
-
-
-    /*
-     * Current bias
-     */
-
-    document.getElementById(
-        "goldBias"
-    ).textContent =
-        "WAIT";
-
-
-    document.getElementById(
-        "goldPageBias"
-    ).textContent =
-        "WAIT";
-
-
-    /*
-     * Signal state
-     */
-
-    document.getElementById(
-        "signalStatus"
-    ).textContent =
-        "WAIT";
-
-
-    document.getElementById(
-        "premiumDirection"
-    ).textContent =
-        "WAIT";
-
-
-    document.getElementById(
-        "goldPageSignal"
-    ).textContent =
-        "WAIT";
-
-
-    /*
-     * No fake entry/SL/TP
-     */
-
-    document.getElementById(
-        "signalEntry"
-    ).textContent =
-        "—";
-
-
-    document.getElementById(
-        "signalSL"
-    ).textContent =
-        "—";
-
-
-    document.getElementById(
-        "signalTP"
-    ).textContent =
-        "—";
-
-
-    document.getElementById(
-        "signalRisk"
-    ).textContent =
-        "—";
-
-}
-
-
-
-/* =====================================================
-   MULTI TIMEFRAME DEMO
-   ===================================================== */
-
-function initializeMTFBias() {
-
-    const timeframes = [
-        "M5",
-        "M15",
-        "M30",
-        "H1",
-        "H4",
-        "D1"
-    ];
-
-
-    timeframes.forEach(
-        function(tf) {
-
-            const element =
-                document.getElementById(
-                    "bias" + tf
-                );
-
-
-            if (
-                element
-            ) {
-
-                element.textContent =
-                    "WAIT";
-
-                element.className =
-                    "bias-value bias-neutral";
-
-            }
-
-        }
-    );
-
-}
-
 
 
 /* =====================================================
@@ -4116,15 +4043,44 @@ setInterval(
 );
 
 
-
 /* =====================================================
-   INITIALIZE PREMIUM TERMINAL
+   AUTO REFRESH MEMBERSHIP
    ===================================================== */
 
-updatePremiumDemo();
+setInterval(
+    async function() {
 
-initializeMTFBias();
+        try {
 
+            const {
+                data
+            } =
+                await supabaseClient.auth.getUser();
+
+
+            if (
+                data &&
+                data.user
+            ) {
+
+                await loadMembership(
+                    data.user.id
+                );
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Membership refresh error:",
+                error
+            );
+
+        }
+
+    },
+    60 * 1000
+);
 
 
 /* =====================================================
@@ -4142,6 +4098,13 @@ async function logoutUser() {
         "index.html";
 
 }
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+checkUser();
 
 </script>
 
