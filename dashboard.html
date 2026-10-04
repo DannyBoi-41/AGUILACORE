@@ -226,6 +226,18 @@ body {
     padding: 25px;
 }
 
+/* =====================================================
+   PAGES
+   ===================================================== */
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
 /* WELCOME */
 
 .welcome {
@@ -295,6 +307,64 @@ body {
     font-size: 11px;
 
     margin-top: 10px;
+}
+
+/* =====================================================
+   MARKETS
+   ===================================================== */
+
+.market-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.market-card {
+    background: #0b1728;
+
+    border: 1px solid #27384e;
+
+    padding: 22px;
+
+    min-height: 145px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.market-card:hover {
+    border-color: #c9a227;
+    transform: translateY(-2px);
+}
+
+.market-symbol {
+    color: #f5c84c;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.market-name {
+    color: #9ba9bb;
+
+    font-size: 12px;
+
+    margin-top: 8px;
+}
+
+.market-status {
+    color: #53d769;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    margin-top: 20px;
 }
 
 /* =====================================================
@@ -368,7 +438,8 @@ body {
         font-size: 18px;
     }
 
-    .dashboard-grid {
+    .dashboard-grid,
+    .market-grid {
         grid-template-columns: 1fr;
     }
 
@@ -394,6 +465,7 @@ body {
 
 <div class="app-layout">
 
+
 <!-- =====================================================
      LEFT PANEL
      ===================================================== -->
@@ -403,11 +475,11 @@ body {
     <div>
 
         <div class="sidebar-logo">
-            LOGO
+            AGUILACORE
         </div>
 
         <div class="sidebar-subtitle">
-            DITO
+            TRADING PLATFORM
         </div>
 
     </div>
@@ -436,23 +508,37 @@ body {
 
     <div class="sidebar-menu">
 
-        <div class="sidebar-item active">
+        <div
+            class="sidebar-item active"
+            id="dashboardMenu"
+            onclick="showPage('dashboardPage')">
+
             ▣ &nbsp; Dashboard
+
         </div>
 
-    <div  
-        class="sidebar-item"
-        onclick="showPage('marketsPage')">
 
-        ◉ &nbsp; Markets
-    </div>
+        <div
+            class="sidebar-item"
+            id="marketsMenu"
+            onclick="showPage('marketsPage')">
+
+            ◉ &nbsp; Markets
+
+        </div>
+
 
         <div class="sidebar-item">
+
             ◇ &nbsp; Signals
+
         </div>
 
+
         <div class="sidebar-item">
+
             ◎ &nbsp; Gold / XAUUSD
+
         </div>
 
     </div>
@@ -530,138 +616,291 @@ body {
     <div class="container">
 
 
-        <!-- WELCOME -->
+        <!-- =================================================
+             DASHBOARD PAGE
+             ================================================= -->
 
-        <div class="welcome">
+        <div
+            id="dashboardPage"
+            class="page active">
 
-            <div class="welcome-title">
-                Welcome to AGUILACORE
+
+            <div class="welcome">
+
+                <div class="welcome-title">
+                    Welcome to AGUILACORE
+                </div>
+
+                <div class="welcome-text">
+                    Your trading terminal is ready.
+                </div>
+
             </div>
 
-            <div class="welcome-text">
-                Your trading terminal is ready.
+
+            <div class="dashboard-grid">
+
+
+                <div class="card">
+
+                    <div class="card-title">
+                        ACCOUNT
+                    </div>
+
+                    <div
+                        class="card-value"
+                        id="userStatus">
+
+                        FREE
+
+                    </div>
+
+                    <div class="card-description">
+                        Current account status
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-title">
+                        MARKETS
+                    </div>
+
+                    <div class="card-value">
+                        13
+                    </div>
+
+                    <div class="card-description">
+                        Supported trading markets
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-title">
+                        SIGNALS
+                    </div>
+
+                    <div class="card-value">
+                        COMING SOON
+                    </div>
+
+                    <div class="card-description">
+                        AGUILACORE trading signals
+                    </div>
+
+                </div>
+
+
             </div>
+
+
+            <!-- ACCOUNT INFORMATION -->
+
+            <div class="account-box">
+
+                <div class="account-title">
+                    ACCOUNT INFORMATION
+                </div>
+
+
+                <div class="account-row">
+
+                    <span class="account-label">
+                        Email
+                    </span>
+
+                    <span
+                        class="account-value"
+                        id="userEmail">
+
+                        Loading...
+
+                    </span>
+
+                </div>
+
+
+                <div class="account-row">
+
+                    <span class="account-label">
+                        Membership
+                    </span>
+
+                    <span
+                        class="account-value"
+                        id="accountMembership">
+
+                        FREE
+
+                    </span>
+
+                </div>
+
+
+                <div class="account-row">
+
+                    <span class="account-label">
+                        Trading Signals
+                    </span>
+
+                    <span class="account-value">
+                        Not available yet
+                    </span>
+
+                </div>
+
+            </div>
+
 
         </div>
 
 
-        <!-- DASHBOARD CARDS -->
+        <!-- =================================================
+             MARKETS PAGE
+             ================================================= -->
 
-        <div class="dashboard-grid">
+        <div
+            id="marketsPage"
+            class="page">
 
 
-            <div class="card">
+            <div class="welcome">
 
-                <div class="card-title">
-                    ACCOUNT
+                <div class="welcome-title">
+                    Markets
                 </div>
 
-                <div
-                    class="card-value"
-                    id="userStatus">
-
-                    FREE
-
-                </div>
-
-                <div class="card-description">
-                    Current account status
+                <div class="welcome-text">
+                    Explore supported AGUILACORE markets.
                 </div>
 
             </div>
 
 
-            <div class="card">
+            <div class="market-grid">
 
-                <div class="card-title">
-                    MARKETS
+
+                <!-- XAUUSD -->
+
+                <div class="market-card">
+
+                    <div class="market-symbol">
+                        XAUUSD
+                    </div>
+
+                    <div class="market-name">
+                        Gold / US Dollar
+                    </div>
+
+                    <div class="market-status">
+                        ● AVAILABLE
+                    </div>
+
                 </div>
 
-                <div class="card-value">
-                    13
+
+                <!-- XAGUSD -->
+
+                <div class="market-card">
+
+                    <div class="market-symbol">
+                        XAGUSD
+                    </div>
+
+                    <div class="market-name">
+                        Silver / US Dollar
+                    </div>
+
+                    <div class="market-status">
+                        ● AVAILABLE
+                    </div>
+
                 </div>
 
-                <div class="card-description">
-                    Supported trading markets
+
+                <!-- EURUSD -->
+
+                <div class="market-card">
+
+                    <div class="market-symbol">
+                        EURUSD
+                    </div>
+
+                    <div class="market-name">
+                        Euro / US Dollar
+                    </div>
+
+                    <div class="market-status">
+                        ● AVAILABLE
+                    </div>
+
                 </div>
+
+
+                <!-- GBPUSD -->
+
+                <div class="market-card">
+
+                    <div class="market-symbol">
+                        GBPUSD
+                    </div>
+
+                    <div class="market-name">
+                        British Pound / US Dollar
+                    </div>
+
+                    <div class="market-status">
+                        ● AVAILABLE
+                    </div>
+
+                </div>
+
+
+                <!-- USDJPY -->
+
+                <div class="market-card">
+
+                    <div class="market-symbol">
+                        USDJPY
+                    </div>
+
+                    <div class="market-name">
+                        US Dollar / Japanese Yen
+                    </div>
+
+                    <div class="market-status">
+                        ● AVAILABLE
+                    </div>
+
+                </div>
+
+
+                <!-- NAS100 -->
+
+                <div class="market-card">
+
+                    <div class="market-symbol">
+                        NAS100
+                    </div>
+
+                    <div class="market-name">
+                        Nasdaq 100
+                    </div>
+
+                    <div class="market-status">
+                        ● AVAILABLE
+                    </div>
+
+                </div>
+
 
             </div>
 
-
-            <div class="card">
-
-                <div class="card-title">
-                    SIGNALS
-                </div>
-
-                <div class="card-value">
-                    COMING SOON
-                </div>
-
-                <div class="card-description">
-                    AGUILACORE trading signals
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- ACCOUNT INFORMATION -->
-
-        <div class="account-box">
-
-            <div class="account-title">
-                ACCOUNT INFORMATION
-            </div>
-
-
-            <div class="account-row">
-
-                <span class="account-label">
-                    Email
-                </span>
-
-                <span
-                    class="account-value"
-                    id="userEmail">
-
-                    Loading...
-
-                </span>
-
-            </div>
-
-
-            <div class="account-row">
-
-                <span class="account-label">
-                    Membership
-                </span>
-
-                <span
-                    class="account-value"
-                    id="accountMembership">
-
-                    FREE
-
-                </span>
-
-            </div>
-
-
-            <div class="account-row">
-
-                <span class="account-label">
-                    Trading Signals
-                </span>
-
-                <span class="account-value">
-                    Not available yet
-                </span>
-
-            </div>
 
         </div>
 
@@ -677,6 +916,7 @@ body {
 
     </div>
 
+
 </div>
 
 </div>
@@ -688,7 +928,9 @@ body {
 
 <script>
 
-/* SUPABASE */
+/* =====================================================
+   SUPABASE
+   ===================================================== */
 
 const SUPABASE_URL =
     "https://xgthdbuybfynumprkqgm.supabase.co";
@@ -702,6 +944,63 @@ const supabaseClient =
         SUPABASE_URL,
         SUPABASE_PUBLISHABLE_KEY
     );
+
+
+/* =====================================================
+   PAGE SWITCHING
+   ===================================================== */
+
+function showPage(pageId) {
+
+    const pages =
+        document.querySelectorAll(".page");
+
+    pages.forEach(function(page) {
+
+        page.classList.remove("active");
+
+    });
+
+
+    const selectedPage =
+        document.getElementById(pageId);
+
+    if (selectedPage) {
+
+        selectedPage.classList.add("active");
+
+    }
+
+
+    /* MENU ACTIVE STATE */
+
+    document
+        .getElementById("dashboardMenu")
+        .classList.remove("active");
+
+    document
+        .getElementById("marketsMenu")
+        .classList.remove("active");
+
+
+    if (pageId === "dashboardPage") {
+
+        document
+            .getElementById("dashboardMenu")
+            .classList.add("active");
+
+    }
+
+
+    if (pageId === "marketsPage") {
+
+        document
+            .getElementById("marketsMenu")
+            .classList.add("active");
+
+    }
+
+}
 
 
 /* =====================================================
