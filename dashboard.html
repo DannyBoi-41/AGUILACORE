@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AGUILA Dashboard</title>
+<title>AGUILACORE Dashboard</title>
 
 <style>
 
@@ -64,7 +64,9 @@ body {
     letter-spacing: 1px;
 }
 
-/* MEMBERSHIP */
+/* =====================================================
+   MEMBERSHIP
+   ===================================================== */
 
 .membership-box {
     margin-top: 25px;
@@ -77,18 +79,25 @@ body {
 
 .membership-label {
     color: #64748b;
+
     font-size: 10px;
+
     letter-spacing: 1px;
 }
 
 .membership-value {
     color: #53d769;
+
     font-size: 18px;
+
     font-weight: bold;
+
     margin-top: 6px;
 }
 
-/* MENU */
+/* =====================================================
+   MENU
+   ===================================================== */
 
 .sidebar-menu {
     margin-top: 25px;
@@ -98,6 +107,7 @@ body {
     color: #9ba9bb;
 
     padding: 12px 10px;
+
     margin-bottom: 4px;
 
     font-size: 13px;
@@ -105,21 +115,49 @@ body {
     border-left: 2px solid transparent;
 
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
 .sidebar-item:hover {
     color: #f5c84c;
+
     background: #07111f;
+
     border-left: 2px solid #c9a227;
 }
 
 .sidebar-item.active {
     color: #f5c84c;
+
     background: #07111f;
+
     border-left: 2px solid #c9a227;
 }
 
-/* ACCOUNT */
+/* PAID MENU */
+
+.paid-menu {
+    position: relative;
+}
+
+.paid-badge {
+    float: right;
+
+    color: #f5c84c;
+
+    font-size: 9px;
+
+    border: 1px solid #c9a227;
+
+    padding: 2px 5px;
+
+    border-radius: 3px;
+}
+
+/* =====================================================
+   ACCOUNT
+   ===================================================== */
 
 .sidebar-spacer {
     flex: 1;
@@ -129,26 +167,35 @@ body {
     border-top: 1px solid #27384e;
 
     padding-top: 15px;
+
     margin-top: 20px;
 }
 
 .sidebar-account-label {
     color: #64748b;
+
     font-size: 10px;
+
     letter-spacing: 1px;
+
     margin-bottom: 7px;
 }
 
 .sidebar-email {
     color: #9ba9bb;
+
     font-size: 11px;
 
     overflow: hidden;
+
     text-overflow: ellipsis;
+
     white-space: nowrap;
 }
 
-/* LOGOUT */
+/* =====================================================
+   LOGOUT
+   ===================================================== */
 
 .sidebar-logout {
     width: 100%;
@@ -156,6 +203,7 @@ body {
     margin-top: 12px;
 
     background: transparent;
+
     color: #f5c84c;
 
     border: 1px solid #c9a227;
@@ -165,11 +213,13 @@ body {
     cursor: pointer;
 
     font-size: 11px;
+
     font-weight: bold;
 }
 
 .sidebar-logout:hover {
     background: #c9a227;
+
     color: #07111f;
 }
 
@@ -179,48 +229,65 @@ body {
 
 .main-content {
     flex: 1;
+
     min-width: 0;
 }
 
-/* HEADER */
+/* =====================================================
+   HEADER
+   ===================================================== */
 
 .header {
     background: #0b1728;
+
     border-bottom: 1px solid #27384e;
 
     padding: 18px 25px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 }
 
 .logo {
     font-size: 25px;
+
     font-weight: bold;
+
     letter-spacing: 2px;
 }
 
 .subtitle {
     color: #9ba9bb;
+
     font-size: 12px;
+
     margin-top: 5px;
+
     letter-spacing: 1px;
 }
 
 .user-area {
     display: flex;
+
     align-items: center;
+
     gap: 15px;
 }
 
 .online {
     color: #53d769;
+
     font-size: 12px;
+
     font-weight: bold;
 }
 
-/* MAIN CONTAINER */
+/* =====================================================
+   MAIN CONTAINER
+   ===================================================== */
 
 .container {
     padding: 25px;
@@ -238,10 +305,13 @@ body {
     display: block;
 }
 
-/* WELCOME */
+/* =====================================================
+   WELCOME
+   ===================================================== */
 
 .welcome {
     background: #0b1728;
+
     border: 1px solid #27384e;
 
     padding: 25px;
@@ -251,12 +321,15 @@ body {
 
 .welcome-title {
     font-size: 24px;
+
     font-weight: bold;
+
     margin-bottom: 8px;
 }
 
 .welcome-text {
     color: #9ba9bb;
+
     font-size: 13px;
 }
 
@@ -287,6 +360,7 @@ body {
     color: #9ba9bb;
 
     font-size: 12px;
+
     font-weight: bold;
 
     letter-spacing: 1px;
@@ -298,6 +372,7 @@ body {
     color: #f5c84c;
 
     font-size: 22px;
+
     font-weight: bold;
 }
 
@@ -307,6 +382,50 @@ body {
     font-size: 11px;
 
     margin-top: 10px;
+}
+
+/* =====================================================
+   ACCOUNT INFORMATION
+   ===================================================== */
+
+.account-box {
+    margin-top: 20px;
+
+    background: #0b1728;
+
+    border: 1px solid #27384e;
+
+    padding: 22px;
+}
+
+.account-title {
+    color: #f5c84c;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+.account-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid #17283d;
+
+    padding: 10px 0;
+
+    font-size: 13px;
+}
+
+.account-label {
+    color: #9ba9bb;
+}
+
+.account-value {
+    color: white;
 }
 
 /* =====================================================
@@ -338,6 +457,7 @@ body {
 
 .market-card:hover {
     border-color: #c9a227;
+
     transform: translateY(-2px);
 }
 
@@ -345,6 +465,7 @@ body {
     color: #f5c84c;
 
     font-size: 18px;
+
     font-weight: bold;
 
     letter-spacing: 1px;
@@ -362,52 +483,161 @@ body {
     color: #53d769;
 
     font-size: 10px;
+
     font-weight: bold;
 
     margin-top: 20px;
 }
 
 /* =====================================================
-   ACCOUNT INFORMATION
+   PAID SIGNAL PAGE
    ===================================================== */
 
-.account-box {
-    margin-top: 20px;
+.signal-header {
+    background: #0b1728;
 
+    border: 1px solid #c9a227;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+}
+
+.signal-title {
+    color: #f5c84c;
+
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+.signal-subtitle {
+    color: #9ba9bb;
+
+    font-size: 13px;
+
+    margin-top: 8px;
+}
+
+.premium-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.premium-card {
     background: #0b1728;
 
     border: 1px solid #27384e;
 
     padding: 22px;
+
+    min-height: 150px;
 }
 
-.account-title {
-    color: #f5c84c;
+.premium-title {
+    color: #9ba9bb;
 
-    font-size: 16px;
+    font-size: 11px;
+
     font-weight: bold;
 
-    margin-bottom: 15px;
+    letter-spacing: 1px;
 }
 
-.account-row {
-    display: flex;
+.premium-value {
+    color: #f5c84c;
 
-    justify-content: space-between;
+    font-size: 22px;
 
-    border-bottom: 1px solid #17283d;
+    font-weight: bold;
 
-    padding: 10px 0;
+    margin-top: 15px;
+}
+
+.premium-description {
+    color: #64748b;
+
+    font-size: 11px;
+
+    margin-top: 8px;
+}
+
+/* =====================================================
+   GOLD PAGE
+   ===================================================== */
+
+.gold-box {
+    background: #0b1728;
+
+    border: 1px solid #c9a227;
+
+    padding: 25px;
+}
+
+.gold-title {
+    color: #f5c84c;
+
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+.gold-description {
+    color: #9ba9bb;
 
     font-size: 13px;
+
+    margin-top: 8px;
 }
 
-.account-label {
+/* =====================================================
+   ACCESS DENIED
+   ===================================================== */
+
+.access-denied {
+    background: #0b1728;
+
+    border: 1px solid #8b2635;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+.access-denied-title {
+    color: #f5c84c;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+.access-denied-text {
     color: #9ba9bb;
+
+    font-size: 13px;
+
+    margin-top: 10px;
 }
 
-.account-value {
-    color: white;
+.upgrade-button {
+    margin-top: 20px;
+
+    background: transparent;
+
+    color: #f5c84c;
+
+    border: 1px solid #c9a227;
+
+    padding: 10px 20px;
+
+    cursor: pointer;
+
+    font-weight: bold;
 }
 
 /* =====================================================
@@ -439,7 +669,8 @@ body {
     }
 
     .dashboard-grid,
-    .market-grid {
+    .market-grid,
+    .premium-grid {
         grid-template-columns: 1fr;
     }
 
@@ -467,7 +698,7 @@ body {
 
 
 <!-- =====================================================
-     LEFT PANEL
+     LEFT SIDEBAR
      ===================================================== -->
 
 <aside class="sidebar">
@@ -508,6 +739,9 @@ body {
 
     <div class="sidebar-menu">
 
+
+        <!-- DASHBOARD -->
+
         <div
             class="sidebar-item active"
             id="dashboardMenu"
@@ -517,6 +751,8 @@ body {
 
         </div>
 
+
+        <!-- MARKETS -->
 
         <div
             class="sidebar-item"
@@ -528,18 +764,37 @@ body {
         </div>
 
 
-        <div class="sidebar-item">
+        <!-- SIGNALS - PAID -->
+
+        <div
+            class="sidebar-item paid-menu"
+            id="signalsMenu"
+            onclick="openPaidPage('signalsPage')">
 
             ◇ &nbsp; Signals
 
+            <span class="paid-badge">
+                PAID
+            </span>
+
         </div>
 
 
-        <div class="sidebar-item">
+        <!-- GOLD - PAID -->
+
+        <div
+            class="sidebar-item paid-menu"
+            id="goldMenu"
+            onclick="openPaidPage('goldPage')">
 
             ◎ &nbsp; Gold / XAUUSD
 
+            <span class="paid-badge">
+                PAID
+            </span>
+
         </div>
+
 
     </div>
 
@@ -686,11 +941,11 @@ body {
                     </div>
 
                     <div class="card-value">
-                        COMING SOON
+                        PAID ONLY
                     </div>
 
                     <div class="card-description">
-                        AGUILACORE trading signals
+                        Premium AGUILACORE signals
                     </div>
 
                 </div>
@@ -749,7 +1004,7 @@ body {
                     </span>
 
                     <span class="account-value">
-                        Not available yet
+                        PAID MEMBERS ONLY
                     </span>
 
                 </div>
@@ -785,8 +1040,6 @@ body {
             <div class="market-grid">
 
 
-                <!-- XAUUSD -->
-
                 <div class="market-card">
 
                     <div class="market-symbol">
@@ -803,8 +1056,6 @@ body {
 
                 </div>
 
-
-                <!-- XAGUSD -->
 
                 <div class="market-card">
 
@@ -823,8 +1074,6 @@ body {
                 </div>
 
 
-                <!-- EURUSD -->
-
                 <div class="market-card">
 
                     <div class="market-symbol">
@@ -841,8 +1090,6 @@ body {
 
                 </div>
 
-
-                <!-- GBPUSD -->
 
                 <div class="market-card">
 
@@ -861,8 +1108,6 @@ body {
                 </div>
 
 
-                <!-- USDJPY -->
-
                 <div class="market-card">
 
                     <div class="market-symbol">
@@ -880,8 +1125,6 @@ body {
                 </div>
 
 
-                <!-- NAS100 -->
-
                 <div class="market-card">
 
                     <div class="market-symbol">
@@ -898,6 +1141,146 @@ body {
 
                 </div>
 
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             SIGNALS PAGE
+             ================================================= -->
+
+        <div
+            id="signalsPage"
+            class="page">
+
+
+            <div class="signal-header">
+
+                <div class="signal-title">
+                    AGUILACORE SIGNALS
+                </div>
+
+                <div class="signal-subtitle">
+                    Premium trading signals for paid members.
+                </div>
+
+            </div>
+
+
+            <div class="premium-grid">
+
+
+                <div class="premium-card">
+
+                    <div class="premium-title">
+                        MARKET
+                    </div>
+
+                    <div class="premium-value">
+                        XAUUSD
+                    </div>
+
+                    <div class="premium-description">
+                        Gold trading signals
+                    </div>
+
+                </div>
+
+
+                <div class="premium-card">
+
+                    <div class="premium-title">
+                        SIGNAL
+                    </div>
+
+                    <div class="premium-value">
+                        WAITING
+                    </div>
+
+                    <div class="premium-description">
+                        Signal engine
+                    </div>
+
+                </div>
+
+
+                <div class="premium-card">
+
+                    <div class="premium-title">
+                        ACCESS
+                    </div>
+
+                    <div class="premium-value">
+                        PREMIUM
+                    </div>
+
+                    <div class="premium-description">
+                        Paid membership
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             GOLD PAGE
+             ================================================= -->
+
+        <div
+            id="goldPage"
+            class="page">
+
+
+            <div class="gold-box">
+
+                <div class="gold-title">
+                    GOLD / XAUUSD
+                </div>
+
+                <div class="gold-description">
+                    AGUILACORE premium Gold trading terminal.
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             ACCESS DENIED PAGE
+             ================================================= -->
+
+        <div
+            id="accessDeniedPage"
+            class="page">
+
+
+            <div class="access-denied">
+
+                <div class="access-denied-title">
+                    PAID MEMBERSHIP REQUIRED
+                </div>
+
+                <div class="access-denied-text">
+                    This section is available only to AGUILACORE paid members.
+                </div>
+
+                <button
+                    class="upgrade-button"
+                    onclick="showPage('dashboardPage')">
+
+                    BACK TO DASHBOARD
+
+                </button>
 
             </div>
 
@@ -947,6 +1330,28 @@ const supabaseClient =
 
 
 /* =====================================================
+   CURRENT MEMBERSHIP
+   ===================================================== */
+
+/*
+   TEMPORARY:
+
+   For now every registered user is FREE.
+
+   Later we will read this value from
+   the Supabase profiles table.
+
+   Possible values:
+
+   FREE
+   PAID
+   ADMIN
+*/
+
+let currentMembership = "FREE";
+
+
+/* =====================================================
    PAGE SWITCHING
    ===================================================== */
 
@@ -954,6 +1359,7 @@ function showPage(pageId) {
 
     const pages =
         document.querySelectorAll(".page");
+
 
     pages.forEach(function(page) {
 
@@ -965,6 +1371,7 @@ function showPage(pageId) {
     const selectedPage =
         document.getElementById(pageId);
 
+
     if (selectedPage) {
 
         selectedPage.classList.add("active");
@@ -972,7 +1379,7 @@ function showPage(pageId) {
     }
 
 
-    /* MENU ACTIVE STATE */
+    /* REMOVE ACTIVE FROM MENU */
 
     document
         .getElementById("dashboardMenu")
@@ -982,6 +1389,16 @@ function showPage(pageId) {
         .getElementById("marketsMenu")
         .classList.remove("active");
 
+    document
+        .getElementById("signalsMenu")
+        .classList.remove("active");
+
+    document
+        .getElementById("goldMenu")
+        .classList.remove("active");
+
+
+    /* ACTIVE MENU */
 
     if (pageId === "dashboardPage") {
 
@@ -999,6 +1416,49 @@ function showPage(pageId) {
             .classList.add("active");
 
     }
+
+
+    if (pageId === "signalsPage") {
+
+        document
+            .getElementById("signalsMenu")
+            .classList.add("active");
+
+    }
+
+
+    if (pageId === "goldPage") {
+
+        document
+            .getElementById("goldMenu")
+            .classList.add("active");
+
+    }
+
+}
+
+
+/* =====================================================
+   PAID PAGE ACCESS
+   ===================================================== */
+
+function openPaidPage(pageId) {
+
+    /*
+       Only PAID members can enter
+       Signals / Gold premium pages.
+    */
+
+    if (currentMembership !== "PAID") {
+
+        showPage("accessDeniedPage");
+
+        return;
+
+    }
+
+
+    showPage(pageId);
 
 }
 
@@ -1042,22 +1502,25 @@ async function checkUser() {
 
     /* MEMBERSHIP */
 
+    currentMembership = "FREE";
+
+
     document.getElementById(
         "sidebarMembership"
     ).textContent =
-        "FREE";
+        currentMembership;
 
 
     document.getElementById(
         "accountMembership"
     ).textContent =
-        "FREE";
+        currentMembership;
 
 
     document.getElementById(
         "userStatus"
     ).textContent =
-        "FREE";
+        currentMembership;
 
 }
 
