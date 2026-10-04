@@ -131,17 +131,13 @@ body {
 
 .sidebar-item:hover {
     color: #f5c84c;
-
     background: #07111f;
-
     border-left: 2px solid #c9a227;
 }
 
 .sidebar-item.active {
     color: #f5c84c;
-
     background: #07111f;
-
     border-left: 2px solid #c9a227;
 }
 
@@ -219,7 +215,6 @@ body {
 
 .main-content {
     flex: 1;
-
     min-width: 0;
 }
 
@@ -554,7 +549,7 @@ body {
 }
 
 /* =====================================================
-   GENERIC CONTENT BOX
+   GENERIC CONTENT
    ===================================================== */
 
 .content-box {
@@ -605,6 +600,120 @@ body {
     font-weight: bold;
 }
 
+/* =====================================================
+   NEWS FILTER
+   ===================================================== */
+
+.news-filter-box {
+    background: #0b1728;
+
+    border: 1px solid #27384e;
+
+    padding: 18px;
+
+    margin-bottom: 20px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.filter-label {
+    color: #9ba9bb;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.filter-control {
+    background: #07111f;
+
+    color: white;
+
+    border: 1px solid #27384e;
+
+    padding: 10px 12px;
+
+    min-width: 170px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 12px;
+
+    outline: none;
+}
+
+.filter-control:focus {
+    border-color: #c9a227;
+}
+
+.filter-button {
+    background: transparent;
+
+    color: #f5c84c;
+
+    border: 1px solid #c9a227;
+
+    padding: 10px 18px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    height: 36px;
+}
+
+.filter-button:hover {
+    background: #c9a227;
+
+    color: #07111f;
+}
+
+.filter-clear {
+    color: #9ba9bb;
+
+    border-color: #27384e;
+}
+
+.filter-clear:hover {
+    background: #27384e;
+
+    color: white;
+}
+
+/* =====================================================
+   FILTER STATUS
+   ===================================================== */
+
+.filter-status {
+    color: #64748b;
+
+    font-size: 11px;
+
+    margin-bottom: 12px;
+}
+
+/* =====================================================
+   ECONOMIC CALENDAR
+   ===================================================== */
+
 .economic-calendar {
     background: #0b1728;
 
@@ -616,7 +725,13 @@ body {
 .calendar-header {
     display: grid;
 
-    grid-template-columns: 90px 1fr 100px 100px 100px;
+    grid-template-columns:
+        100px
+        1fr
+        100px
+        110px
+        100px
+        100px;
 
     background: #101e31;
 
@@ -636,7 +751,13 @@ body {
 .calendar-row {
     display: grid;
 
-    grid-template-columns: 90px 1fr 100px 100px 100px;
+    grid-template-columns:
+        100px
+        1fr
+        100px
+        110px
+        100px
+        100px;
 
     padding: 14px 12px;
 
@@ -649,6 +770,10 @@ body {
 
 .calendar-row:hover {
     background: #0d1b2e;
+}
+
+.calendar-date {
+    color: #64748b;
 }
 
 .calendar-time {
@@ -668,55 +793,37 @@ body {
 }
 
 .calendar-impact {
+    font-weight: bold;
+}
+
+.impact-high {
+    color: #ff5555;
+}
+
+.impact-medium {
     color: #f5c84c;
+}
+
+.impact-low {
+    color: #53d769;
 }
 
 .calendar-value {
     color: #9ba9bb;
 }
 
-.news-source-box {
-    margin-top: 20px;
+/* =====================================================
+   NO RESULTS
+   ===================================================== */
 
-    background: #07111f;
+.no-news {
+    padding: 35px;
 
-    border: 1px solid #27384e;
+    text-align: center;
 
-    padding: 18px;
-}
-
-.news-source-text {
     color: #64748b;
 
-    font-size: 11px;
-
-    line-height: 1.6;
-}
-
-.news-button {
-    display: inline-block;
-
-    margin-top: 15px;
-
-    background: transparent;
-
-    color: #f5c84c;
-
-    border: 1px solid #c9a227;
-
-    padding: 10px 15px;
-
-    text-decoration: none;
-
-    font-size: 11px;
-
-    font-weight: bold;
-}
-
-.news-button:hover {
-    background: #c9a227;
-
-    color: #07111f;
+    font-size: 13px;
 }
 
 /* =====================================================
@@ -737,7 +844,7 @@ body {
    MOBILE
    ===================================================== */
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
 
     .membership-page-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -749,14 +856,10 @@ body {
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
     .sidebar {
-        width: 190px;
-    }
-
-    .sidebar-logo {
-        font-size: 18px;
+        width: 200px;
     }
 
     .dashboard-grid {
@@ -778,11 +881,18 @@ body {
     .calendar-header,
     .calendar-row {
         grid-template-columns:
+            80px
+            180px
             70px
-            1fr
-            70px
+            90px
             80px
             80px;
+
+        min-width: 590px;
+    }
+
+    .economic-calendar {
+        overflow-x: auto;
     }
 
 }
@@ -815,8 +925,12 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .economic-calendar {
-        overflow-x: auto;
+    .economic-header {
+        display: block;
+    }
+
+    .economic-status {
+        margin-top: 10px;
     }
 
 }
@@ -917,8 +1031,6 @@ body {
         </div>
 
 
-        <!-- ECONOMIC NEWS -->
-
         <div
             class="sidebar-item"
             id="economicNewsMenu"
@@ -1006,7 +1118,7 @@ body {
 
 
         <!-- =================================================
-             DASHBOARD PAGE
+             DASHBOARD
              ================================================= -->
 
         <div
@@ -1083,7 +1195,6 @@ body {
 
                 </div>
 
-
             </div>
 
 
@@ -1146,7 +1257,7 @@ body {
 
 
         <!-- =================================================
-             MARKETS PAGE
+             MARKETS
              ================================================= -->
 
         <div
@@ -1187,7 +1298,7 @@ body {
 
 
         <!-- =================================================
-             SIGNALS PAGE
+             SIGNALS
              ================================================= -->
 
         <div
@@ -1219,7 +1330,7 @@ body {
 
 
         <!-- =================================================
-             GOLD PAGE
+             GOLD
              ================================================= -->
 
         <div
@@ -1251,7 +1362,7 @@ body {
 
 
         <!-- =================================================
-             MEMBERSHIP PAGE
+             MEMBERSHIP
              ================================================= -->
 
         <div
@@ -1360,7 +1471,7 @@ body {
 
 
         <!-- =================================================
-             ECONOMIC NEWS PAGE
+             ECONOMIC NEWS
              ================================================= -->
 
         <div
@@ -1382,20 +1493,115 @@ body {
                 </div>
 
                 <div class="economic-status">
-                    ● LIVE CALENDAR
+                    ● ECONOMIC CALENDAR
                 </div>
 
             </div>
 
 
-            <!-- ECONOMIC CALENDAR -->
+            <!-- =================================================
+                 FILTERS
+                 ================================================= -->
+
+            <div class="news-filter-box">
+
+
+                <!-- DATE -->
+
+                <div class="filter-group">
+
+                    <label
+                        class="filter-label"
+                        for="newsDate">
+
+                        DATE
+
+                    </label>
+
+                    <input
+                        type="date"
+                        id="newsDate"
+                        class="filter-control">
+
+                </div>
+
+
+                <!-- IMPACT -->
+
+                <div class="filter-group">
+
+                    <label
+                        class="filter-label"
+                        for="impactFilter">
+
+                        IMPACT
+
+                    </label>
+
+                    <select
+                        id="impactFilter"
+                        class="filter-control">
+
+                        <option value="ALL">
+                            ALL IMPACT
+                        </option>
+
+                        <option value="HIGH">
+                            HIGH IMPACT
+                        </option>
+
+                        <option value="MEDIUM">
+                            MEDIUM IMPACT
+                        </option>
+
+                        <option value="LOW">
+                            LOW IMPACT
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    class="filter-button"
+                    onclick="filterEconomicNews()">
+
+                    APPLY FILTER
+
+                </button>
+
+
+                <button
+                    class="filter-button filter-clear"
+                    onclick="clearNewsFilters()">
+
+                    CLEAR
+
+                </button>
+
+            </div>
+
+
+            <div
+                class="filter-status"
+                id="filterStatus">
+
+                Showing all economic events
+
+            </div>
+
+
+            <!-- =================================================
+                 CALENDAR
+                 ================================================= -->
 
             <div class="economic-calendar">
 
                 <div class="calendar-header">
 
                     <div>
-                        TIME
+                        DATE
                     </div>
 
                     <div>
@@ -1411,116 +1617,270 @@ body {
                     </div>
 
                     <div>
+                        TIME
+                    </div>
+
+                    <div>
                         ACTUAL
                     </div>
 
                 </div>
 
 
-                <div class="calendar-row">
+                <div id="economicNewsRows">
 
-                    <div class="calendar-time">
-                        TODAY
+
+                    <!-- HIGH -->
+
+                    <div
+                        class="calendar-row news-row"
+                        data-date="2026-10-04"
+                        data-impact="HIGH">
+
+                        <div class="calendar-date">
+                            Oct 04
+                        </div>
+
+                        <div class="calendar-event">
+                            Non-Farm Payrolls
+                        </div>
+
+                        <div class="calendar-currency">
+                            USD
+                        </div>
+
+                        <div class="calendar-impact impact-high">
+                            HIGH
+                        </div>
+
+                        <div class="calendar-time">
+                            20:30
+                        </div>
+
+                        <div class="calendar-value">
+                            —
+                        </div>
+
                     </div>
 
-                    <div class="calendar-event">
-                        Economic events
+
+                    <!-- MEDIUM -->
+
+                    <div
+                        class="calendar-row news-row"
+                        data-date="2026-10-04"
+                        data-impact="MEDIUM">
+
+                        <div class="calendar-date">
+                            Oct 04
+                        </div>
+
+                        <div class="calendar-event">
+                            Manufacturing PMI
+                        </div>
+
+                        <div class="calendar-currency">
+                            EUR
+                        </div>
+
+                        <div class="calendar-impact impact-medium">
+                            MEDIUM
+                        </div>
+
+                        <div class="calendar-time">
+                            16:00
+                        </div>
+
+                        <div class="calendar-value">
+                            —
+                        </div>
+
                     </div>
 
-                    <div class="calendar-currency">
-                        USD
+
+                    <!-- LOW -->
+
+                    <div
+                        class="calendar-row news-row"
+                        data-date="2026-10-04"
+                        data-impact="LOW">
+
+                        <div class="calendar-date">
+                            Oct 04
+                        </div>
+
+                        <div class="calendar-event">
+                            Consumer Confidence
+                        </div>
+
+                        <div class="calendar-currency">
+                            GBP
+                        </div>
+
+                        <div class="calendar-impact impact-low">
+                            LOW
+                        </div>
+
+                        <div class="calendar-time">
+                            18:00
+                        </div>
+
+                        <div class="calendar-value">
+                            —
+                        </div>
+
                     </div>
 
-                    <div class="calendar-impact">
-                        HIGH
+
+                    <!-- HIGH -->
+
+                    <div
+                        class="calendar-row news-row"
+                        data-date="2026-10-05"
+                        data-impact="HIGH">
+
+                        <div class="calendar-date">
+                            Oct 05
+                        </div>
+
+                        <div class="calendar-event">
+                            Interest Rate Decision
+                        </div>
+
+                        <div class="calendar-currency">
+                            USD
+                        </div>
+
+                        <div class="calendar-impact impact-high">
+                            HIGH
+                        </div>
+
+                        <div class="calendar-time">
+                            22:00
+                        </div>
+
+                        <div class="calendar-value">
+                            —
+                        </div>
+
                     </div>
 
-                    <div class="calendar-value">
-                        —
+
+                    <!-- MEDIUM -->
+
+                    <div
+                        class="calendar-row news-row"
+                        data-date="2026-10-05"
+                        data-impact="MEDIUM">
+
+                        <div class="calendar-date">
+                            Oct 05
+                        </div>
+
+                        <div class="calendar-event">
+                            Retail Sales
+                        </div>
+
+                        <div class="calendar-currency">
+                            AUD
+                        </div>
+
+                        <div class="calendar-impact impact-medium">
+                            MEDIUM
+                        </div>
+
+                        <div class="calendar-time">
+                            09:30
+                        </div>
+
+                        <div class="calendar-value">
+                            —
+                        </div>
+
                     </div>
+
+
+                    <!-- LOW -->
+
+                    <div
+                        class="calendar-row news-row"
+                        data-date="2026-10-06"
+                        data-impact="LOW">
+
+                        <div class="calendar-date">
+                            Oct 06
+                        </div>
+
+                        <div class="calendar-event">
+                            Trade Balance
+                        </div>
+
+                        <div class="calendar-currency">
+                            JPY
+                        </div>
+
+                        <div class="calendar-impact impact-low">
+                            LOW
+                        </div>
+
+                        <div class="calendar-time">
+                            08:50
+                        </div>
+
+                        <div class="calendar-value">
+                            —
+                        </div>
+
+                    </div>
+
+
+                    <!-- HIGH -->
+
+                    <div
+                        class="calendar-row news-row"
+                        data-date="2026-10-07"
+                        data-impact="HIGH">
+
+                        <div class="calendar-date">
+                            Oct 07
+                        </div>
+
+                        <div class="calendar-event">
+                            CPI Inflation
+                        </div>
+
+                        <div class="calendar-currency">
+                            USD
+                        </div>
+
+                        <div class="calendar-impact impact-high">
+                            HIGH
+                        </div>
+
+                        <div class="calendar-time">
+                            20:30
+                        </div>
+
+                        <div class="calendar-value">
+                            —
+                        </div>
+
+                    </div>
+
 
                 </div>
 
 
-                <div class="calendar-row">
+                <!-- NO RESULTS -->
 
-                    <div class="calendar-time">
-                        TODAY
-                    </div>
+                <div
+                    class="no-news"
+                    id="noNews"
+                    style="display:none;">
 
-                    <div class="calendar-event">
-                        Economic calendar
-                    </div>
-
-                    <div class="calendar-currency">
-                        EUR
-                    </div>
-
-                    <div class="calendar-impact">
-                        MEDIUM
-                    </div>
-
-                    <div class="calendar-value">
-                        —
-                    </div>
+                    No economic events match your filters.
 
                 </div>
-
-
-                <div class="calendar-row">
-
-                    <div class="calendar-time">
-                        TODAY
-                    </div>
-
-                    <div class="calendar-event">
-                        Market catalyst
-                    </div>
-
-                    <div class="calendar-currency">
-                        GBP
-                    </div>
-
-                    <div class="calendar-impact">
-                        HIGH
-                    </div>
-
-                    <div class="calendar-value">
-                        —
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- SOURCE -->
-
-            <div class="news-source-box">
-
-                <div class="news-source-text">
-
-                    AGUILACORE Economic News is designed to
-                    monitor major economic events and potential
-                    market catalysts.
-
-                    <br><br>
-
-                    For the complete live economic calendar,
-                    use the official Investing.com calendar.
-
-                </div>
-
-
-                <a
-                    class="news-button"
-                    href="https://www.investing.com/economic-calendar"
-                    target="_blank">
-
-                    VIEW OFFICIAL ECONOMIC CALENDAR →
-
-                </a>
 
             </div>
 
@@ -1635,10 +1995,9 @@ checkUser();
 
 function showPage(pageId) {
 
-    /* HIDE ALL PAGES */
-
     const pages =
         document.querySelectorAll(".page");
+
 
     pages.forEach(function(page) {
 
@@ -1647,10 +2006,9 @@ function showPage(pageId) {
     });
 
 
-    /* SHOW SELECTED PAGE */
-
     const selectedPage =
         document.getElementById(pageId);
+
 
     if (selectedPage) {
 
@@ -1659,10 +2017,9 @@ function showPage(pageId) {
     }
 
 
-    /* REMOVE ACTIVE FROM ALL MENU ITEMS */
-
     const menuItems =
         document.querySelectorAll(".sidebar-item");
+
 
     menuItems.forEach(function(item) {
 
@@ -1670,8 +2027,6 @@ function showPage(pageId) {
 
     });
 
-
-    /* ACTIVE MENU */
 
     if (pageId === "dashboardPage") {
 
@@ -1716,6 +2071,207 @@ function showPage(pageId) {
         ).classList.add("active");
 
     }
+
+}
+
+
+/* =====================================================
+   ECONOMIC NEWS FILTER
+   ===================================================== */
+
+function filterEconomicNews() {
+
+    const selectedDate =
+        document.getElementById(
+            "newsDate"
+        ).value;
+
+
+    const selectedImpact =
+        document.getElementById(
+            "impactFilter"
+        ).value;
+
+
+    const rows =
+        document.querySelectorAll(
+            ".news-row"
+        );
+
+
+    let visibleCount = 0;
+
+
+    rows.forEach(function(row) {
+
+        const rowDate =
+            row.getAttribute(
+                "data-date"
+            );
+
+
+        const rowImpact =
+            row.getAttribute(
+                "data-impact"
+            );
+
+
+        let dateMatch = true;
+
+        let impactMatch = true;
+
+
+        /* DATE FILTER */
+
+        if (
+            selectedDate &&
+            rowDate !== selectedDate
+        ) {
+
+            dateMatch = false;
+
+        }
+
+
+        /* IMPACT FILTER */
+
+        if (
+            selectedImpact !== "ALL" &&
+            rowImpact !== selectedImpact
+        ) {
+
+            impactMatch = false;
+
+        }
+
+
+        /* SHOW / HIDE */
+
+        if (
+            dateMatch &&
+            impactMatch
+        ) {
+
+            row.style.display =
+                "grid";
+
+            visibleCount++;
+
+        } else {
+
+            row.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    const noNews =
+        document.getElementById(
+            "noNews"
+        );
+
+
+    if (visibleCount === 0) {
+
+        noNews.style.display =
+            "block";
+
+    } else {
+
+        noNews.style.display =
+            "none";
+
+    }
+
+
+    /* STATUS */
+
+    let statusText =
+        "Showing " +
+        visibleCount +
+        " economic event";
+
+
+    if (visibleCount !== 1) {
+
+        statusText += "s";
+
+    }
+
+
+    if (selectedDate) {
+
+        statusText +=
+            " for " +
+            selectedDate;
+
+    }
+
+
+    if (
+        selectedImpact !==
+        "ALL"
+    ) {
+
+        statusText +=
+            " • " +
+            selectedImpact +
+            " impact";
+
+    }
+
+
+    document.getElementById(
+        "filterStatus"
+    ).textContent =
+        statusText;
+
+}
+
+
+/* =====================================================
+   CLEAR NEWS FILTERS
+   ===================================================== */
+
+function clearNewsFilters() {
+
+    document.getElementById(
+        "newsDate"
+    ).value = "";
+
+
+    document.getElementById(
+        "impactFilter"
+    ).value =
+        "ALL";
+
+
+    const rows =
+        document.querySelectorAll(
+            ".news-row"
+        );
+
+
+    rows.forEach(function(row) {
+
+        row.style.display =
+            "grid";
+
+    });
+
+
+    document.getElementById(
+        "noNews"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "filterStatus"
+    ).textContent =
+        "Showing all economic events";
 
 }
 
