@@ -7,262 +7,157 @@
 <title>AGUILACORE Trading Platform</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    body {
-        margin: 0;
-        background: #07111f;
-        color: #f5c84c;
-        font-family: Arial, Helvetica, sans-serif;
-    }
+body {
+    margin: 0;
+    background: #07111f;
+    color: #f5c84c;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-    .header {
-        height: 70px;
-        background: #0b1728;
-        border-bottom: 1px solid #c9a227;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 25px;
-    }
+.header {
+    background: #0b1728;
+    border-bottom: 1px solid #c9a227;
+    padding: 20px 25px;
+}
 
-    .logo {
-        font-size: 24px;
-        font-weight: bold;
-        letter-spacing: 2px;
-    }
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
 
-    .subtitle {
-        color: #aeb8c7;
-        font-size: 12px;
-        margin-top: 4px;
-        letter-spacing: 1px;
-    }
+.subtitle {
+    color: #9ba9bb;
+    font-size: 12px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
 
-    .status {
-        color: #53d769;
-        font-size: 12px;
-        font-weight: bold;
-    }
+.container {
+    padding: 20px;
+}
 
-    .container {
-        padding: 20px;
-    }
+.market-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
 
-    .toolbar {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 15px;
-        flex-wrap: wrap;
-    }
+.market-label {
+    color: #9ba9bb;
+    font-size: 13px;
+    font-weight: bold;
+}
 
-    .toolbar label {
-        color: #aeb8c7;
-        font-size: 13px;
-        font-weight: bold;
-    }
+.market-name {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
 
-    select {
-        background: #101f33;
-        color: #f5c84c;
-        border: 1px solid #c9a227;
-        border-radius: 4px;
-        padding: 10px 14px;
-        font-size: 14px;
-        font-weight: bold;
-        outline: none;
-        cursor: pointer;
-    }
+.chart-box {
+    width: 100%;
+    height: 650px;
+    background: #0b1728;
+    border: 1px solid #27384e;
+}
 
-    select:hover {
-        background: #152941;
-    }
-
-    .market-name {
-        color: white;
-        font-size: 18px;
-        font-weight: bold;
-        margin-left: 5px;
-    }
-
-    .chart-container {
-        width: 100%;
-        height: 650px;
-        background: #0b1728;
-        border: 1px solid #25364d;
-        border-radius: 6px;
-        overflow: hidden;
-    }
-
-    .footer {
-        text-align: center;
-        color: #65758a;
-        font-size: 11px;
-        padding: 15px;
-    }
-
-    @media (max-width: 768px) {
-        .header {
-            height: auto;
-            padding: 15px;
-        }
-
-        .chart-container {
-            height: 500px;
-        }
-
-        .logo {
-            font-size: 18px;
-        }
-    }
+.footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 11px;
+    padding: 15px;
+}
 </style>
+
 </head>
 
 <body>
 
-<header class="header">
+<div class="header">
 
-    <div>
-        <div class="logo">AGUILACORE</div>
-        <div class="subtitle">TRADING PLATFORM</div>
+    <div class="logo">
+        AGUILACORE
     </div>
 
-    <div class="status">
-        ● MARKET LIVE
+    <div class="subtitle">
+        TRADING PLATFORM
     </div>
 
-</header>
+</div>
 
 
-<main class="container">
+<div class="container">
 
-    <div class="toolbar">
+    <div class="market-bar">
 
-        <label for="marketSelect">
+        <span class="market-label">
             MARKET
-        </label>
+        </span>
 
-        <select id="marketSelect">
-
-            <option value="FX:EURUSD">EURUSD</option>
-            <option value="FX:GBPUSD">GBPUSD</option>
-            <option value="FX:USDJPY">USDJPY</option>
-            <option value="FX:USDCHF">USDCHF</option>
-            <option value="FX:AUDUSD">AUDUSD</option>
-            <option value="FX:USDCAD">USDCAD</option>
-            <option value="FX:NZDUSD">NZDUSD</option>
-
-            <option value="FX:EURJPY">EURJPY</option>
-            <option value="FX:GBPJPY">GBPJPY</option>
-
-            <option value="OANDA:XAUUSD">XAUUSD</option>
-
-            <option value="CME_MINI:ES1!">US30</option>
-            <option value="NASDAQ:NDX">NAS100</option>
-
-            <option value="COINBASE:BTCUSD">BTCUSD</option>
-
-        </select>
-
-        <span class="market-name" id="marketName">
+        <span class="market-name">
             EURUSD
         </span>
 
     </div>
 
 
-    <div class="chart-container">
+    <div class="chart-box">
 
-        <div id="tradingview_chart"
-             style="height:100%; width:100%;">
+        <div
+            class="tradingview-widget-container"
+            style="height:100%;width:100%"
+        >
+
+            <div
+                class="tradingview-widget-container__widget"
+                style="height:100%;width:100%"
+            ></div>
+
+            <div class="tradingview-widget-copyright">
+                <a
+                    href="https://www.tradingview.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    TradingView
+                </a>
+            </div>
+
+            <script
+                type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
+                async
+            >
+            {
+                "autosize": true,
+                "symbol": "FX:EURUSD",
+                "interval": "15",
+                "timezone": "Asia/Manila",
+                "theme": "dark",
+                "style": "1",
+                "locale": "en",
+                "allow_symbol_change": false,
+                "calendar": false,
+                "support_host": "https://www.tradingview.com"
+            }
+            </script>
+
         </div>
 
     </div>
 
-</main>
+</div>
 
 
 <div class="footer">
     AGUILACORE Trading Platform © 2026
 </div>
-
-
-<script type="text/javascript"
-src="https://s3.tradingview.com/tv.js">
-</script>
-
-
-<script>
-
-let currentSymbol = "FX:EURUSD";
-
-
-function loadTradingView(symbol) {
-
-    document.getElementById("tradingview_chart").innerHTML = "";
-
-    new TradingView.widget({
-
-        "autosize": true,
-
-        "symbol": symbol,
-
-        "interval": "15",
-
-        "timezone": "Asia/Manila",
-
-        "theme": "dark",
-
-        "style": "1",
-
-        "locale": "en",
-
-        "enable_publishing": false,
-
-        "allow_symbol_change": false,
-
-        "hide_top_toolbar": false,
-
-        "hide_legend": false,
-
-        "save_image": false,
-
-        "container_id": "tradingview_chart"
-
-    });
-
-}
-
-
-const marketSelect =
-    document.getElementById("marketSelect");
-
-const marketName =
-    document.getElementById("marketName");
-
-
-marketSelect.addEventListener("change", function() {
-
-    const symbol = this.value;
-
-    const name =
-        this.options[this.selectedIndex].text;
-
-    currentSymbol = symbol;
-
-    marketName.textContent = name;
-
-    loadTradingView(symbol);
-
-});
-
-
-loadTradingView(currentSymbol);
-
-</script>
 
 </body>
 </html>
