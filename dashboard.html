@@ -24,10 +24,6 @@ body {
     min-height: 100vh;
 }
 
-/* =====================================================
-   APP LAYOUT
-   ===================================================== */
-
 .app-layout {
     display: flex;
     min-height: 100vh;
@@ -40,12 +36,9 @@ body {
 .sidebar {
     width: 240px;
     min-height: 100vh;
-
     background: #0b1728;
     border-right: 1px solid #c9a227;
-
     padding: 22px 16px;
-
     display: flex;
     flex-direction: column;
 }
@@ -65,34 +58,40 @@ body {
 }
 
 /* =====================================================
-   MEMBERSHIP
+   MEMBERSHIP BOX
    ===================================================== */
 
 .membership-box {
     margin-top: 25px;
-
     background: #07111f;
     border: 1px solid #27384e;
-
     padding: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.membership-box:hover {
+    border-color: #c9a227;
+    background: #0d1b2e;
 }
 
 .membership-label {
     color: #64748b;
-
     font-size: 10px;
-
     letter-spacing: 1px;
 }
 
 .membership-value {
     color: #53d769;
-
     font-size: 18px;
-
     font-weight: bold;
-
     margin-top: 6px;
+}
+
+.membership-action {
+    color: #9ba9bb;
+    font-size: 9px;
+    margin-top: 8px;
 }
 
 /* =====================================================
@@ -105,37 +104,25 @@ body {
 
 .sidebar-item {
     color: #9ba9bb;
-
     padding: 12px 10px;
-
     margin-bottom: 4px;
-
     font-size: 13px;
-
     border-left: 2px solid transparent;
-
     cursor: pointer;
-
     transition: 0.2s;
 }
 
 .sidebar-item:hover {
     color: #f5c84c;
-
     background: #07111f;
-
     border-left: 2px solid #c9a227;
 }
 
 .sidebar-item.active {
     color: #f5c84c;
-
     background: #07111f;
-
     border-left: 2px solid #c9a227;
 }
-
-/* PAID MENU */
 
 .paid-menu {
     position: relative;
@@ -143,15 +130,10 @@ body {
 
 .paid-badge {
     float: right;
-
     color: #f5c84c;
-
     font-size: 9px;
-
     border: 1px solid #c9a227;
-
     padding: 2px 5px;
-
     border-radius: 3px;
 }
 
@@ -165,31 +147,22 @@ body {
 
 .sidebar-account {
     border-top: 1px solid #27384e;
-
     padding-top: 15px;
-
     margin-top: 20px;
 }
 
 .sidebar-account-label {
     color: #64748b;
-
     font-size: 10px;
-
     letter-spacing: 1px;
-
     margin-bottom: 7px;
 }
 
 .sidebar-email {
     color: #9ba9bb;
-
     font-size: 11px;
-
     overflow: hidden;
-
     text-overflow: ellipsis;
-
     white-space: nowrap;
 }
 
@@ -199,27 +172,18 @@ body {
 
 .sidebar-logout {
     width: 100%;
-
     margin-top: 12px;
-
     background: transparent;
-
     color: #f5c84c;
-
     border: 1px solid #c9a227;
-
     padding: 9px;
-
     cursor: pointer;
-
     font-size: 11px;
-
     font-weight: bold;
 }
 
 .sidebar-logout:hover {
     background: #c9a227;
-
     color: #07111f;
 }
 
@@ -229,72 +193,49 @@ body {
 
 .main-content {
     flex: 1;
-
     min-width: 0;
 }
 
-/* =====================================================
-   HEADER
-   ===================================================== */
-
 .header {
     background: #0b1728;
-
     border-bottom: 1px solid #27384e;
-
     padding: 18px 25px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 }
 
 .logo {
     font-size: 25px;
-
     font-weight: bold;
-
     letter-spacing: 2px;
 }
 
 .subtitle {
     color: #9ba9bb;
-
     font-size: 12px;
-
     margin-top: 5px;
-
     letter-spacing: 1px;
 }
 
 .user-area {
     display: flex;
-
     align-items: center;
-
     gap: 15px;
 }
 
 .online {
     color: #53d769;
-
     font-size: 12px;
-
     font-weight: bold;
 }
-
-/* =====================================================
-   MAIN CONTAINER
-   ===================================================== */
 
 .container {
     padding: 25px;
 }
 
 /* =====================================================
-   PAGES
+   PAGE SYSTEM
    ===================================================== */
 
 .page {
@@ -311,25 +252,19 @@ body {
 
 .welcome {
     background: #0b1728;
-
     border: 1px solid #27384e;
-
     padding: 25px;
-
     margin-bottom: 20px;
 }
 
 .welcome-title {
     font-size: 24px;
-
     font-weight: bold;
-
     margin-bottom: 8px;
 }
 
 .welcome-text {
     color: #9ba9bb;
-
     font-size: 13px;
 }
 
@@ -339,48 +274,34 @@ body {
 
 .dashboard-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 
 .card {
     background: #0b1728;
-
     border: 1px solid #27384e;
-
     padding: 22px;
-
     min-height: 140px;
 }
 
 .card-title {
     color: #9ba9bb;
-
     font-size: 12px;
-
     font-weight: bold;
-
     letter-spacing: 1px;
-
     margin-bottom: 15px;
 }
 
 .card-value {
     color: #f5c84c;
-
     font-size: 22px;
-
     font-weight: bold;
 }
 
 .card-description {
     color: #64748b;
-
     font-size: 11px;
-
     margin-top: 10px;
 }
 
@@ -390,33 +311,23 @@ body {
 
 .account-box {
     margin-top: 20px;
-
     background: #0b1728;
-
     border: 1px solid #27384e;
-
     padding: 22px;
 }
 
 .account-title {
     color: #f5c84c;
-
     font-size: 16px;
-
     font-weight: bold;
-
     margin-bottom: 15px;
 }
 
 .account-row {
     display: flex;
-
     justify-content: space-between;
-
     border-bottom: 1px solid #17283d;
-
     padding: 10px 0;
-
     font-size: 13px;
 }
 
@@ -434,163 +345,217 @@ body {
 
 .market-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 
 .market-card {
     background: #0b1728;
-
     border: 1px solid #27384e;
-
     padding: 22px;
-
     min-height: 145px;
-
     cursor: pointer;
-
     transition: 0.2s;
 }
 
 .market-card:hover {
     border-color: #c9a227;
-
     transform: translateY(-2px);
 }
 
 .market-symbol {
     color: #f5c84c;
-
     font-size: 18px;
-
     font-weight: bold;
-
     letter-spacing: 1px;
 }
 
 .market-name {
     color: #9ba9bb;
-
     font-size: 12px;
-
     margin-top: 8px;
 }
 
 .market-status {
     color: #53d769;
-
     font-size: 10px;
-
     font-weight: bold;
-
     margin-top: 20px;
 }
 
 /* =====================================================
-   PAID SIGNAL PAGE
+   MEMBERSHIP PLANS
+   ===================================================== */
+
+.membership-header {
+    background: #0b1728;
+    border: 1px solid #c9a227;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.membership-title {
+    color: #f5c84c;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.membership-subtitle {
+    color: #9ba9bb;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.plan-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.plan-card {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 25px 18px;
+    text-align: center;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-card:hover {
+    border-color: #c9a227;
+}
+
+.plan-name {
+    color: #9ba9bb;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.plan-price {
+    color: #f5c84c;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.plan-period {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.plan-description {
+    color: #9ba9bb;
+    font-size: 11px;
+    line-height: 1.6;
+    margin-top: 20px;
+    flex: 1;
+}
+
+.plan-button {
+    width: 100%;
+    background: transparent;
+    color: #f5c84c;
+    border: 1px solid #c9a227;
+    padding: 11px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.plan-button:hover {
+    background: #c9a227;
+    color: #07111f;
+}
+
+.plan-featured {
+    border-color: #c9a227;
+}
+
+.plan-featured-label {
+    color: #53d769;
+    font-size: 9px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* =====================================================
+   SIGNALS
    ===================================================== */
 
 .signal-header {
     background: #0b1728;
-
     border: 1px solid #c9a227;
-
     padding: 25px;
-
     margin-bottom: 20px;
 }
 
 .signal-title {
     color: #f5c84c;
-
     font-size: 24px;
-
     font-weight: bold;
 }
 
 .signal-subtitle {
     color: #9ba9bb;
-
     font-size: 13px;
-
     margin-top: 8px;
 }
 
 .premium-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 
 .premium-card {
     background: #0b1728;
-
     border: 1px solid #27384e;
-
     padding: 22px;
-
     min-height: 150px;
 }
 
 .premium-title {
     color: #9ba9bb;
-
     font-size: 11px;
-
     font-weight: bold;
-
     letter-spacing: 1px;
 }
 
 .premium-value {
     color: #f5c84c;
-
     font-size: 22px;
-
     font-weight: bold;
-
     margin-top: 15px;
 }
 
 .premium-description {
     color: #64748b;
-
     font-size: 11px;
-
     margin-top: 8px;
 }
 
 /* =====================================================
-   GOLD PAGE
+   GOLD
    ===================================================== */
 
 .gold-box {
     background: #0b1728;
-
     border: 1px solid #c9a227;
-
     padding: 25px;
 }
 
 .gold-title {
     color: #f5c84c;
-
     font-size: 24px;
-
     font-weight: bold;
 }
 
 .gold-description {
     color: #9ba9bb;
-
     font-size: 13px;
-
     margin-top: 8px;
 }
 
@@ -600,43 +565,30 @@ body {
 
 .access-denied {
     background: #0b1728;
-
     border: 1px solid #8b2635;
-
     padding: 30px;
-
     text-align: center;
 }
 
 .access-denied-title {
     color: #f5c84c;
-
     font-size: 22px;
-
     font-weight: bold;
 }
 
 .access-denied-text {
     color: #9ba9bb;
-
     font-size: 13px;
-
     margin-top: 10px;
 }
 
 .upgrade-button {
     margin-top: 20px;
-
     background: transparent;
-
     color: #f5c84c;
-
     border: 1px solid #c9a227;
-
     padding: 10px 20px;
-
     cursor: pointer;
-
     font-weight: bold;
 }
 
@@ -646,17 +598,22 @@ body {
 
 .footer {
     text-align: center;
-
     color: #64748b;
-
     font-size: 11px;
-
     padding: 25px;
 }
 
 /* =====================================================
    MOBILE
    ===================================================== */
+
+@media (max-width: 1000px) {
+
+    .plan-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
 
 @media (max-width: 768px) {
 
@@ -670,7 +627,8 @@ body {
 
     .dashboard-grid,
     .market-grid,
-    .premium-grid {
+    .premium-grid,
+    .plan-grid {
         grid-template-columns: 1fr;
     }
 
@@ -718,7 +676,9 @@ body {
 
     <!-- MEMBERSHIP -->
 
-    <div class="membership-box">
+    <div
+        class="membership-box"
+        onclick="showPage('membershipPage')">
 
         <div class="membership-label">
             MEMBERSHIP
@@ -730,6 +690,10 @@ body {
 
             FREE
 
+        </div>
+
+        <div class="membership-action">
+            VIEW MEMBERSHIP PLANS →
         </div>
 
     </div>
@@ -764,7 +728,7 @@ body {
         </div>
 
 
-        <!-- SIGNALS - PAID -->
+        <!-- SIGNALS -->
 
         <div
             class="sidebar-item paid-menu"
@@ -780,7 +744,7 @@ body {
         </div>
 
 
-        <!-- GOLD - PAID -->
+        <!-- GOLD -->
 
         <div
             class="sidebar-item paid-menu"
@@ -854,7 +818,6 @@ body {
 
         </div>
 
-
         <div class="user-area">
 
             <div class="online">
@@ -866,13 +829,15 @@ body {
     </div>
 
 
-    <!-- MAIN -->
+    <!-- =================================================
+         CONTENT
+         ================================================= -->
 
     <div class="container">
 
 
         <!-- =================================================
-             DASHBOARD PAGE
+             DASHBOARD
              ================================================= -->
 
         <div
@@ -954,8 +919,6 @@ body {
             </div>
 
 
-            <!-- ACCOUNT INFORMATION -->
-
             <div class="account-box">
 
                 <div class="account-title">
@@ -1016,7 +979,7 @@ body {
 
 
         <!-- =================================================
-             MARKETS PAGE
+             MARKETS
              ================================================= -->
 
         <div
@@ -1149,7 +1112,166 @@ body {
 
 
         <!-- =================================================
-             SIGNALS PAGE
+             MEMBERSHIP PLANS
+             ================================================= -->
+
+        <div
+            id="membershipPage"
+            class="page">
+
+
+            <div class="membership-header">
+
+                <div class="membership-title">
+                    AGUILACORE MEMBERSHIP
+                </div>
+
+                <div class="membership-subtitle">
+                    Choose the membership plan that fits your trading needs.
+                </div>
+
+            </div>
+
+
+            <div class="plan-grid">
+
+
+                <!-- 1 MONTH -->
+
+                <div class="plan-card">
+
+                    <div class="plan-name">
+                        1 MONTH
+                    </div>
+
+                    <div class="plan-price">
+                        $150
+                    </div>
+
+                    <div class="plan-period">
+                        ONE MONTH ACCESS
+                    </div>
+
+                    <div class="plan-description">
+                        Access to AGUILACORE premium trading features and signals.
+                    </div>
+
+                    <button
+                        class="plan-button"
+                        onclick="selectPlan('1 Month', 150)">
+
+                        SELECT PLAN
+
+                    </button>
+
+                </div>
+
+
+                <!-- 6 MONTHS -->
+
+                <div class="plan-card">
+
+                    <div class="plan-name">
+                        6 MONTHS
+                    </div>
+
+                    <div class="plan-price">
+                        $350
+                    </div>
+
+                    <div class="plan-period">
+                        SIX MONTHS ACCESS
+                    </div>
+
+                    <div class="plan-description">
+                        Extended access to AGUILACORE premium trading features and signals.
+                    </div>
+
+                    <button
+                        class="plan-button"
+                        onclick="selectPlan('6 Months', 350)">
+
+                        SELECT PLAN
+
+                    </button>
+
+                </div>
+
+
+                <!-- 1 YEAR -->
+
+                <div class="plan-card plan-featured">
+
+                    <div class="plan-featured-label">
+                        POPULAR
+                    </div>
+
+                    <div class="plan-name">
+                        1 YEAR
+                    </div>
+
+                    <div class="plan-price">
+                        $500
+                    </div>
+
+                    <div class="plan-period">
+                        TWELVE MONTHS ACCESS
+                    </div>
+
+                    <div class="plan-description">
+                        Full year access to AGUILACORE premium trading features and signals.
+                    </div>
+
+                    <button
+                        class="plan-button"
+                        onclick="selectPlan('1 Year', 500)">
+
+                        SELECT PLAN
+
+                    </button>
+
+                </div>
+
+
+                <!-- LIFETIME -->
+
+                <div class="plan-card">
+
+                    <div class="plan-name">
+                        LIFETIME
+                    </div>
+
+                    <div class="plan-price">
+                        $1,500
+                    </div>
+
+                    <div class="plan-period">
+                        LIFETIME ACCESS
+                    </div>
+
+                    <div class="plan-description">
+                        Permanent access to AGUILACORE premium trading features and signals.
+                    </div>
+
+                    <button
+                        class="plan-button"
+                        onclick="selectPlan('Lifetime', 1500)">
+
+                        SELECT PLAN
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             SIGNALS
              ================================================= -->
 
         <div
@@ -1231,7 +1353,7 @@ body {
 
 
         <!-- =================================================
-             GOLD PAGE
+             GOLD
              ================================================= -->
 
         <div
@@ -1256,7 +1378,7 @@ body {
 
 
         <!-- =================================================
-             ACCESS DENIED PAGE
+             ACCESS DENIED
              ================================================= -->
 
         <div
@@ -1276,9 +1398,9 @@ body {
 
                 <button
                     class="upgrade-button"
-                    onclick="showPage('dashboardPage')">
+                    onclick="showPage('membershipPage')">
 
-                    BACK TO DASHBOARD
+                    VIEW MEMBERSHIP PLANS
 
                 </button>
 
@@ -1306,7 +1428,7 @@ body {
 
 
 <!-- =====================================================
-     SUPABASE
+     JAVASCRIPT
      ===================================================== -->
 
 <script>
@@ -1332,21 +1454,6 @@ const supabaseClient =
 /* =====================================================
    CURRENT MEMBERSHIP
    ===================================================== */
-
-/*
-   TEMPORARY:
-
-   For now every registered user is FREE.
-
-   Later we will read this value from
-   the Supabase profiles table.
-
-   Possible values:
-
-   FREE
-   PAID
-   ADMIN
-*/
 
 let currentMembership = "FREE";
 
@@ -1379,26 +1486,14 @@ function showPage(pageId) {
     }
 
 
-    /* REMOVE ACTIVE FROM MENU */
-
     document
-        .getElementById("dashboardMenu")
-        .classList.remove("active");
+        .querySelectorAll(".sidebar-item")
+        .forEach(function(item) {
 
-    document
-        .getElementById("marketsMenu")
-        .classList.remove("active");
+            item.classList.remove("active");
 
-    document
-        .getElementById("signalsMenu")
-        .classList.remove("active");
+        });
 
-    document
-        .getElementById("goldMenu")
-        .classList.remove("active");
-
-
-    /* ACTIVE MENU */
 
     if (pageId === "dashboardPage") {
 
@@ -1444,11 +1539,6 @@ function showPage(pageId) {
 
 function openPaidPage(pageId) {
 
-    /*
-       Only PAID members can enter
-       Signals / Gold premium pages.
-    */
-
     if (currentMembership !== "PAID") {
 
         showPage("accessDeniedPage");
@@ -1459,6 +1549,25 @@ function openPaidPage(pageId) {
 
 
     showPage(pageId);
+
+}
+
+
+/* =====================================================
+   MEMBERSHIP PLAN
+   ===================================================== */
+
+function selectPlan(planName, price) {
+
+    alert(
+        "Selected Plan:\n\n" +
+        planName +
+        "\n" +
+        "$" +
+        price +
+        "\n\n" +
+        Payment setup will be added next.
+    );
 
 }
 
