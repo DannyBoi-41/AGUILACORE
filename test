@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -491,32 +490,29 @@ select {
     font-weight: bold;
 }
 
-.news-source-box {
-    margin-bottom: 15px;
-    background: #0b1728;
-    border: 1px solid #27384e;
-    padding: 12px 15px;
-    color: #64748b;
-    font-size: 11px;
-}
-
-.news-source-status {
-    color: #53d769;
-    font-weight: bold;
-}
-
 /* =====================================================
-   NEWS FILTER
+   ECONOMIC TOOLBAR
    ===================================================== */
 
-.news-filter-box {
+.news-toolbar {
     background: #0b1728;
     border: 1px solid #27384e;
     padding: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.news-toolbar-title {
+    color: #f5c84c;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.news-filter-box {
     display: flex;
     align-items: flex-end;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
@@ -574,6 +570,37 @@ select {
 }
 
 /* =====================================================
+   CALENDAR SUMMARY
+   ===================================================== */
+
+.news-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.news-summary-card {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 13px 15px;
+}
+
+.news-summary-label {
+    color: #64748b;
+    font-size: 9px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.news-summary-value {
+    color: #f5c84c;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* =====================================================
    FILTER STATUS
    ===================================================== */
 
@@ -593,43 +620,51 @@ select {
     overflow: hidden;
 }
 
-.calendar-header {
+.calendar-head {
     display: grid;
     grid-template-columns:
-        105px
-        minmax(220px, 1fr)
         90px
-        110px
         85px
+        minmax(250px, 1fr)
+        90px
+        100px
         100px
         100px
         100px;
 
     background: #101e31;
     border-bottom: 1px solid #27384e;
-    padding: 13px 14px;
-    color: #9ba9bb;
-    font-size: 10px;
+    padding: 13px 15px;
+
+    color: #64748b;
+    font-size: 9px;
     font-weight: bold;
     letter-spacing: 1px;
 }
 
 .calendar-row {
     display: grid;
+
     grid-template-columns:
-        105px
-        minmax(220px, 1fr)
         90px
-        110px
         85px
+        minmax(250px, 1fr)
+        90px
+        100px
         100px
         100px
         100px;
 
-    padding: 14px;
+    padding: 15px;
     border-bottom: 1px solid #17283d;
     align-items: center;
+
     font-size: 12px;
+    transition: background 0.15s;
+}
+
+.calendar-row:last-child {
+    border-bottom: none;
 }
 
 .calendar-row:hover {
@@ -637,13 +672,20 @@ select {
 }
 
 .calendar-date {
-    color: #64748b;
+    color: #9ba9bb;
+    font-size: 11px;
+}
+
+.calendar-time {
+    color: #f5c84c;
+    font-weight: bold;
+    font-size: 11px;
 }
 
 .calendar-event {
     color: white;
     font-weight: bold;
-    line-height: 1.4;
+    padding-right: 15px;
 }
 
 .calendar-currency {
@@ -653,6 +695,8 @@ select {
 
 .calendar-impact {
     font-weight: bold;
+    font-size: 10px;
+    letter-spacing: 0.5px;
 }
 
 .impact-high {
@@ -667,33 +711,101 @@ select {
     color: #53d769;
 }
 
-.calendar-time {
+.calendar-value {
+    color: #d1d5db;
+    font-size: 11px;
+}
+
+.actual-positive {
+    color: #53d769;
+}
+
+.actual-negative {
+    color: #ff5555;
+}
+
+.actual-neutral {
     color: #9ba9bb;
 }
 
-.calendar-value {
-    color: #e5e7eb;
+/* =====================================================
+   EVENT IMPORTANCE DOT
+   ===================================================== */
+
+.impact-cell {
+    display: flex;
+    align-items: center;
+    gap: 7px;
 }
 
-.calendar-empty {
-    padding: 45px 20px;
+.impact-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-high {
+    background: #ff5555;
+}
+
+.dot-medium {
+    background: #f5c84c;
+}
+
+.dot-low {
+    background: #53d769;
+}
+
+/* =====================================================
+   EMPTY / LOADING
+   ===================================================== */
+
+.no-news {
+    padding: 40px;
     text-align: center;
     color: #64748b;
     font-size: 13px;
 }
 
-.calendar-loading {
-    padding: 45px 20px;
+.news-loading {
+    padding: 40px;
     text-align: center;
     color: #f5c84c;
-    font-size: 13px;
+    font-size: 12px;
 }
 
-.calendar-error {
-    padding: 45px 20px;
-    text-align: center;
+.news-error {
+    margin: 15px;
+    padding: 15px;
+    border: 1px solid #5b2930;
+    background: #21131a;
     color: #ff7777;
-    font-size: 13px;
+    font-size: 12px;
+    display: none;
+}
+
+/* =====================================================
+   SOURCE / DATA STATUS
+   ===================================================== */
+
+.news-source-box {
+    margin-bottom: 15px;
+    background: #0b1728;
+    border: 1px solid #27384e;
+    padding: 12px 15px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+.news-source-status {
+    color: #53d769;
+    font-weight: bold;
+}
+
+.news-last-update {
+    float: right;
+    color: #64748b;
 }
 
 /* =====================================================
@@ -711,6 +823,29 @@ select {
    RESPONSIVE
    ===================================================== */
 
+@media (max-width: 1200px) {
+
+    .calendar-head,
+    .calendar-row {
+        grid-template-columns:
+            80px
+            75px
+            minmax(220px, 1fr)
+            80px
+            90px
+            90px
+            90px
+            90px;
+
+        min-width: 900px;
+    }
+
+    .economic-calendar {
+        overflow-x: auto;
+    }
+
+}
+
 @media (max-width: 1100px) {
 
     .membership-page-grid {
@@ -718,6 +853,10 @@ select {
     }
 
     .market-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .news-summary {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -743,26 +882,6 @@ select {
 
     .online {
         display: none;
-    }
-
-    .calendar-header,
-    .calendar-row {
-
-        grid-template-columns:
-            90px
-            220px
-            80px
-            100px
-            80px
-            95px
-            95px
-            95px;
-
-        min-width: 855px;
-    }
-
-    .economic-calendar {
-        overflow-x: auto;
     }
 
 }
@@ -800,6 +919,16 @@ select {
         margin-top: 10px;
     }
 
+    .news-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .news-last-update {
+        float: none;
+        display: block;
+        margin-top: 5px;
+    }
+
 }
 
 </style>
@@ -811,7 +940,7 @@ select {
 <div class="app-layout">
 
 <!-- =====================================================
-     LEFT PANEL
+     LEFT SIDEBAR
      ===================================================== -->
 
 <aside class="sidebar">
@@ -897,7 +1026,7 @@ select {
         <div
             class="sidebar-item"
             id="economicNewsMenu"
-            onclick="showPage('economicNewsPage')">
+            onclick="showPage('economicNewsPage'); loadEconomicNews()">
 
             ◉ &nbsp; Economic News
 
@@ -1349,43 +1478,29 @@ select {
             class="page"
             id="economicNewsPage">
 
+
             <div class="economic-header">
 
                 <div>
 
                     <div class="page-title">
-                        ECONOMIC NEWS
+                        ECONOMIC CALENDAR
                     </div>
 
                     <div class="page-description">
-                        Market-moving economic events and catalysts.
+                        Global economic events and market-moving catalysts.
                     </div>
 
                 </div>
 
-                <div
-                    class="economic-status"
-                    id="economicStatus">
-
-                    ● CONNECTING
-
+                <div class="economic-status">
+                    ● LIVE DATA
                 </div>
 
             </div>
 
 
-            <!--
-                IMPORTANT:
-
-                No Investing.com iframe is used here.
-
-                The calendar is rendered by AGUILACORE.
-                Actual data must come from:
-
-                /api/economic-calendar
-
-                No fake/sample events are included.
-            -->
+            <!-- DATA STATUS -->
 
             <div class="news-source-box">
 
@@ -1394,102 +1509,185 @@ select {
                     class="news-source-status"
                     id="newsSourceStatus">
 
-                    AGUILACORE ECONOMIC DATA
+                    CONNECTING...
 
                 </span>
 
-                &nbsp; • &nbsp;
+                <span
+                    class="news-last-update"
+                    id="newsLastUpdate">
 
-                <span id="newsLastUpdated">
-                    Waiting for live data...
                 </span>
 
             </div>
 
 
-            <!-- FILTERS -->
+            <!-- TOOLBAR -->
 
-            <div class="news-filter-box">
+            <div class="news-toolbar">
+
+                <div class="news-toolbar-title">
+                    CALENDAR FILTERS
+                </div>
 
 
-                <div class="filter-group">
+                <div class="news-filter-box">
 
-                    <label
-                        class="filter-label"
-                        for="newsDate">
 
-                        DATE
+                    <div class="filter-group">
 
-                    </label>
+                        <label
+                            class="filter-label"
+                            for="newsDate">
 
-                    <input
-                        type="date"
-                        id="newsDate"
-                        class="filter-control">
+                            DATE
+
+                        </label>
+
+                        <input
+                            type="date"
+                            id="newsDate"
+                            class="filter-control">
+
+                    </div>
+
+
+                    <div class="filter-group">
+
+                        <label
+                            class="filter-label"
+                            for="impactFilter">
+
+                            IMPACT
+
+                        </label>
+
+                        <select
+                            id="impactFilter"
+                            class="filter-control">
+
+                            <option value="ALL">
+                                ALL IMPACT
+                            </option>
+
+                            <option value="HIGH">
+                                HIGH IMPACT
+                            </option>
+
+                            <option value="MEDIUM">
+                                MEDIUM IMPACT
+                            </option>
+
+                            <option value="LOW">
+                                LOW IMPACT
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="filter-button"
+                        onclick="filterEconomicNews()">
+
+                        APPLY FILTER
+
+                    </button>
+
+
+                    <button
+                        class="filter-button filter-clear"
+                        onclick="clearNewsFilters()">
+
+                        CLEAR
+
+                    </button>
+
+
+                    <button
+                        class="filter-button"
+                        onclick="loadEconomicNews()">
+
+                        ↻ REFRESH
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+
+            <div class="news-summary">
+
+                <div class="news-summary-card">
+
+                    <div class="news-summary-label">
+                        TOTAL EVENTS
+                    </div>
+
+                    <div
+                        class="news-summary-value"
+                        id="totalEvents">
+
+                        0
+
+                    </div>
 
                 </div>
 
 
-                <div class="filter-group">
+                <div class="news-summary-card">
 
-                    <label
-                        class="filter-label"
-                        for="impactFilter">
+                    <div class="news-summary-label">
+                        HIGH IMPACT
+                    </div>
 
-                        IMPACT
+                    <div
+                        class="news-summary-value"
+                        id="highEvents">
 
-                    </label>
+                        0
 
-                    <select
-                        id="impactFilter"
-                        class="filter-control">
-
-                        <option value="ALL">
-                            ALL IMPACT
-                        </option>
-
-                        <option value="HIGH">
-                            HIGH IMPACT
-                        </option>
-
-                        <option value="MEDIUM">
-                            MEDIUM IMPACT
-                        </option>
-
-                        <option value="LOW">
-                            LOW IMPACT
-                        </option>
-
-                    </select>
+                    </div>
 
                 </div>
 
 
-                <button
-                    class="filter-button"
-                    onclick="filterEconomicNews()">
+                <div class="news-summary-card">
 
-                    APPLY FILTER
+                    <div class="news-summary-label">
+                        MEDIUM IMPACT
+                    </div>
 
-                </button>
+                    <div
+                        class="news-summary-value"
+                        id="mediumEvents">
+
+                        0
+
+                    </div>
+
+                </div>
 
 
-                <button
-                    class="filter-button filter-clear"
-                    onclick="clearNewsFilters()">
+                <div class="news-summary-card">
 
-                    CLEAR
+                    <div class="news-summary-label">
+                        LOW IMPACT
+                    </div>
 
-                </button>
+                    <div
+                        class="news-summary-value"
+                        id="lowEvents">
 
+                        0
 
-                <button
-                    class="filter-button"
-                    onclick="loadEconomicNews()">
+                    </div>
 
-                    ↻ REFRESH
-
-                </button>
+                </div>
 
             </div>
 
@@ -1503,22 +1701,22 @@ select {
             </div>
 
 
-            <!-- AGUILACORE CALENDAR -->
+            <!-- CALENDAR -->
 
             <div class="economic-calendar">
 
 
-                <div class="calendar-header">
+                <div class="calendar-head">
 
                     <div>DATE</div>
+
+                    <div>TIME</div>
 
                     <div>EVENT</div>
 
                     <div>CURRENCY</div>
 
                     <div>IMPACT</div>
-
-                    <div>TIME</div>
 
                     <div>ACTUAL</div>
 
@@ -1531,9 +1729,26 @@ select {
 
                 <div id="economicNewsRows">
 
-                    <div class="calendar-loading">
-                        Loading live economic calendar...
+                    <div class="news-loading">
+                        Loading economic calendar...
                     </div>
+
+                </div>
+
+
+                <div
+                    class="news-error"
+                    id="newsError">
+
+                </div>
+
+
+                <div
+                    class="no-news"
+                    id="noNews"
+                    style="display:none;">
+
+                    No economic events match your filters.
 
                 </div>
 
@@ -1546,9 +1761,7 @@ select {
 
 
     <div class="footer">
-
         AGUILACORE Trading Platform © 2026
-
     </div>
 
 </div>
@@ -1577,38 +1790,12 @@ const supabaseClient =
 
 
 /* =====================================================
-   ECONOMIC CALENDAR CONFIGURATION
+   ECONOMIC NEWS DATA
    ===================================================== */
 
-/*
-   The dashboard expects the backend to return JSON.
-
-   Expected format:
-
-   {
-       "events": [
-           {
-               "date": "2026-10-04",
-               "event": "Event Name",
-               "currency": "USD",
-               "impact": "HIGH",
-               "time": "20:30",
-               "actual": "1.2%",
-               "forecast": "1.0%",
-               "previous": "0.8%"
-           }
-       ],
-       "updatedAt": "2026-10-04T..."
-   }
-
-   No sample/fake events are inserted by this dashboard.
-*/
-
-const ECONOMIC_CALENDAR_ENDPOINT =
-    "/api/economic-calendar";
-
-
 let economicNewsData = [];
+
+let economicNewsLoaded = false;
 
 
 /* =====================================================
@@ -1649,15 +1836,6 @@ async function checkUser() {
     ).textContent =
         email;
 
-
-    /*
-       CURRENT MEMBERSHIP
-
-       For now FREE.
-
-       Later this will come from
-       the Supabase membership table.
-    */
 
     const membership =
         "FREE";
@@ -1757,7 +1935,9 @@ function showPage(pageId) {
     };
 
 
-    if (menuMap[pageId]) {
+    if (
+        menuMap[pageId]
+    ) {
 
         document
             .getElementById(
@@ -1770,19 +1950,12 @@ function showPage(pageId) {
     }
 
 
-    /*
-       Load economic data when
-       Economic News is opened.
-    */
-
     if (
         pageId ===
         "economicNewsPage"
     ) {
 
-        if (
-            economicNewsData.length === 0
-        ) {
+        if (!economicNewsLoaded) {
 
             loadEconomicNews();
 
@@ -1824,67 +1997,62 @@ async function loadEconomicNews() {
             "economicNewsRows"
         );
 
-
-    const status =
-        document.getElementById(
-            "economicStatus"
-        );
-
-
     const sourceStatus =
         document.getElementById(
             "newsSourceStatus"
         );
 
-
-    const lastUpdated =
+    const lastUpdate =
         document.getElementById(
-            "newsLastUpdated"
+            "newsLastUpdate"
         );
 
-
-    const filterStatus =
+    const errorBox =
         document.getElementById(
-            "filterStatus"
+            "newsError"
         );
-
-
-    status.textContent =
-        "● LOADING";
-
-
-    status.style.color =
-        "#f5c84c";
-
-
-    sourceStatus.textContent =
-        "CONNECTING TO AGUILACORE DATA";
-
-
-    lastUpdated.textContent =
-        "Fetching live economic events...";
-
-
-    filterStatus.textContent =
-        "Loading economic events...";
 
 
     rowsContainer.innerHTML =
-        '<div class="calendar-loading">Loading live economic calendar...</div>';
+        '<div class="news-loading">Loading live economic calendar...</div>';
+
+    errorBox.style.display =
+        "none";
+
+    sourceStatus.textContent =
+        "CONNECTING...";
 
 
     try {
 
+        /*
+         * IMPORTANT:
+         *
+         * The browser does NOT directly scrape
+         * Investing.com.
+         *
+         * It requests our Supabase Edge Function.
+         *
+         * The Edge Function is responsible for
+         * retrieving / processing the actual
+         * economic-calendar data.
+         */
+
+        const functionUrl =
+            SUPABASE_URL +
+            "/functions/v1/economic-calendar";
+
+
         const response =
             await fetch(
-                ECONOMIC_CALENDAR_ENDPOINT,
+                functionUrl,
                 {
                     method: "GET",
+
                     headers: {
-                        "Accept":
+                        "Content-Type":
                             "application/json"
-                    },
-                    cache: "no-store"
+                    }
                 }
             );
 
@@ -1899,142 +2067,108 @@ async function loadEconomicNews() {
         }
 
 
-        const data =
+        const result =
             await response.json();
 
 
         /*
-           Accept either:
-
-           { events: [...] }
-
-           or directly:
-
-           [...]
-        */
+         * Accept common response structures.
+         */
 
         let events = [];
 
 
-        if (
-            Array.isArray(data)
+        if (Array.isArray(result)) {
+
+            events = result;
+
+        }
+        else if (
+            Array.isArray(result.data)
         ) {
 
-            events =
-                data;
+            events = result.data;
 
-        } else if (
-            data &&
-            Array.isArray(data.events)
+        }
+        else if (
+            Array.isArray(result.events)
         ) {
 
-            events =
-                data.events;
+            events = result.events;
 
         }
 
 
         economicNewsData =
-            normalizeEconomicEvents(
+            normalizeEconomicNews(
                 events
             );
 
 
-        if (
-            economicNewsData.length === 0
-        ) {
-
-            rowsContainer.innerHTML =
-                '<div class="calendar-empty">No live economic events are currently available.</div>';
-
-
-            status.textContent =
-                "● ONLINE";
-
-
-            status.style.color =
-                "#53d769";
-
-
-            sourceStatus.textContent =
-                "AGUILACORE ECONOMIC DATA";
-
-
-            lastUpdated.textContent =
-                "No events returned";
-
-
-            filterStatus.textContent =
-                "No economic events available";
-
-
-            return;
-
-        }
-
-
-        status.textContent =
-            "● LIVE";
-
-
-        status.style.color =
-            "#53d769";
+        economicNewsLoaded =
+            true;
 
 
         sourceStatus.textContent =
-            "AGUILACORE ECONOMIC DATA";
+            "LIVE";
 
 
-        const serverUpdated =
-            data &&
-            data.updatedAt
-                ? data.updatedAt
-                : new Date().toISOString();
+        sourceStatus.style.color =
+            "#53d769";
 
 
-        lastUpdated.textContent =
+        lastUpdate.textContent =
             "Updated " +
-            formatUpdatedTime(
-                serverUpdated
+            new Date().toLocaleTimeString(
+                [],
+                {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
             );
 
 
-        renderEconomicNews();
+        updateSummary();
 
 
-    } catch (error) {
+        renderEconomicNews(
+            economicNewsData
+        );
+
+
+    }
+    catch (error) {
 
         console.error(
-            "Economic calendar error:",
+            "Economic Calendar Error:",
             error
         );
 
 
-        economicNewsData = [];
+        sourceStatus.textContent =
+            "CONNECTION ERROR";
 
 
-        rowsContainer.innerHTML =
-            '<div class="calendar-error">Economic calendar data is currently unavailable. Please check the AGUILACORE data connection.</div>';
-
-
-        status.textContent =
-            "● OFFLINE";
-
-
-        status.style.color =
+        sourceStatus.style.color =
             "#ff5555";
 
 
-        sourceStatus.textContent =
-            "DATA CONNECTION ERROR";
+        rowsContainer.innerHTML =
+            "";
 
 
-        lastUpdated.textContent =
-            "Unable to retrieve live data";
+        errorBox.textContent =
+            "Unable to load live economic calendar data. " +
+            "Please check the AGUILACORE economic-calendar Edge Function.";
+
+        errorBox.style.display =
+            "block";
 
 
-        filterStatus.textContent =
-            "Economic calendar unavailable";
+        document.getElementById(
+            "filterStatus"
+        ).textContent =
+            "Economic calendar unavailable.";
 
     }
 
@@ -2042,84 +2176,121 @@ async function loadEconomicNews() {
 
 
 /* =====================================================
-   NORMALIZE ECONOMIC EVENTS
+   NORMALIZE ECONOMIC NEWS
    ===================================================== */
 
-function normalizeEconomicEvents(
-    events
-) {
+function normalizeEconomicNews(events) {
 
     return events
         .map(function(event) {
 
-            if (!event) {
-                return null;
+            const rawDate =
+                event.date ||
+                event.datetime ||
+                event.date_time ||
+                event.timestamp ||
+                "";
+
+
+            let date =
+                "";
+
+            let time =
+                "";
+
+
+            if (rawDate) {
+
+                const parsed =
+                    new Date(rawDate);
+
+
+                if (
+                    !isNaN(
+                        parsed.getTime()
+                    )
+                ) {
+
+                    date =
+                        formatDateISO(
+                            parsed
+                        );
+
+                    time =
+                        parsed.toLocaleTimeString(
+                            [],
+                            {
+                                hour:
+                                    "2-digit",
+                                minute:
+                                    "2-digit"
+                            }
+                        );
+
+                }
+
             }
 
 
-            const date =
-                cleanValue(
-                    event.date ||
-                    event.datetime ||
-                    event.dateTime
-                );
+            if (
+                !date &&
+                event.event_date
+            ) {
 
+                date =
+                    String(
+                        event.event_date
+                    );
 
-            const eventName =
-                cleanValue(
-                    event.event ||
-                    event.title ||
-                    event.name
-                );
-
-
-            const currency =
-                cleanValue(
-                    event.currency ||
-                    event.country ||
-                    event.currencyCode
-                );
-
-
-            const impact =
-                normalizeImpact(
-                    event.impact ||
-                    event.importance
-                );
-
-
-            const time =
-                cleanValue(
-                    event.time ||
-                    event.eventTime
-                );
-
-
-            const actual =
-                cleanValue(
-                    event.actual
-                );
-
-
-            const forecast =
-                cleanValue(
-                    event.forecast ||
-                    event.expected
-                );
-
-
-            const previous =
-                cleanValue(
-                    event.previous
-                );
+            }
 
 
             if (
-                !date ||
-                !eventName
+                !time &&
+                event.time
             ) {
 
-                return null;
+                time =
+                    String(
+                        event.time
+                    );
+
+            }
+
+
+            let impact =
+                String(
+                    event.impact ||
+                    event.importance ||
+                    event.impact_level ||
+                    "LOW"
+                )
+                .toUpperCase();
+
+
+            if (
+                impact.includes("HIGH") ||
+                impact === "3"
+            ) {
+
+                impact =
+                    "HIGH";
+
+            }
+            else if (
+                impact.includes("MEDIUM") ||
+                impact.includes("MODERATE") ||
+                impact === "2"
+            ) {
+
+                impact =
+                    "MEDIUM";
+
+            }
+            else {
+
+                impact =
+                    "LOW";
 
             }
 
@@ -2127,37 +2298,75 @@ function normalizeEconomicEvents(
             return {
 
                 date:
-                    normalizeDate(
-                        date
-                    ),
-
-                event:
-                    eventName,
-
-                currency:
-                    currency || "—",
-
-                impact:
-                    impact,
+                    date,
 
                 time:
                     time || "—",
 
+                event:
+                    event.event ||
+                    event.title ||
+                    event.name ||
+                    "Economic Event",
+
+                currency:
+                    event.currency ||
+                    event.country ||
+                    event.ccy ||
+                    "—",
+
+                impact:
+                    impact,
+
                 actual:
-                    actual || "—",
+                    event.actual ??
+                    event.actual_value ??
+                    "—",
 
                 forecast:
-                    forecast || "—",
+                    event.forecast ??
+                    event.forecast_value ??
+                    "—",
 
                 previous:
-                    previous || "—"
+                    event.previous ??
+                    event.previous_value ??
+                    "—"
 
             };
 
         })
         .filter(function(event) {
 
-            return event !== null;
+            return (
+                event.event &&
+                event.date
+            );
+
+        })
+        .sort(function(a, b) {
+
+            const first =
+                new Date(
+                    a.date +
+                    "T" +
+                    normalizeTime(
+                        a.time
+                    )
+                );
+
+            const second =
+                new Date(
+                    b.date +
+                    "T" +
+                    normalizeTime(
+                        b.time
+                    )
+                );
+
+            return (
+                first - second
+            );
 
         });
 
@@ -2165,399 +2374,98 @@ function normalizeEconomicEvents(
 
 
 /* =====================================================
-   CLEAN VALUE
+   DATE FORMAT
    ===================================================== */
 
-function cleanValue(value) {
+function formatDateISO(date) {
 
-    if (
-        value === undefined ||
-        value === null
-    ) {
+    const year =
+        date.getFullYear();
 
-        return "";
-
-    }
-
-
-    return String(value).trim();
-
-}
-
-
-/* =====================================================
-   NORMALIZE DATE
-   ===================================================== */
-
-function normalizeDate(
-    value
-) {
-
-    const text =
-        cleanValue(value);
-
-
-    /*
-       Already YYYY-MM-DD
-    */
-
-    if (
-        /^\d{4}-\d{2}-\d{2}$/.test(
-            text
-        )
-    ) {
-
-        return text;
-
-    }
-
-
-    /*
-       ISO datetime
-    */
-
-    if (
-        /^\d{4}-\d{2}-\d{2}T/.test(
-            text
-        )
-    ) {
-
-        return text.substring(
-            0,
-            10
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
         );
 
-    }
-
-
-    /*
-       Try browser date parser.
-    */
-
-    const parsed =
-        new Date(text);
-
-
-    if (
-        !isNaN(
-            parsed.getTime()
-        )
-    ) {
-
-        return parsed
-            .toISOString()
-            .substring(
-                0,
-                10
-            );
-
-    }
-
-
-    return text;
-
-}
-
-
-/* =====================================================
-   NORMALIZE IMPACT
-   ===================================================== */
-
-function normalizeImpact(
-    value
-) {
-
-    const text =
-        cleanValue(value)
-            .toUpperCase();
-
-
-    if (
-        text.includes("HIGH") ||
-        text === "3"
-    ) {
-
-        return "HIGH";
-
-    }
-
-
-    if (
-        text.includes("MEDIUM") ||
-        text.includes("MODERATE") ||
-        text === "2"
-    ) {
-
-        return "MEDIUM";
-
-    }
-
-
-    if (
-        text.includes("LOW") ||
-        text === "1"
-    ) {
-
-        return "LOW";
-
-    }
-
-
-    /*
-       If backend returns
-       Investing-style importance
-       values such as 3, 2, 1,
-       they are normalized above.
-    */
-
-    return "LOW";
-
-}
-
-
-/* =====================================================
-   RENDER ECONOMIC NEWS
-   ===================================================== */
-
-function renderEconomicNews() {
-
-    const rowsContainer =
-        document.getElementById(
-            "economicNewsRows"
+    const day =
+        String(
+            date.getDate()
+        ).padStart(
+            2,
+            "0"
         );
 
 
-    const selectedDate =
-        document.getElementById(
-            "newsDate"
-        ).value;
-
-
-    const selectedImpact =
-        document.getElementById(
-            "impactFilter"
-        ).value;
-
-
-    let filteredEvents =
-        economicNewsData.filter(
-            function(event) {
-
-                let dateMatch =
-                    true;
-
-                let impactMatch =
-                    true;
-
-
-                if (
-                    selectedDate &&
-                    event.date !== selectedDate
-                ) {
-
-                    dateMatch =
-                        false;
-
-                }
-
-
-                if (
-                    selectedImpact !==
-                    "ALL" &&
-                    event.impact !==
-                    selectedImpact
-                ) {
-
-                    impactMatch =
-                        false;
-
-                }
-
-
-                return (
-                    dateMatch &&
-                    impactMatch
-                );
-
-            }
-        );
-
-
-    /*
-       Latest events first.
-    */
-
-    filteredEvents.sort(
-        function(a, b) {
-
-            const aKey =
-                a.date +
-                " " +
-                a.time;
-
-            const bKey =
-                b.date +
-                " " +
-                b.time;
-
-
-            return aKey.localeCompare(
-                bKey
-            );
-
-        }
-    );
-
-
-    if (
-        filteredEvents.length === 0
-    ) {
-
-        rowsContainer.innerHTML =
-            '<div class="calendar-empty">No economic events match your filters.</div>';
-
-
-        updateFilterStatus(
-            0,
-            selectedDate,
-            selectedImpact
-        );
-
-
-        return;
-
-    }
-
-
-    let html = "";
-
-
-    filteredEvents.forEach(
-        function(event) {
-
-            const impactClass =
-                getImpactClass(
-                    event.impact
-                );
-
-
-            html += `
-
-                <div class="calendar-row">
-
-                    <div class="calendar-date">
-                        ${escapeHtml(
-                            formatDate(
-                                event.date
-                            )
-                        )}
-                    </div>
-
-                    <div class="calendar-event">
-                        ${escapeHtml(
-                            event.event
-                        )}
-                    </div>
-
-                    <div class="calendar-currency">
-                        ${escapeHtml(
-                            event.currency
-                        )}
-                    </div>
-
-                    <div class="calendar-impact ${impactClass}">
-                        ${escapeHtml(
-                            event.impact
-                        )}
-                    </div>
-
-                    <div class="calendar-time">
-                        ${escapeHtml(
-                            event.time
-                        )}
-                    </div>
-
-                    <div class="calendar-value">
-                        ${escapeHtml(
-                            event.actual
-                        )}
-                    </div>
-
-                    <div class="calendar-value">
-                        ${escapeHtml(
-                            event.forecast
-                        )}
-                    </div>
-
-                    <div class="calendar-value">
-                        ${escapeHtml(
-                            event.previous
-                        )}
-                    </div>
-
-                </div>
-
-            `;
-
-        }
-    );
-
-
-    rowsContainer.innerHTML =
-        html;
-
-
-    updateFilterStatus(
-        filteredEvents.length,
-        selectedDate,
-        selectedImpact
+    return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day
     );
 
 }
 
 
 /* =====================================================
-   IMPACT CLASS
+   TIME NORMALIZATION
    ===================================================== */
 
-function getImpactClass(
-    impact
-) {
+function normalizeTime(time) {
 
-    if (
-        impact === "HIGH"
-    ) {
+    if (!time) {
 
-        return "impact-high";
+        return "00:00";
 
     }
 
 
+    const value =
+        String(time)
+        .trim();
+
+
     if (
-        impact === "MEDIUM"
+        /^\d{1,2}:\d{2}$/.test(
+            value
+        )
     ) {
 
-        return "impact-medium";
+        const parts =
+            value.split(":");
+
+
+        return (
+            String(
+                parts[0]
+            ).padStart(
+                2,
+                "0"
+            ) +
+            ":" +
+            parts[1]
+        );
 
     }
 
 
-    return "impact-low";
+    return "00:00";
 
 }
 
 
 /* =====================================================
-   DATE DISPLAY
+   FORMAT DISPLAY DATE
    ===================================================== */
 
-function formatDate(
+function formatDisplayDate(
     dateString
 ) {
 
-    if (
-        !dateString
-    ) {
+    if (!dateString) {
 
         return "—";
 
@@ -2577,33 +2485,12 @@ function formatDate(
     }
 
 
-    const year =
-        Number(parts[0]);
-
-    const month =
-        Number(parts[1]) - 1;
-
-    const day =
-        Number(parts[2]);
-
-
     const date =
         new Date(
-            year,
-            month,
-            day
+            Number(parts[0]),
+            Number(parts[1]) - 1,
+            Number(parts[2])
         );
-
-
-    if (
-        isNaN(
-            date.getTime()
-        )
-    ) {
-
-        return dateString;
-
-    }
 
 
     return date.toLocaleDateString(
@@ -2618,48 +2505,491 @@ function formatDate(
 
 
 /* =====================================================
-   UPDATED TIME
+   ESCAPE HTML
    ===================================================== */
 
-function formatUpdatedTime(
-    value
-) {
-
-    const date =
-        new Date(value);
-
+function escapeHTML(value) {
 
     if (
-        isNaN(
-            date.getTime()
-        )
+        value === null ||
+        value === undefined
     ) {
 
-        return value;
+        return "";
 
     }
 
 
-    return date.toLocaleString(
-        "en-US",
-        {
-            month: "short",
-            day: "numeric",
-            hour: "2-digit",
-            minute: "2-digit"
-        }
-    );
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
 /* =====================================================
-   FILTER
+   IMPACT HTML
+   ===================================================== */
+
+function getImpactHTML(
+    impact
+) {
+
+    const value =
+        String(
+            impact || "LOW"
+        ).toUpperCase();
+
+
+    let cssClass =
+        "impact-low";
+
+
+    let dotClass =
+        "dot-low";
+
+
+    if (
+        value === "HIGH"
+    ) {
+
+        cssClass =
+            "impact-high";
+
+        dotClass =
+            "dot-high";
+
+    }
+    else if (
+        value === "MEDIUM"
+    ) {
+
+        cssClass =
+            "impact-medium";
+
+        dotClass =
+            "dot-medium";
+
+    }
+
+
+    return `
+        <div class="impact-cell">
+            <span class="impact-dot ${dotClass}"></span>
+            <span class="${cssClass}">
+                ${escapeHTML(value)}
+            </span>
+        </div>
+    `;
+
+}
+
+
+/* =====================================================
+   ACTUAL VALUE CLASS
+   ===================================================== */
+
+function getActualClass(
+    actual
+) {
+
+    if (
+        actual === null ||
+        actual === undefined ||
+        actual === "" ||
+        actual === "—"
+    ) {
+
+        return "actual-neutral";
+
+    }
+
+
+    return "actual-positive";
+
+}
+
+
+/* =====================================================
+   RENDER CALENDAR
+   ===================================================== */
+
+function renderEconomicNews(
+    events
+) {
+
+    const container =
+        document.getElementById(
+            "economicNewsRows"
+        );
+
+    const noNews =
+        document.getElementById(
+            "noNews"
+        );
+
+
+    container.innerHTML =
+        "";
+
+
+    if (
+        !events ||
+        events.length === 0
+    ) {
+
+        noNews.style.display =
+            "block";
+
+        document.getElementById(
+            "filterStatus"
+        ).textContent =
+            "No economic events available.";
+
+        return;
+
+    }
+
+
+    noNews.style.display =
+        "none";
+
+
+    events.forEach(function(event) {
+
+        const row =
+            document.createElement(
+                "div"
+            );
+
+
+        row.className =
+            "calendar-row news-row";
+
+
+        row.dataset.date =
+            event.date;
+
+
+        row.dataset.impact =
+            event.impact;
+
+
+        row.innerHTML = `
+
+            <div class="calendar-date">
+                ${escapeHTML(
+                    formatDisplayDate(
+                        event.date
+                    )
+                )}
+            </div>
+
+            <div class="calendar-time">
+                ${escapeHTML(
+                    event.time
+                )}
+            </div>
+
+            <div class="calendar-event">
+                ${escapeHTML(
+                    event.event
+                )}
+            </div>
+
+            <div class="calendar-currency">
+                ${escapeHTML(
+                    event.currency
+                )}
+            </div>
+
+            <div class="calendar-impact">
+                ${getImpactHTML(
+                    event.impact
+                )}
+            </div>
+
+            <div class="calendar-value ${getActualClass(event.actual)}">
+                ${escapeHTML(
+                    event.actual
+                )}
+            </div>
+
+            <div class="calendar-value">
+                ${escapeHTML(
+                    event.forecast
+                )}
+            </div>
+
+            <div class="calendar-value">
+                ${escapeHTML(
+                    event.previous
+                )}
+            </div>
+
+        `;
+
+
+        container.appendChild(
+            row
+        );
+
+    });
+
+
+    filterEconomicNews();
+
+}
+
+
+/* =====================================================
+   SUMMARY
+   ===================================================== */
+
+function updateSummary() {
+
+    const total =
+        economicNewsData.length;
+
+
+    const high =
+        economicNewsData.filter(
+            function(event) {
+
+                return (
+                    event.impact ===
+                    "HIGH"
+                );
+
+            }
+        ).length;
+
+
+    const medium =
+        economicNewsData.filter(
+            function(event) {
+
+                return (
+                    event.impact ===
+                    "MEDIUM"
+                );
+
+            }
+        ).length;
+
+
+    const low =
+        economicNewsData.filter(
+            function(event) {
+
+                return (
+                    event.impact ===
+                    "LOW"
+                );
+
+            }
+        ).length;
+
+
+    document.getElementById(
+        "totalEvents"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "highEvents"
+    ).textContent =
+        high;
+
+
+    document.getElementById(
+        "mediumEvents"
+    ).textContent =
+        medium;
+
+
+    document.getElementById(
+        "lowEvents"
+    ).textContent =
+        low;
+
+}
+
+
+/* =====================================================
+   FILTER ECONOMIC NEWS
    ===================================================== */
 
 function filterEconomicNews() {
 
-    renderEconomicNews();
+    const selectedDate =
+        document.getElementById(
+            "newsDate"
+        ).value;
+
+
+    const selectedImpact =
+        document.getElementById(
+            "impactFilter"
+        ).value;
+
+
+    const rows =
+        document.querySelectorAll(
+            ".news-row"
+        );
+
+
+    let visibleCount =
+        0;
+
+
+    rows.forEach(function(row) {
+
+        const rowDate =
+            row.dataset.date;
+
+
+        const rowImpact =
+            row.dataset.impact;
+
+
+        let dateMatch =
+            true;
+
+
+        let impactMatch =
+            true;
+
+
+        if (
+            selectedDate &&
+            rowDate !== selectedDate
+        ) {
+
+            dateMatch =
+                false;
+
+        }
+
+
+        if (
+            selectedImpact !== "ALL" &&
+            rowImpact !== selectedImpact
+        ) {
+
+            impactMatch =
+                false;
+
+        }
+
+
+        if (
+            dateMatch &&
+            impactMatch
+        ) {
+
+            row.style.display =
+                "grid";
+
+            visibleCount++;
+
+        }
+        else {
+
+            row.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    const noNews =
+        document.getElementById(
+            "noNews"
+        );
+
+
+    if (
+        visibleCount === 0
+    ) {
+
+        noNews.style.display =
+            "block";
+
+    }
+    else {
+
+        noNews.style.display =
+            "none";
+
+    }
+
+
+    let statusText =
+        "Showing " +
+        visibleCount +
+        " economic event";
+
+
+    if (
+        visibleCount !== 1
+    ) {
+
+        statusText +=
+            "s";
+
+    }
+
+
+    if (selectedDate) {
+
+        statusText +=
+            " for " +
+            formatDisplayDate(
+                selectedDate
+            );
+
+    }
+
+
+    if (
+        selectedImpact !==
+        "ALL"
+    ) {
+
+        statusText +=
+            " • " +
+            selectedImpact +
+            " impact";
+
+    }
+
+
+    document.getElementById(
+        "filterStatus"
+    ).textContent =
+        statusText;
 
 }
 
@@ -2682,106 +3012,30 @@ function clearNewsFilters() {
         "ALL";
 
 
-    renderEconomicNews();
-
-}
-
-
-/* =====================================================
-   FILTER STATUS
-   ===================================================== */
-
-function updateFilterStatus(
-    count,
-    selectedDate,
-    selectedImpact
-) {
-
-    let statusText =
-        "Showing " +
-        count +
-        " economic event";
+    const rows =
+        document.querySelectorAll(
+            ".news-row"
+        );
 
 
-    if (
-        count !== 1
-    ) {
+    rows.forEach(function(row) {
 
-        statusText +=
-            "s";
+        row.style.display =
+            "grid";
 
-    }
+    });
 
 
-    if (
-        selectedDate
-    ) {
-
-        statusText +=
-            " for " +
-            formatDate(
-                selectedDate
-            );
-
-    }
-
-
-    if (
-        selectedImpact &&
-        selectedImpact !==
-        "ALL"
-    ) {
-
-        statusText +=
-            " • " +
-            selectedImpact +
-            " impact";
-
-    }
+    document.getElementById(
+        "noNews"
+    ).style.display =
+        "none";
 
 
     document.getElementById(
         "filterStatus"
     ).textContent =
-        statusText;
-
-}
-
-
-/* =====================================================
-   ESCAPE HTML
-   ===================================================== */
-
-function escapeHtml(
-    value
-) {
-
-    return String(
-        value === undefined ||
-        value === null
-            ? ""
-            : value
-    )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&#039;"
-    );
+        "Showing all economic events";
 
 }
 
@@ -2807,4 +3061,3 @@ async function logoutUser() {
 </body>
 
 </html>
-```
