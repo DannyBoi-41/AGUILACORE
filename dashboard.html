@@ -71,10 +71,6 @@ select {
     letter-spacing: 1px;
 }
 
-/* =====================================================
-   MEMBERSHIP
-   ===================================================== */
-
 .membership-box {
     margin-top: 25px;
     background: #07111f;
@@ -139,7 +135,7 @@ select {
 }
 
 /* =====================================================
-   SIDEBAR ACCOUNT
+   ACCOUNT
    ===================================================== */
 
 .sidebar-spacer {
@@ -189,17 +185,13 @@ select {
 }
 
 /* =====================================================
-   MAIN CONTENT
+   MAIN
    ===================================================== */
 
 .main-content {
     flex: 1;
     min-width: 0;
 }
-
-/* =====================================================
-   HEADER
-   ===================================================== */
 
 .header {
     background: #0b1728;
@@ -235,16 +227,12 @@ select {
     font-weight: bold;
 }
 
-/* =====================================================
-   CONTAINER
-   ===================================================== */
-
 .container {
     padding: 25px;
 }
 
 /* =====================================================
-   PAGE SYSTEM
+   PAGE
    ===================================================== */
 
 .page {
@@ -278,7 +266,7 @@ select {
 }
 
 /* =====================================================
-   DASHBOARD CARDS
+   DASHBOARD
    ===================================================== */
 
 .dashboard-grid {
@@ -349,7 +337,7 @@ select {
 }
 
 /* =====================================================
-   PAGE TITLES
+   TITLES
    ===================================================== */
 
 .page-title {
@@ -396,7 +384,7 @@ select {
 }
 
 /* =====================================================
-   MEMBERSHIP PAGE
+   MEMBERSHIP
    ===================================================== */
 
 .membership-page-grid {
@@ -451,7 +439,7 @@ select {
 }
 
 /* =====================================================
-   GENERIC CONTENT
+   GENERIC
    ===================================================== */
 
 .content-box {
@@ -474,7 +462,7 @@ select {
 }
 
 /* =====================================================
-   ECONOMIC NEWS
+   AGUILACORE ECONOMIC NEWS
    ===================================================== */
 
 .economic-header {
@@ -491,40 +479,337 @@ select {
 }
 
 /* =====================================================
-   INVESTING.COM CALENDAR
+   NEWS CONTROL PANEL
    ===================================================== */
 
-.investing-calendar-box {
+.news-control-panel {
     background: #0b1728;
     border: 1px solid #27384e;
-    padding: 15px;
-    overflow: hidden;
+    padding: 18px;
+    margin-bottom: 18px;
 }
 
-.investing-calendar-frame {
-    width: 100%;
-    min-height: 520px;
-    border: 0;
-    display: block;
-    background: white;
+.news-controls {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
-.investing-source {
-    margin-top: 12px;
-    padding: 10px 12px;
-    border-top: 1px solid #27384e;
+.news-control {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.news-control label {
+    color: #64748b;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.news-control input,
+.news-control select {
+    background: #07111f;
+    color: white;
+    border: 1px solid #27384e;
+    height: 38px;
+    padding: 0 11px;
+    min-width: 155px;
+    outline: none;
+}
+
+.news-control input:focus,
+.news-control select:focus {
+    border-color: #c9a227;
+}
+
+.news-button {
+    height: 38px;
+    padding: 0 18px;
+    border: 1px solid #c9a227;
+    background: transparent;
+    color: #f5c84c;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.news-button:hover {
+    background: #c9a227;
+    color: #07111f;
+}
+
+.news-button.secondary {
+    border-color: #27384e;
+    color: #9ba9bb;
+}
+
+.news-button.secondary:hover {
+    background: #27384e;
+    color: white;
+}
+
+/* =====================================================
+   NEWS STATUS
+   ===================================================== */
+
+.news-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
     color: #64748b;
     font-size: 11px;
 }
 
-.investing-source a {
-    color: #9ba9bb;
+.news-count {
+    color: #f5c84c;
     font-weight: bold;
-    text-decoration: none;
 }
 
-.investing-source a:hover {
+.news-updated {
+    color: #64748b;
+}
+
+/* =====================================================
+   NEWS TABLE
+   ===================================================== */
+
+.aguilacore-calendar {
+    background: #0b1728;
+    border: 1px solid #27384e;
+    overflow: hidden;
+}
+
+.calendar-titlebar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    background: #0d1b2e;
+    border-bottom: 1px solid #27384e;
+}
+
+.calendar-title {
     color: #f5c84c;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.calendar-timezone {
+    color: #64748b;
+    font-size: 10px;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.calendar-table thead {
+    background: #101e31;
+}
+
+.calendar-table th {
+    text-align: left;
+    color: #64748b;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 13px 12px;
+    border-bottom: 1px solid #27384e;
+}
+
+.calendar-table td {
+    padding: 13px 12px;
+    border-bottom: 1px solid #17283d;
+    color: #d7dee8;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.calendar-table tbody tr:hover {
+    background: #0d1b2e;
+}
+
+.calendar-table th:nth-child(1),
+.calendar-table td:nth-child(1) {
+    width: 90px;
+}
+
+.calendar-table th:nth-child(2),
+.calendar-table td:nth-child(2) {
+    width: 85px;
+}
+
+.calendar-table th:nth-child(3),
+.calendar-table td:nth-child(3) {
+    width: auto;
+}
+
+.calendar-table th:nth-child(4),
+.calendar-table td:nth-child(4) {
+    width: 85px;
+}
+
+.calendar-table th:nth-child(5),
+.calendar-table td:nth-child(5) {
+    width: 100px;
+}
+
+.calendar-table th:nth-child(6),
+.calendar-table td:nth-child(6) {
+    width: 100px;
+}
+
+.calendar-table th:nth-child(7),
+.calendar-table td:nth-child(7) {
+    width: 100px;
+}
+
+.calendar-table th:nth-child(8),
+.calendar-table td:nth-child(8) {
+    width: 100px;
+}
+
+/* =====================================================
+   EVENT
+   ===================================================== */
+
+.event-name {
+    color: white;
+    font-weight: bold;
+}
+
+.currency-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    padding: 5px 7px;
+    background: #07111f;
+    border: 1px solid #27384e;
+    color: #f5c84c;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* =====================================================
+   IMPACT
+   ===================================================== */
+
+.impact-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.impact-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.impact-high {
+    color: #ff6262;
+}
+
+.impact-high .impact-dot {
+    background: #ff5555;
+}
+
+.impact-medium {
+    color: #f5c84c;
+}
+
+.impact-medium .impact-dot {
+    background: #f5c84c;
+}
+
+.impact-low {
+    color: #53d769;
+}
+
+.impact-low .impact-dot {
+    background: #53d769;
+}
+
+/* =====================================================
+   VALUES
+   ===================================================== */
+
+.actual-value {
+    color: #53d769;
+    font-weight: bold;
+}
+
+.forecast-value {
+    color: #9ba9bb;
+}
+
+.previous-value {
+    color: #64748b;
+}
+
+/* =====================================================
+   PAST EVENTS
+   ===================================================== */
+
+.past-event {
+    opacity: 0.72;
+}
+
+/* =====================================================
+   LOADING
+   ===================================================== */
+
+.news-loading {
+    padding: 45px 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.news-loading strong {
+    display: block;
+    color: #f5c84c;
+    margin-bottom: 7px;
+    font-size: 13px;
+}
+
+/* =====================================================
+   EMPTY / ERROR
+   ===================================================== */
+
+.news-empty {
+    display: none;
+    padding: 45px 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.news-empty strong {
+    display: block;
+    color: #f5c84c;
+    margin-bottom: 7px;
+}
+
+.news-error {
+    display: none;
+    padding: 18px;
+    margin-bottom: 15px;
+    background: #21131a;
+    border: 1px solid #5c2733;
+    color: #ff8b8b;
+    font-size: 11px;
 }
 
 /* =====================================================
@@ -554,6 +839,18 @@ select {
 
 }
 
+@media (max-width: 900px) {
+
+    .calendar-table {
+        min-width: 800px;
+    }
+
+    .aguilacore-calendar {
+        overflow-x: auto;
+    }
+
+}
+
 @media (max-width: 800px) {
 
     .sidebar {
@@ -574,15 +871,6 @@ select {
 
     .online {
         display: none;
-    }
-
-    .investing-calendar-box {
-        padding: 5px;
-        overflow-x: auto;
-    }
-
-    .investing-calendar-frame {
-        min-width: 650px;
     }
 
 }
@@ -620,6 +908,17 @@ select {
         margin-top: 10px;
     }
 
+    .news-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .news-control input,
+    .news-control select,
+    .news-button {
+        width: 100%;
+    }
+
 }
 
 </style>
@@ -631,7 +930,7 @@ select {
 <div class="app-layout">
 
 <!-- =====================================================
-     LEFT PANEL
+     SIDEBAR
      ===================================================== -->
 
 <aside class="sidebar">
@@ -647,9 +946,6 @@ select {
         </div>
 
     </div>
-
-
-    <!-- MEMBERSHIP -->
 
     <div
         class="membership-box"
@@ -673,9 +969,6 @@ select {
 
     </div>
 
-
-    <!-- MENU -->
-
     <div class="sidebar-menu">
 
         <div
@@ -687,7 +980,6 @@ select {
 
         </div>
 
-
         <div
             class="sidebar-item"
             id="marketsMenu"
@@ -696,7 +988,6 @@ select {
             ◉ &nbsp; Markets
 
         </div>
-
 
         <div
             class="sidebar-item"
@@ -707,7 +998,6 @@ select {
 
         </div>
 
-
         <div
             class="sidebar-item"
             id="goldMenu"
@@ -716,7 +1006,6 @@ select {
             ◎ &nbsp; Gold / XAUUSD
 
         </div>
-
 
         <div
             class="sidebar-item"
@@ -729,11 +1018,7 @@ select {
 
     </div>
 
-
     <div class="sidebar-spacer"></div>
-
-
-    <!-- ACCOUNT -->
 
     <div class="sidebar-account">
 
@@ -768,9 +1053,6 @@ select {
 
 <div class="main-content">
 
-
-    <!-- HEADER -->
-
     <div class="header">
 
         <div>
@@ -785,7 +1067,6 @@ select {
 
         </div>
 
-
         <div class="user-area">
 
             <div class="online">
@@ -796,10 +1077,6 @@ select {
 
     </div>
 
-
-    <!-- =================================================
-         PAGES
-         ================================================= -->
 
     <div class="container">
 
@@ -824,9 +1101,7 @@ select {
 
             </div>
 
-
             <div class="dashboard-grid">
-
 
                 <div class="card">
 
@@ -848,7 +1123,6 @@ select {
 
                 </div>
 
-
                 <div class="card">
 
                     <div class="card-title">
@@ -864,7 +1138,6 @@ select {
                     </div>
 
                 </div>
-
 
                 <div class="card">
 
@@ -884,13 +1157,11 @@ select {
 
             </div>
 
-
             <div class="account-box">
 
                 <div class="account-title">
                     ACCOUNT INFORMATION
                 </div>
-
 
                 <div class="account-row">
 
@@ -908,7 +1179,6 @@ select {
 
                 </div>
 
-
                 <div class="account-row">
 
                     <span class="account-label">
@@ -924,7 +1194,6 @@ select {
                     </span>
 
                 </div>
-
 
                 <div class="account-row">
 
@@ -1064,9 +1333,7 @@ select {
                 Choose your AGUILACORE membership plan.
             </div>
 
-
             <div class="membership-page-grid">
-
 
                 <div class="membership-card">
 
@@ -1092,7 +1359,6 @@ select {
 
                 </div>
 
-
                 <div class="membership-card">
 
                     <div class="membership-card-title">
@@ -1116,7 +1382,6 @@ select {
                     </button>
 
                 </div>
-
 
                 <div class="membership-card">
 
@@ -1142,7 +1407,6 @@ select {
 
                 </div>
 
-
                 <div class="membership-card">
 
                     <div class="membership-card-title">
@@ -1167,7 +1431,6 @@ select {
 
                 </div>
 
-
             </div>
 
         </div>
@@ -1190,47 +1453,205 @@ select {
                     </div>
 
                     <div class="page-description">
-                        Real-time economic events and market-moving catalysts.
+                        Market-moving economic events and catalysts.
                     </div>
 
                 </div>
 
                 <div class="economic-status">
-                    ● LIVE CALENDAR
+                    ● LIVE DATA
                 </div>
 
             </div>
 
 
-            <!-- =================================================
-                 INVESTING.COM OFFICIAL CALENDAR
-                 ================================================= -->
+            <!-- FILTER PANEL -->
 
-            <div class="investing-calendar-box">
+            <div class="news-control-panel">
 
-                <iframe
-                    class="investing-calendar-frame"
-                    src="https://sslecal2.investing.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&features=datepicker,timezone&countries=25,32,6,37,72,22,17,39,14,10,35,43,56,36,110,11,26,12,4,5&calType=week&timeZone=8&lang=1"
-                    width="650"
-                    height="467"
-                    frameborder="0"
-                    allowtransparency="true"
-                    marginwidth="0"
-                    marginheight="0">
-                </iframe>
+                <div class="news-controls">
 
-                <div class="investing-source">
+                    <div class="news-control">
 
-                    Real Time Economic Calendar provided by
+                        <label for="newsDate">
+                            DATE
+                        </label>
 
-                    <a
-                        href="https://www.investing.com/"
-                        rel="nofollow"
-                        target="_blank">
+                        <input
+                            type="date"
+                            id="newsDate">
 
-                        Investing.com
+                    </div>
 
-                    </a>
+
+                    <div class="news-control">
+
+                        <label for="impactFilter">
+                            IMPACT
+                        </label>
+
+                        <select id="impactFilter">
+
+                            <option value="ALL">
+                                ALL IMPACT
+                            </option>
+
+                            <option value="HIGH">
+                                HIGH IMPACT
+                            </option>
+
+                            <option value="MEDIUM">
+                                MEDIUM IMPACT
+                            </option>
+
+                            <option value="LOW">
+                                LOW IMPACT
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="news-button"
+                        onclick="applyNewsFilters()">
+
+                        APPLY FILTER
+
+                    </button>
+
+
+                    <button
+                        class="news-button secondary"
+                        onclick="clearNewsFilters()">
+
+                        CLEAR
+
+                    </button>
+
+
+                    <button
+                        class="news-button secondary"
+                        onclick="loadEconomicNews()">
+
+                        ↻ REFRESH
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div
+                class="news-error"
+                id="newsError">
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="news-status-bar">
+
+                <div>
+
+                    Showing
+                    <span
+                        class="news-count"
+                        id="newsCount">
+
+                        0
+
+                    </span>
+
+                    economic events
+
+                </div>
+
+                <div
+                    class="news-updated"
+                    id="newsUpdated">
+
+                    Waiting for data...
+
+                </div>
+
+            </div>
+
+
+            <!-- AGUILACORE CALENDAR -->
+
+            <div class="aguilacore-calendar">
+
+                <div class="calendar-titlebar">
+
+                    <div class="calendar-title">
+                        AGUILACORE ECONOMIC CALENDAR
+                    </div>
+
+                    <div class="calendar-timezone">
+                        PHILIPPINE TIME • UTC+8
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="news-loading"
+                    id="newsLoading">
+
+                    <strong>
+                        LOADING ECONOMIC DATA
+                    </strong>
+
+                    Connecting to AGUILACORE market data...
+
+                </div>
+
+
+                <div
+                    class="news-empty"
+                    id="newsEmpty">
+
+                    <strong>
+                        NO ECONOMIC EVENTS
+                    </strong>
+
+                    No events match the selected filters.
+
+                </div>
+
+
+                <div
+                    id="newsTableContainer"
+                    style="display:none;">
+
+                    <table class="calendar-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>DATE</th>
+                                <th>TIME</th>
+                                <th>EVENT</th>
+                                <th>CURRENCY</th>
+                                <th>IMPACT</th>
+                                <th>ACTUAL</th>
+                                <th>FORECAST</th>
+                                <th>PREVIOUS</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="economicNewsRows">
+                        </tbody>
+
+                    </table>
 
                 </div>
 
@@ -1241,12 +1662,8 @@ select {
     </div>
 
 
-    <!-- FOOTER -->
-
     <div class="footer">
-
         AGUILACORE Trading Platform © 2026
-
     </div>
 
 </div>
@@ -1266,12 +1683,23 @@ const SUPABASE_URL =
 const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_6ooR6Iv8NSAbEsgIFjruZg_RVIgvo9v";
 
-
 const supabaseClient =
     supabase.createClient(
         SUPABASE_URL,
         SUPABASE_PUBLISHABLE_KEY
     );
+
+
+/* =====================================================
+   AGUILACORE ECONOMIC CALENDAR API
+   ===================================================== */
+
+const ECONOMIC_CALENDAR_API =
+    SUPABASE_URL +
+    "/functions/v1/economic-calendar";
+
+
+let economicNewsData = [];
 
 
 /* =====================================================
@@ -1286,7 +1714,6 @@ async function checkUser() {
     } =
         await supabaseClient.auth.getUser();
 
-
     if (error || !data.user) {
 
         window.location.href =
@@ -1296,47 +1723,31 @@ async function checkUser() {
 
     }
 
-
     const email =
         data.user.email || "";
-
 
     document.getElementById(
         "userEmail"
     ).textContent =
         email;
 
-
     document.getElementById(
         "sidebarEmail"
     ).textContent =
         email;
 
-
-    /*
-       CURRENT MEMBERSHIP
-
-       For now FREE.
-
-       Later this will come from
-       the Supabase membership table.
-    */
-
     const membership =
         "FREE";
-
 
     document.getElementById(
         "sidebarMembership"
     ).textContent =
         membership;
 
-
     document.getElementById(
         "accountMembership"
     ).textContent =
         membership;
-
 
     document.getElementById(
         "userStatus"
@@ -1360,7 +1771,6 @@ function showPage(pageId) {
             ".page"
         );
 
-
     pages.forEach(function(page) {
 
         page.classList.remove(
@@ -1369,12 +1779,10 @@ function showPage(pageId) {
 
     });
 
-
     const selectedPage =
         document.getElementById(
             pageId
         );
-
 
     if (selectedPage) {
 
@@ -1384,12 +1792,10 @@ function showPage(pageId) {
 
     }
 
-
     const menuItems =
         document.querySelectorAll(
             ".sidebar-item"
         );
-
 
     menuItems.forEach(function(item) {
 
@@ -1398,7 +1804,6 @@ function showPage(pageId) {
         );
 
     });
-
 
     const menuMap = {
 
@@ -1419,7 +1824,6 @@ function showPage(pageId) {
 
     };
 
-
     if (
         menuMap[pageId]
     ) {
@@ -1431,6 +1835,26 @@ function showPage(pageId) {
             .classList.add(
                 "active"
             );
+
+    }
+
+    /*
+       Load economic news only when
+       the Economic News page is opened.
+    */
+
+    if (
+        pageId ===
+        "economicNewsPage"
+    ) {
+
+        if (
+            economicNewsData.length === 0
+        ) {
+
+            loadEconomicNews();
+
+        }
 
     }
 
@@ -1458,6 +1882,882 @@ function selectMembership(
 
 
 /* =====================================================
+   LOAD ECONOMIC NEWS
+   ===================================================== */
+
+async function loadEconomicNews() {
+
+    const loading =
+        document.getElementById(
+            "newsLoading"
+        );
+
+    const table =
+        document.getElementById(
+            "newsTableContainer"
+        );
+
+    const empty =
+        document.getElementById(
+            "newsEmpty"
+        );
+
+    const errorBox =
+        document.getElementById(
+            "newsError"
+        );
+
+    loading.style.display =
+        "block";
+
+    table.style.display =
+        "none";
+
+    empty.style.display =
+        "none";
+
+    errorBox.style.display =
+        "none";
+
+    document.getElementById(
+        "newsUpdated"
+    ).textContent =
+        "Updating...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                ECONOMIC_CALENDAR_API,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    }
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Economic calendar API returned HTTP " +
+                response.status
+            );
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        /*
+           Support several common
+           Edge Function response formats.
+        */
+
+        let events = [];
+
+
+        if (
+            Array.isArray(result)
+        ) {
+
+            events =
+                result;
+
+        } else if (
+            Array.isArray(result.events)
+        ) {
+
+            events =
+                result.events;
+
+        } else if (
+            Array.isArray(result.data)
+        ) {
+
+            events =
+                result.data;
+
+        } else if (
+            result.data &&
+            Array.isArray(result.data.events)
+        ) {
+
+            events =
+                result.data.events;
+
+        }
+
+
+        economicNewsData =
+            events.map(
+                normalizeEconomicEvent
+            );
+
+
+        economicNewsData =
+            economicNewsData
+                .filter(function(event) {
+
+                    return (
+                        event.event ||
+                        event.title
+                    );
+
+                });
+
+
+        economicNewsData.sort(
+            function(a, b) {
+
+                return (
+                    getEventTimestamp(a) -
+                    getEventTimestamp(b)
+                );
+
+            }
+        );
+
+
+        loading.style.display =
+            "none";
+
+
+        document.getElementById(
+            "newsUpdated"
+        ).textContent =
+            "Updated " +
+            new Date().toLocaleTimeString(
+                "en-PH",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+
+
+        renderEconomicNews();
+
+
+    } catch (error) {
+
+        console.error(
+            "Economic Calendar Error:",
+            error
+        );
+
+
+        loading.style.display =
+            "none";
+
+
+        errorBox.textContent =
+            "Unable to load economic calendar data. " +
+            error.message;
+
+
+        errorBox.style.display =
+            "block";
+
+
+        document.getElementById(
+            "newsUpdated"
+        ).textContent =
+            "Data unavailable";
+
+    }
+
+}
+
+
+/* =====================================================
+   NORMALIZE EVENT
+   ===================================================== */
+
+function normalizeEconomicEvent(
+    item
+) {
+
+    const event =
+        item || {};
+
+
+    return {
+
+        date:
+            event.date ||
+            event.event_date ||
+            event.datetime ||
+            event.timestamp ||
+            "",
+
+        time:
+            event.time ||
+            event.event_time ||
+            "",
+
+        event:
+            event.event ||
+            event.title ||
+            event.name ||
+            event.event_name ||
+            "",
+
+        currency:
+            event.currency ||
+            event.country ||
+            event.currency_code ||
+            "",
+
+        impact:
+            normalizeImpact(
+                event.impact ||
+                event.importance ||
+                event.volatility ||
+                ""
+            ),
+
+        actual:
+            valueOrDash(
+                event.actual
+            ),
+
+        forecast:
+            valueOrDash(
+                event.forecast
+            ),
+
+        previous:
+            valueOrDash(
+                event.previous
+            )
+
+    };
+
+}
+
+
+/* =====================================================
+   NORMALIZE IMPACT
+   ===================================================== */
+
+function normalizeImpact(
+    impact
+) {
+
+    const value =
+        String(
+            impact || ""
+        ).toUpperCase();
+
+
+    if (
+        value.includes("HIGH") ||
+        value === "3" ||
+        value === "RED"
+    ) {
+
+        return "HIGH";
+
+    }
+
+
+    if (
+        value.includes("MEDIUM") ||
+        value.includes("MODERATE") ||
+        value === "2" ||
+        value === "ORANGE"
+    ) {
+
+        return "MEDIUM";
+
+    }
+
+
+    if (
+        value.includes("LOW") ||
+        value === "1" ||
+        value === "YELLOW"
+    ) {
+
+        return "LOW";
+
+    }
+
+
+    return "LOW";
+
+}
+
+
+/* =====================================================
+   VALUE
+   ===================================================== */
+
+function valueOrDash(
+    value
+) {
+
+    if (
+        value === null ||
+        value === undefined ||
+        value === ""
+    ) {
+
+        return "—";
+
+    }
+
+    return String(
+        value
+    );
+
+}
+
+
+/* =====================================================
+   EVENT TIMESTAMP
+   ===================================================== */
+
+function getEventTimestamp(
+    event
+) {
+
+    let value =
+        event.date;
+
+
+    if (
+        event.time
+    ) {
+
+        value +=
+            " " +
+            event.time;
+
+    }
+
+
+    const timestamp =
+        new Date(
+            value
+        ).getTime();
+
+
+    if (
+        isNaN(timestamp)
+    ) {
+
+        return 0;
+
+    }
+
+
+    return timestamp;
+
+}
+
+
+/* =====================================================
+   DATE FORMAT
+   ===================================================== */
+
+function formatEventDate(
+    dateValue
+) {
+
+    if (!dateValue) {
+
+        return "—";
+
+    }
+
+
+    const date =
+        new Date(
+            dateValue
+        );
+
+
+    if (
+        isNaN(
+            date.getTime()
+        )
+    ) {
+
+        /*
+           If backend already sends
+           YYYY-MM-DD, use it.
+        */
+
+        const match =
+            String(
+                dateValue
+            ).match(
+                /^(\d{4})-(\d{2})-(\d{2})/
+            );
+
+
+        if (match) {
+
+            return (
+                match[2] +
+                "/" +
+                match[3]
+            );
+
+        }
+
+
+        return String(
+            dateValue
+        );
+
+    }
+
+
+    return date.toLocaleDateString(
+        "en-PH",
+        {
+            month: "short",
+            day: "2-digit"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   DATE KEY
+   ===================================================== */
+
+function getDateKey(
+    dateValue
+) {
+
+    if (!dateValue) {
+
+        return "";
+
+    }
+
+
+    const match =
+        String(
+            dateValue
+        ).match(
+            /^(\d{4})-(\d{2})-(\d{2})/
+        );
+
+
+    if (match) {
+
+        return (
+            match[1] +
+            "-" +
+            match[2] +
+            "-" +
+            match[3]
+        );
+
+    }
+
+
+    const date =
+        new Date(
+            dateValue
+        );
+
+
+    if (
+        isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return "";
+
+    }
+
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day
+    );
+
+}
+
+
+/* =====================================================
+   IMPACT HTML
+   ===================================================== */
+
+function impactHTML(
+    impact
+) {
+
+    const safeImpact =
+        impact || "LOW";
+
+
+    const className =
+        safeImpact.toLowerCase();
+
+
+    return `
+        <span class="impact-badge impact-${className}">
+            <span class="impact-dot"></span>
+            ${safeImpact}
+        </span>
+    `;
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+   ===================================================== */
+
+function escapeHTML(
+    value
+) {
+
+    return String(
+        value || ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   RENDER NEWS
+   ===================================================== */
+
+function renderEconomicNews() {
+
+    const rows =
+        document.getElementById(
+            "economicNewsRows"
+        );
+
+    const table =
+        document.getElementById(
+            "newsTableContainer"
+        );
+
+    const empty =
+        document.getElementById(
+            "newsEmpty"
+        );
+
+
+    const selectedDate =
+        document.getElementById(
+            "newsDate"
+        ).value;
+
+
+    const selectedImpact =
+        document.getElementById(
+            "impactFilter"
+        ).value;
+
+
+    const filtered =
+        economicNewsData.filter(
+            function(event) {
+
+                let dateMatch =
+                    true;
+
+                let impactMatch =
+                    true;
+
+
+                if (
+                    selectedDate
+                ) {
+
+                    dateMatch =
+                        getDateKey(
+                            event.date
+                        ) ===
+                        selectedDate;
+
+                }
+
+
+                if (
+                    selectedImpact !==
+                    "ALL"
+                ) {
+
+                    impactMatch =
+                        event.impact ===
+                        selectedImpact;
+
+                }
+
+
+                return (
+                    dateMatch &&
+                    impactMatch
+                );
+
+            }
+        );
+
+
+    rows.innerHTML =
+        "";
+
+
+    document.getElementById(
+        "newsCount"
+    ).textContent =
+        filtered.length;
+
+
+    if (
+        filtered.length === 0
+    ) {
+
+        table.style.display =
+            "none";
+
+        empty.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    empty.style.display =
+        "none";
+
+    table.style.display =
+        "block";
+
+
+    filtered.forEach(
+        function(event) {
+
+            const tr =
+                document.createElement(
+                    "tr"
+                );
+
+
+            const eventDate =
+                getEventTimestamp(
+                    event
+                );
+
+
+            const isPast =
+                eventDate > 0 &&
+                eventDate <
+                Date.now();
+
+
+            if (
+                isPast
+            ) {
+
+                tr.classList.add(
+                    "past-event"
+                );
+
+            }
+
+
+            tr.innerHTML = `
+
+                <td>
+                    ${escapeHTML(
+                        formatEventDate(
+                            event.date
+                        )
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        event.time || "—"
+                    )}
+                </td>
+
+                <td>
+                    <div class="event-name">
+                        ${escapeHTML(
+                            event.event
+                        )}
+                    </div>
+                </td>
+
+                <td>
+                    <span class="currency-badge">
+                        ${escapeHTML(
+                            event.currency || "—"
+                        )}
+                    </span>
+                </td>
+
+                <td>
+                    ${impactHTML(
+                        event.impact
+                    )}
+                </td>
+
+                <td>
+                    <span class="actual-value">
+                        ${escapeHTML(
+                            event.actual
+                        )}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="forecast-value">
+                        ${escapeHTML(
+                            event.forecast
+                        )}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="previous-value">
+                        ${escapeHTML(
+                            event.previous
+                        )}
+                    </span>
+                </td>
+
+            `;
+
+
+            rows.appendChild(
+                tr
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   APPLY FILTERS
+   ===================================================== */
+
+function applyNewsFilters() {
+
+    renderEconomicNews();
+
+}
+
+
+/* =====================================================
+   CLEAR FILTERS
+   ===================================================== */
+
+function clearNewsFilters() {
+
+    document.getElementById(
+        "newsDate"
+    ).value =
+        "";
+
+    document.getElementById(
+        "impactFilter"
+    ).value =
+        "ALL";
+
+
+    renderEconomicNews();
+
+}
+
+
+/* =====================================================
+   AUTO REFRESH
+   ===================================================== */
+
+setInterval(
+    function() {
+
+        const economicPage =
+            document.getElementById(
+                "economicNewsPage"
+            );
+
+
+        if (
+            economicPage &&
+            economicPage.classList.contains(
+                "active"
+            )
+        ) {
+
+            loadEconomicNews();
+
+        }
+
+    },
+    5 * 60 * 1000
+);
+
+
+/* =====================================================
    LOGOUT
    ===================================================== */
 
@@ -1466,7 +2766,6 @@ async function logoutUser() {
     await supabaseClient
         .auth
         .signOut();
-
 
     window.location.href =
         "index.html";
