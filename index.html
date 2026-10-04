@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AGUILACORE Trading Platform</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
@@ -27,7 +27,7 @@ body {
 .header {
     background: #0b1728;
     border-bottom: 1px solid #c9a227;
-    padding: 18px 25px;
+    padding: 15px 25px;
 
     display: flex;
     align-items: center;
@@ -47,19 +47,55 @@ body {
     letter-spacing: 1px;
 }
 
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .status {
     color: #53d769;
     font-size: 12px;
     font-weight: bold;
 }
 
+/* AUTH BUTTONS */
+
+.auth-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.auth-btn {
+    background: transparent;
+    color: #f5c84c;
+    border: 1px solid #c9a227;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.auth-btn:hover {
+    background: #c9a227;
+    color: #07111f;
+}
+
+.register-btn {
+    background: #c9a227;
+    color: #07111f;
+}
+
+.register-btn:hover {
+    background: #f5c84c;
+}
 
 /* MAIN */
 
 .container {
     padding: 20px;
 }
-
 
 /* MARKET BAR */
 
@@ -103,7 +139,6 @@ select:hover {
     font-weight: bold;
 }
 
-
 /* CHART */
 
 .chart-box {
@@ -117,19 +152,121 @@ select:hover {
     overflow: hidden;
 }
 
-
 /* FOOTER */
 
 .footer {
     text-align: center;
-
     color: #64748b;
-
     font-size: 11px;
-
     padding: 15px;
 }
 
+/* MODAL */
+
+.modal {
+    display: none;
+
+    position: fixed;
+    z-index: 1000;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.75);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-box {
+    width: 380px;
+    max-width: 90%;
+
+    background: #0b1728;
+
+    border: 1px solid #c9a227;
+
+    border-radius: 6px;
+
+    padding: 25px;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.modal-title {
+    color: #f5c84c;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.input {
+    width: 100%;
+
+    background: #101f33;
+
+    border: 1px solid #33465f;
+
+    color: white;
+
+    padding: 12px;
+
+    margin-bottom: 12px;
+
+    border-radius: 4px;
+
+    outline: none;
+}
+
+.input:focus {
+    border-color: #c9a227;
+}
+
+.submit-btn {
+    width: 100%;
+
+    background: #c9a227;
+
+    color: #07111f;
+
+    border: none;
+
+    padding: 12px;
+
+    border-radius: 4px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #f5c84c;
+}
+
+.close-btn {
+    float: right;
+
+    color: #9ba9bb;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: white;
+}
+
+.modal-note {
+    color: #7f8da1;
+    font-size: 11px;
+    margin-top: 12px;
+    text-align: center;
+}
 
 /* MOBILE */
 
@@ -143,8 +280,16 @@ select:hover {
         font-size: 20px;
     }
 
+    .status {
+        display: none;
+    }
+
     .chart-box {
         height: 500px;
+    }
+
+    .header-right {
+        gap: 5px;
     }
 
 }
@@ -173,12 +318,38 @@ select:hover {
 
     </div>
 
-    <div class="status">
-        ● MARKET LIVE
+
+    <div class="header-right">
+
+        <div class="status">
+            ● MARKET LIVE
+        </div>
+
+
+        <div class="auth-buttons">
+
+            <button
+                class="auth-btn"
+                onclick="openLogin()">
+
+                LOGIN
+
+            </button>
+
+
+            <button
+                class="auth-btn register-btn"
+                onclick="openRegister()">
+
+                REGISTER
+
+            </button>
+
+        </div>
+
     </div>
 
 </div>
-
 
 
 <!-- MAIN -->
@@ -197,72 +368,31 @@ select:hover {
 
         <select id="marketSelect">
 
+            <option value="FX:EURUSD">EURUSD</option>
 
-            <!-- FOREX -->
+            <option value="FX:GBPUSD">GBPUSD</option>
 
-            <option value="FX:EURUSD">
-                EURUSD
-            </option>
+            <option value="FX:USDJPY">USDJPY</option>
 
-            <option value="FX:GBPUSD">
-                GBPUSD
-            </option>
+            <option value="FX:USDCHF">USDCHF</option>
 
-            <option value="FX:USDJPY">
-                USDJPY
-            </option>
+            <option value="FX:AUDUSD">AUDUSD</option>
 
-            <option value="FX:USDCHF">
-                USDCHF
-            </option>
+            <option value="FX:USDCAD">USDCAD</option>
 
-            <option value="FX:AUDUSD">
-                AUDUSD
-            </option>
+            <option value="FX:NZDUSD">NZDUSD</option>
 
-            <option value="FX:USDCAD">
-                USDCAD
-            </option>
+            <option value="FX:EURJPY">EURJPY</option>
 
-            <option value="FX:NZDUSD">
-                NZDUSD
-            </option>
+            <option value="FX:GBPJPY">GBPJPY</option>
 
+            <option value="OANDA:XAUUSD">XAUUSD</option>
 
-            <!-- CROSS PAIRS -->
+            <option value="FOREXCOM:DJI">US30</option>
 
-            <option value="FX:EURJPY">
-                EURJPY
-            </option>
+            <option value="NASDAQ:NDX">NAS100</option>
 
-            <option value="FX:GBPJPY">
-                GBPJPY
-            </option>
-
-
-            <!-- GOLD -->
-
-            <option value="OANDA:XAUUSD">
-                XAUUSD
-            </option>
-
-
-            <!-- INDICES -->
-
-            <option value="FOREXCOM:DJI">
-                US30
-            </option>
-
-            <option value="NASDAQ:NDX">
-                NAS100
-            </option>
-
-
-            <!-- CRYPTO -->
-
-            <option value="COINBASE:BTCUSD">
-                BTCUSD
-            </option>
+            <option value="COINBASE:BTCUSD">BTCUSD</option>
 
         </select>
 
@@ -278,30 +408,22 @@ select:hover {
     </div>
 
 
-
     <!-- TRADINGVIEW -->
 
     <div class="chart-box">
 
         <div
-            class="tradingview-widget-container"
-            style="height:100%;width:100%"
-        >
-
-            <div
-                id="tradingview_chart"
-                style="height:100%;width:100%"
-            >
-            </div>
+            id="tradingview_chart"
+            style="height:100%;width:100%;">
 
         </div>
 
     </div>
 
-
 </div>
 
 
+<!-- FOOTER -->
 
 <div class="footer">
 
@@ -310,111 +432,258 @@ select:hover {
 </div>
 
 
+<!-- LOGIN MODAL -->
+
+<div
+    class="modal"
+    id="loginModal">
+
+    <div class="modal-box">
+
+        <span
+            class="close-btn"
+            onclick="closeModals()">
+
+            ×
+
+        </span>
+
+        <div class="modal-title">
+            AGUILACORE LOGIN
+        </div>
+
+        <input
+            class="input"
+            id="loginEmail"
+            type="email"
+            placeholder="Email">
+
+        <input
+            class="input"
+            id="loginPassword"
+            type="password"
+            placeholder="Password">
+
+        <button
+            class="submit-btn"
+            onclick="loginUser()">
+
+            LOGIN
+
+        </button>
+
+        <div
+            class="modal-note"
+            id="loginMessage">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- REGISTER MODAL -->
+
+<div
+    class="modal"
+    id="registerModal">
+
+    <div class="modal-box">
+
+        <span
+            class="close-btn"
+            onclick="closeModals()">
+
+            ×
+
+        </span>
+
+        <div class="modal-title">
+            CREATE ACCOUNT
+        </div>
+
+        <input
+            class="input"
+            id="registerEmail"
+            type="email"
+            placeholder="Email">
+
+        <input
+            class="input"
+            id="registerPassword"
+            type="password"
+            placeholder="Password">
+
+        <input
+            class="input"
+            id="registerConfirm"
+            type="password"
+            placeholder="Confirm Password">
+
+        <button
+            class="submit-btn"
+            onclick="registerUser()">
+
+            CREATE ACCOUNT
+
+        </button>
+
+        <div
+            class="modal-note"
+            id="registerMessage">
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <script>
 
+/* =====================================================
+   SUPABASE CONNECTION
+   ===================================================== */
 
-// CURRENT MARKET
+const SUPABASE_URL =
+    "https://xgthdbuybfynumprkqgm.supabase.co";
 
-let currentSymbol = "FX:EURUSD";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_6ooR6Iv8NSAbEsgIFjruZg_RVIgvo9v";
 
 
-// LOAD TRADINGVIEW
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* =====================================================
+   TRADINGVIEW
+   ===================================================== */
+
+let currentSymbol =
+    "FX:EURUSD";
+
 
 function loadTradingView(symbol) {
 
     const chart =
-        document.getElementById("tradingview_chart");
+        document.getElementById(
+            "tradingview_chart"
+        );
 
-
-    // CLEAR OLD CHART
 
     chart.innerHTML = "";
 
 
-    // CREATE TRADINGVIEW CONTAINER
-
     const widget =
         document.createElement("div");
+
 
     widget.className =
         "tradingview-widget-container";
 
-    widget.style.height = "100%";
 
-    widget.style.width = "100%";
+    widget.style.height =
+        "100%";
+
+
+    widget.style.width =
+        "100%";
 
 
     const widgetInner =
         document.createElement("div");
 
+
     widgetInner.className =
         "tradingview-widget-container__widget";
 
-    widgetInner.style.height = "100%";
 
-    widgetInner.style.width = "100%";
-
-
-    widget.appendChild(widgetInner);
-
-    chart.appendChild(widget);
+    widgetInner.style.height =
+        "100%";
 
 
-    // LOAD SCRIPT
+    widgetInner.style.width =
+        "100%";
+
+
+    widget.appendChild(
+        widgetInner
+    );
+
+
+    chart.appendChild(
+        widget
+    );
+
 
     const script =
-        document.createElement("script");
+        document.createElement(
+            "script"
+        );
 
 
     script.type =
         "text/javascript";
 
+
     script.src =
         "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
 
-    script.async = true;
+
+    script.async =
+        true;
 
 
-    script.innerHTML = JSON.stringify({
+    script.innerHTML =
+        JSON.stringify({
 
-        autosize: true,
+            autosize: true,
 
-        symbol: symbol,
+            symbol: symbol,
 
-        interval: "15",
+            interval: "15",
 
-        timezone: "Asia/Manila",
+            timezone:
+                "Asia/Manila",
 
-        theme: "dark",
+            theme: "dark",
 
-        style: "1",
+            style: "1",
 
-        locale: "en",
+            locale: "en",
 
-        allow_symbol_change: false,
+            allow_symbol_change:
+                false,
 
-        calendar: false,
+            calendar: false,
 
-        support_host:
-            "https://www.tradingview.com"
+            support_host:
+                "https://www.tradingview.com"
 
-    });
+        });
 
 
-    widget.appendChild(script);
+    widget.appendChild(
+        script
+    );
 
 }
 
 
-
-// INITIAL CHART
-
-loadTradingView(currentSymbol);
-
+loadTradingView(
+    currentSymbol
+);
 
 
-// MARKET SELECTOR
+/* =====================================================
+   MARKET SELECTOR
+   ===================================================== */
 
 const marketSelect =
     document.getElementById(
@@ -428,11 +697,9 @@ const marketName =
     );
 
 
-
 marketSelect.addEventListener(
     "change",
     function() {
-
 
         const symbol =
             this.value;
@@ -456,25 +723,244 @@ marketSelect.addEventListener(
             symbol
         );
 
-
     }
 );
 
+
+/* =====================================================
+   AUTH MODALS
+   ===================================================== */
+
+function openLogin() {
+
+    closeModals();
+
+    document.getElementById(
+        "loginModal"
+    ).style.display =
+        "flex";
+
+}
+
+
+function openRegister() {
+
+    closeModals();
+
+    document.getElementById(
+        "registerModal"
+    ).style.display =
+        "flex";
+
+}
+
+
+function closeModals() {
+
+    document.getElementById(
+        "loginModal"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "registerModal"
+    ).style.display =
+        "none";
+
+}
+
+
+/* =====================================================
+   REGISTER
+   ===================================================== */
+
+async function registerUser() {
+
+    const email =
+        document.getElementById(
+            "registerEmail"
+        ).value.trim();
+
+
+    const password =
+        document.getElementById(
+            "registerPassword"
+        ).value;
+
+
+    const confirmPassword =
+        document.getElementById(
+            "registerConfirm"
+        ).value;
+
+
+    const message =
+        document.getElementById(
+            "registerMessage"
+        );
+
+
+    message.textContent =
+        "";
+
+
+    if (!email || !password) {
+
+        message.textContent =
+            "Please enter your email and password.";
+
+        return;
+
+    }
+
+
+    if (password !== confirmPassword) {
+
+        message.textContent =
+            "Passwords do not match.";
+
+        return;
+
+    }
+
+
+    if (password.length < 6) {
+
+        message.textContent =
+            "Password must be at least 6 characters.";
+
+        return;
+
+    }
+
+
+    message.textContent =
+        "Creating account...";
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.signUp({
+
+            email: email,
+
+            password: password
+
+        });
+
+
+    if (error) {
+
+        message.textContent =
+            error.message;
+
+        return;
+
+    }
+
+
+    message.textContent =
+        "Registration successful. Check your email if confirmation is required.";
+
+}
+
+
+/* =====================================================
+   LOGIN
+   ===================================================== */
+
+async function loginUser() {
+
+    const email =
+        document.getElementById(
+            "loginEmail"
+        ).value.trim();
+
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        ).value;
+
+
+    const message =
+        document.getElementById(
+            "loginMessage"
+        );
+
+
+    message.textContent =
+        "";
+
+
+    if (!email || !password) {
+
+        message.textContent =
+            "Please enter your email and password.";
+
+        return;
+
+    }
+
+
+    message.textContent =
+        "Signing in...";
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.signInWithPassword({
+
+            email: email,
+
+            password: password
+
+        });
+
+
+    if (error) {
+
+        message.textContent =
+            error.message;
+
+        return;
+
+    }
+
+
+    message.textContent =
+        "Login successful.";
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+   ===================================================== */
+
+window.onclick =
+    function(event) {
+
+        if (
+            event.target.classList.contains(
+                "modal"
+            )
+        ) {
+
+            closeModals();
+
+        }
+
+    };
+
+
 </script>
 
-<script>
-
-const SUPABASE_URL = https://xgthdbuybfynumprkqgm.supabase.co/rest/v1/;
-
-const SUPABASE_PUBLISHABLE_KEY = sb_publishable_6ooR6Iv8NSAbEsgIFjruZg_RVIgvo9v;
-
-
-const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-);
-
-</script>
 
 </body>
 </html>
